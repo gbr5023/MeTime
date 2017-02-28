@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package metime;
 
 /**
@@ -29,6 +25,7 @@ public class MainMenuUI extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         chooseLabel = new javax.swing.JLabel();
         scheduleRadioButton = new javax.swing.JRadioButton();
         calendarRadioButton = new javax.swing.JRadioButton();
@@ -42,6 +39,7 @@ public class MainMenuUI extends javax.swing.JFrame
         chooseLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         chooseLabel.setText("Choose an option:");
 
+        buttonGroup1.add(scheduleRadioButton);
         scheduleRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         scheduleRadioButton.setText("Add Events / Contacts");
         scheduleRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +48,7 @@ public class MainMenuUI extends javax.swing.JFrame
             }
         });
 
+        buttonGroup1.add(calendarRadioButton);
         calendarRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         calendarRadioButton.setText("Event Calendar");
         calendarRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +57,7 @@ public class MainMenuUI extends javax.swing.JFrame
             }
         });
 
+        buttonGroup1.add(prioritizeRadioButton);
         prioritizeRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         prioritizeRadioButton.setText("Prioritize Events");
         prioritizeRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +66,7 @@ public class MainMenuUI extends javax.swing.JFrame
             }
         });
 
+        buttonGroup1.add(searchRadioButton);
         searchRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         searchRadioButton.setText("Search Contacts");
         searchRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +198,7 @@ public class MainMenuUI extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton calendarRadioButton;
     private javax.swing.JLabel chooseLabel;
     private javax.swing.JButton exitButton;
