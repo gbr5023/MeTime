@@ -49,10 +49,14 @@ public class UserList
     public void buildTestUserList()
     {
         theListOfUsers = new ArrayList();
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 100; i++)
+        {
+            String firstName = "Jane";
+            String lastName = "Doe" + i;
             String username = ("test" + i);
             char[] password = {'1', '2', '3', '4'};
-            User newUser = new User(username, password);
+            String email = "jdoe@email.com";
+            User newUser = new User(firstName, lastName, username, password, email);
             theListOfUsers.add(newUser);
         }
     }

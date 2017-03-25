@@ -24,34 +24,80 @@ package metime;
  *
  * @author Gisward
  */
-public class User 
+public class User extends Person
 {
+    private String firstName;
+    private String lastName;
     private String username;
     private char[] password;
+    private String email;
     
-    public User(String newUsername, char[] newPassword)
+    public User(String newFirstName, String newLastName, String newUsername, char[] newPassword, String newEmail)
     {
+        this.firstName = newFirstName;
+        this.lastName = newLastName;
         this.username = newUsername;
         this.password = newPassword;
+        this.email = newEmail;
     }
     
+    @Override
+    public String getFirstName()
+    {
+        return this.firstName;
+    }
+    
+    @Override
+    public void setFirstName(String newFirstName)
+    {
+        this.firstName = newFirstName;
+    }
+    
+    @Override
+    public String getLastName()
+    {
+        return this.lastName;
+    }
+    
+    @Override
+    public void setLastName(String newLastName)
+    {
+        this.lastName = newLastName;
+    }
+    
+    @Override
     public String getUsername()
     {
         return this.username;
     }
     
+    @Override
     public void setUsername(String newUsername)
     {
         this.username = newUsername;
     }
     
+    @Override
     public char[] getPassword()
     {
         return this.password;
     }
     
+    @Override
     public void setPassword(char[] newPassword)
     {
         this.password = newPassword;
+    }
+    
+    @Override
+    public String getEmail()
+    {
+        return this.email;
+    }
+    
+    @Override
+    public void setEmail(String newEmail)
+    {
+        this.email = newEmail;
     }
 }
