@@ -30,9 +30,27 @@ public class Contact extends Person
     }
     
     @Override
+    public void setFirstName(String newFirstName)
+    {
+        super.setFirstName(newFirstName);
+    }
+    
+    @Override
     public String getLastName()
     {
         return super.getLastName();
+    }
+    
+    @Override
+    public void setLastName(String newLastName)
+    {
+        super.setLastName(newLastName);
+    }
+    
+    @Override
+    public String getFullName()
+    {
+        return super.getFullName();
     }
     
     @Override
@@ -42,8 +60,20 @@ public class Contact extends Person
     }
     
     @Override
+    public void setPhone(int newPhone)
+    {
+        super.setPhone(newPhone);
+    }
+    
+    @Override
     public String getEmail()
     {
         return super.getEmail();
+    }
+    
+    @Override
+    public void setEmail(String newEmail)
+    {
+        super.setEmail(newEmail);
     }
 }

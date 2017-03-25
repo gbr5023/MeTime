@@ -29,10 +29,12 @@ import javax.swing.JFrame;
 public class NavigationCntl 
 {
     MainMenuUI theMainMenuUI;
+    SearchCntl theSearchCntl;
     
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
+        this.theSearchCntl = new SearchCntl();
         requestMainMenuUI();
     }
     
@@ -44,5 +46,10 @@ public class NavigationCntl
         theMainMenuUI.setLocationRelativeTo(null);
         theMainMenuUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         theMainMenuUI.setVisible(true);
+    }
+    
+    public void requestSearchCntl()
+    {
+        this.theSearchCntl.setNavigationCntl(this);
     }
 }

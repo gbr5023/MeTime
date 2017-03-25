@@ -42,24 +42,53 @@ public class ContactList
             int phone = 1234567;
             String email = "jdoe@email.com";
             Contact newContact = new Contact(firstName, lastName, phone, email);
-            theListOfContacts.add(newContact);
+            this.theListOfContacts.add(newContact);
         }
     }
-    /* just copied from UserList class, but use the same logic to search for contacts
-    public boolean authenticate(String usernameToCheck, char[] passwordToCheck)
+    /* just copied from UserList class, but use the same logic to search for contacts */
+    public boolean searchContactName(String nameToSearch)
     {
-        boolean authenticated = false;
-        boolean nameMatch = false;
-        boolean passwordMatch = false;
-        for(int i = 0; i < theListOfUsers.size(); i++){
-            nameMatch = usernameToCheck.equals(theListOfUsers.get(i).getUsername());
-            passwordMatch = String.valueOf(passwordToCheck).equals(String.valueOf(theListOfUsers.get(i).getPassword()));
-            if(nameMatch && passwordMatch){
-                authenticated = true;
+        boolean contactNameFound = false;
+        boolean nameMatch;
+        for(int i = 0; i < this.theListOfContacts.size(); i++){
+            nameMatch = this.theListOfContacts.get(i).getFullName().contains(nameToSearch);
+            if(nameMatch == true){
+                contactNameFound = true;
                 break;
             }
         }
-        return authenticated;
+        return contactNameFound;
     }
-*/
+    
+    public boolean searchContactPhone(int phoneToSearch)
+    {
+        boolean contactPhoneFound = false;
+        boolean phoneMatch;
+        
+        for(int i = 0; i < this.theListOfContacts.size(); i++){
+            phoneMatch = this.theListOfContacts.get(i).getPhone() == phoneToSearch;
+            if(phoneMatch == true){
+                contactPhoneFound = true;
+                break;
+            }
+        }
+        
+        return contactPhoneFound;
+    }
+    
+    public boolean searchContactEmail(String emailToSearch)
+    {
+        boolean contactEmailFound = false;
+        boolean emailMatch;
+        
+        for(int i = 0; i < this.theListOfContacts.size(); i++){
+            emailMatch = this.theListOfContacts.get(i).getEmail().contains(emailToSearch);
+            if(emailMatch == true){
+                contactEmailFound = true;
+                break;
+            }
+        }
+        
+        return contactEmailFound;
+    }
 }

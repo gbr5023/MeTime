@@ -12,19 +12,49 @@ package metime;
  */
 public class SearchCntl 
 {
-    NavigationCntl theNavigationCntl;
+    NavigationCntl parentNavigationCntl;
+    ContactList theContactList;
+    int numOfInstantiations = 0;
     
-    public void setNavigationCntl(NavigationCntl parentNavigationCntl)
+    public SearchCntl()
     {
-        this.theNavigationCntl = parentNavigationCntl;
+        numOfInstantiations++;
+        System.out.println("SearchCntl instantiated " + this.numOfInstantiations + " time(s).");
+        this.theContactList = new ContactList();
     }
-    /* copied from LoginCntl class. Use the same logic when searching for a contact in ContactList
-    public boolean requestAuthenticate(String usernameToCheck, char[] passwordToCheck)
+    
+    public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
     {
-        //theUserList.printUsers(); //for check
-        boolean authenticated = theUserList.authenticate(usernameToCheck, passwordToCheck);
+        System.out.println("Made it to the SpaceAssignCntl");
+        this.parentNavigationCntl = newParentNavigationCntl;
+        // instantiate SearchContactListUI class here
+    }
+    
+    /* copied & modified from LoginCntl class. Use the same logic when searching for a contact in ContactList */
+    public boolean searchContactName(String nameToSearch)
+    {
+        boolean contactNameFound;
+        
+        contactNameFound = this.theContactList.searchContactName(nameToSearch);
 
-        return authenticated;
+        return contactNameFound;
     }
-*/
+
+    public boolean searchContactPhone(int phoneToSearch)
+    {
+        boolean contactPhoneFound;
+        
+        contactPhoneFound = this.theContactList.searchContactPhone(phoneToSearch);
+        
+        return contactPhoneFound;
+    }
+    
+    public boolean searchContactEmail(String emailToSearch)
+    {
+        boolean contactEmailFound;
+        
+        contactEmailFound = this.theContactList.searchContactEmail(emailToSearch);
+        
+        return contactEmailFound;
+    }
 }
