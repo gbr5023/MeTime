@@ -25,41 +25,33 @@ public class SearchCntl
     
     public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
     {
-        System.out.println("Made it to the SpaceAssignCntl");
+        System.out.println("Made it to the SearchCntl");
         this.parentNavigationCntl = newParentNavigationCntl;
         // instantiate SearchContactListUI class here
     }
     
     /* copied & modified from LoginCntl class. Use the same logic when searching for a contact in ContactList */
-    public boolean searchContactName(String nameToSearch)
+    public Contact searchContactName(String nameToSearch)
     {
-        boolean contactNameFound;
-        
-        contactNameFound = this.theContactList.searchContactName(nameToSearch);
-
-        return contactNameFound;
+        return this.theContactList.searchContactName(nameToSearch);
     }
 
-    public boolean searchContactPhone(int phoneToSearch)
+    public Contact searchContactPhone(int phoneToSearch)
     {
-        boolean contactPhoneFound;
-        
-        contactPhoneFound = this.theContactList.searchContactPhone(phoneToSearch);
-        
-        return contactPhoneFound;
+        return this.theContactList.searchContactPhone(phoneToSearch);
     }
     
-    public boolean searchContactEmail(String emailToSearch)
+    public Contact searchContactEmail(String emailToSearch)
     {
-        boolean contactEmailFound;
-        
-        contactEmailFound = this.theContactList.searchContactEmail(emailToSearch);
-        
-        return contactEmailFound;
+        return this.theContactList.searchContactEmail(emailToSearch);
     }
     
     public void requestSearchContactsUI(){
-        SearchContactsUI searchUI = new SearchContactsUI();
+        SearchContactsUI searchUI = new SearchContactsUI(this);
         searchUI.setVisible(true);
+    }
+    
+    public void requestSearchResultUI(Contact searchedContact){
+        // TODO: Show the result UI with the given Contact
     }
 }

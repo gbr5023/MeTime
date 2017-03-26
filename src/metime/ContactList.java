@@ -46,49 +46,47 @@ public class ContactList
         }
     }
     /* just copied from UserList class, but use the same logic to search for contacts */
-    public boolean searchContactName(String nameToSearch)
+    public Contact searchContactName(String nameToSearch)
     {
-        boolean contactNameFound = false;
         boolean nameMatch;
         for(int i = 0; i < this.theListOfContacts.size(); i++){
-            nameMatch = this.theListOfContacts.get(i).getFullName().contains(nameToSearch);
-            if(nameMatch == true){
-                contactNameFound = true;
-                break;
+            Contact contactToSearch = this.theListOfContacts.get(i);
+            nameMatch = contactToSearch.getFullName().contains(nameToSearch);
+            if(nameMatch){
+                return contactToSearch;
             }
         }
-        return contactNameFound;
+        
+        return null;
     }
     
-    public boolean searchContactPhone(int phoneToSearch)
+    public Contact searchContactPhone(int phoneToSearch)
     {
-        boolean contactPhoneFound = false;
         boolean phoneMatch;
         
         for(int i = 0; i < this.theListOfContacts.size(); i++){
-            phoneMatch = this.theListOfContacts.get(i).getPhone() == phoneToSearch;
-            if(phoneMatch == true){
-                contactPhoneFound = true;
-                break;
+            Contact contactToSearch = this.theListOfContacts.get(i);
+            phoneMatch = contactToSearch.getPhone() == phoneToSearch;
+            if(phoneMatch){
+                return contactToSearch;
             }
         }
         
-        return contactPhoneFound;
+        return null;
     }
     
-    public boolean searchContactEmail(String emailToSearch)
+    public Contact searchContactEmail(String emailToSearch)
     {
-        boolean contactEmailFound = false;
         boolean emailMatch;
         
         for(int i = 0; i < this.theListOfContacts.size(); i++){
-            emailMatch = this.theListOfContacts.get(i).getEmail().contains(emailToSearch);
-            if(emailMatch == true){
-                contactEmailFound = true;
-                break;
+            Contact contactToSearch = this.theListOfContacts.get(i);
+            emailMatch = contactToSearch.getEmail().contains(emailToSearch);
+            if(emailMatch){
+                return contactToSearch;
             }
         }
         
-        return contactEmailFound;
+        return null;
     }
 }

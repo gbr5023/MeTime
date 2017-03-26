@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -15,9 +16,12 @@ import javax.swing.JTextField;
  */
 public class SearchContactsUI extends JFrame {
     
+    private final SearchCntl theSearchCntl;
     private JTextField searchTerm;
+    private Contact theContact;
     
-    public SearchContactsUI(){
+    public SearchContactsUI(SearchCntl theSearchCntl){
+        this.theSearchCntl = theSearchCntl;
         initComponents();
     }
     
@@ -48,22 +52,67 @@ public class SearchContactsUI extends JFrame {
         c.gridx = 0;
         pane.add(searchTerm, c);
         
-        JButton searchButton = new JButton("Search");
-        searchButton.addActionListener(new SearchButtonListener());
+        JButton searchEmailsButton = new JButton("Search by Email");
+        searchEmailsButton.addActionListener(new SearchEmailButtonListener());
         
         c.gridy = 2;
-        pane.add(searchButton, c);
+        pane.add(searchEmailsButton, c);
+        
+        JButton searchNameButton = new JButton("Search By Name");
+        searchNameButton.addActionListener(new SearchNameButtonListener());
+        
+        c.gridx = 1;
+        pane.add(searchNameButton, c);
+        
+        JButton searchPhoneButton = new JButton("Search By Phone");
+        searchPhoneButton.addActionListener(new SearchPhoneButtonListener());
+        
+        c.gridx = 2;
+        pane.add(searchPhoneButton, c);
         
         this.add(pane);
     }
     
-    class SearchButtonListener implements ActionListener {
+    class SearchEmailButtonListener implements ActionListener {
       
         @Override
         public void actionPerformed(ActionEvent ae) {
-            // TODO
+            theContact = theSearchCntl.searchContactEmail(searchTerm.getText());
+            
+            requestSearchResultUI();
         }
-        
     }
     
+    class SearchNameButtonListener implements ActionListener {
+      
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            theContact = theSearchCntl.searchContactName(searchTerm.getText());
+            requestSearchResultUI();
+        }
+    }
+    
+    class SearchPhoneButtonListener implements ActionListener {
+      
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String term = searchTerm.getText();
+            
+            try {
+                int intTerm = Integer.parseInt(term);
+                theContact = theSearchCntl.searchContactPhone(intTerm);
+            } catch(NumberFormatException e) {
+                theContact = null;
+            }
+            
+            requestSearchResultUI();
+        }
+    }
+    
+    private void requestSearchResultUI(){
+        if(theContact != null)
+            theSearchCntl.requestSearchResultUI(theContact);
+        else
+            JOptionPane.showMessageDialog(null, "No contact found matching the search term.");
+    }
 }
