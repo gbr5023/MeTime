@@ -57,4 +57,9 @@ public class SearchCntl
         
         return contactEmailFound;
     }
+    
+    public void requestSearchContactsUI(){
+        SearchContactsUI searchUI = new SearchContactsUI();
+        searchUI.setVisible(true);
+    }
 }
