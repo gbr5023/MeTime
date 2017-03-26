@@ -21,11 +21,13 @@ import javax.swing.JTextField;
  */
 public class SearchResultUI extends JFrame {
     private Contact theContact;
+    private SearchCntl theSearchCntl;
     
     public SearchResultUI(Contact theContact){
         this.theContact = theContact;
         initComponents();
     }
+    
     private void initComponents(){
         this.setSize(500, 125);
         this.setTitle("Search Results");
@@ -49,22 +51,21 @@ public class SearchResultUI extends JFrame {
         
         this.add(pane);
     }
-    
 
-class requestSearchResultUI implements ActionListener{
+ class requestSearchResultUI implements ActionListener{
 
-        private Object theSearchCntl;
         @Override
         public void actionPerformed(ActionEvent e) {
-           if(theContact != null)
-           SearchResultUI(theContact);
+           if(theContact != null){
+               theSearchCntl.requestSearchResultUI(theContact);
+           }
         else
             JOptionPane.showMessageDialog(null, "No contact found matching the search term.");
         }
 
         private void SearchResultUI(Contact theContact) {
             System.out.print(theContact);
-        }
-         
+        } 
     }
+
 }
