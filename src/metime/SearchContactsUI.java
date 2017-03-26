@@ -43,14 +43,18 @@ public class SearchContactsUI extends JFrame {
         c.gridy = 0;
         pane.add(searchLabel, c);
         
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.fill = GridBagConstraints.BOTH;
+        c.gridwidth = 3;
         
         searchTerm = new JTextField();
         
         c.ipady = 0;
         c.gridy = 1;
         c.gridx = 0;
+        
         pane.add(searchTerm, c);
+        
+        c.gridwidth = 1;
         
         JButton searchEmailsButton = new JButton("Search by Email");
         searchEmailsButton.addActionListener(new SearchEmailButtonListener());
