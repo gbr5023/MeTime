@@ -185,7 +185,6 @@ public class MainMenuUI extends javax.swing.JFrame
                 break;
             case SEARCH_OPTION:
                 parentNavigationCntl.requestSearchCntl();
-                parentNavigationCntl.theSearchCntl.requestSearchContactsUI();
         }
     }//GEN-LAST:event_goButtonActionPerformed
 

@@ -50,6 +50,7 @@ public class NavigationCntl
     
     public void requestSearchCntl()
     {
-        this.theSearchCntl.setNavigationCntl(this);
+        theSearchCntl.setNavigationCntl(this);
+        theSearchCntl.requestSearchContactsUI();
     }
 }
