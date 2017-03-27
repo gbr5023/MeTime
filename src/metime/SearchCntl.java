@@ -12,9 +12,9 @@ package metime;
  */
 public class SearchCntl 
 {
-    NavigationCntl parentNavigationCntl;
-    ContactList theContactList;
-    int numOfInstantiations = 0;
+    private NavigationCntl parentNavigationCntl;
+    private final ContactList theContactList;
+    private int numOfInstantiations = 0;
     
     public SearchCntl()
     {
@@ -52,6 +52,7 @@ public class SearchCntl
     }
     
     public void requestSearchResultUI(Contact searchedContact){
-        // TODO: Show the result UI with the given Contact
+        SearchResultUI theSearchResultUI = new SearchResultUI(searchedContact);
+        theSearchResultUI.setVisible(true);
     }
 }

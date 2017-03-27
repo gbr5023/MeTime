@@ -21,7 +21,6 @@ import javax.swing.JTextField;
  */
 public class SearchResultUI extends JFrame {
     private Contact theContact;
-    private SearchCntl theSearchCntl;
     
     public SearchResultUI(Contact theContact){
         this.theContact = theContact;
@@ -40,32 +39,21 @@ public class SearchResultUI extends JFrame {
         c.ipadx = 10;
         c.weightx = 1.0;
         
-        JLabel searchLabel = new JLabel("Search Results: ");
-        
         c.gridx = 0;
         c.gridy = 0;
-        pane.add(searchLabel, c);
         
+        JLabel nameLabel = new JLabel("Full Name: " + theContact.getFullName());
+        JLabel emailLabel = new JLabel("Email: " + theContact.getEmail());
+        JLabel phoneLabel = new JLabel("Phone: " + theContact.getPhone());
         
-        c.fill = GridBagConstraints.HORIZONTAL;
+        pane.add(nameLabel, c);
+        
+        c.gridx = 1;
+        pane.add(emailLabel, c);
+        
+        c.gridx = 2;
+        pane.add(phoneLabel, c);
         
         this.add(pane);
     }
-
- class requestSearchResultUI implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-           if(theContact != null){
-               theSearchCntl.requestSearchResultUI(theContact);
-           }
-        else
-            JOptionPane.showMessageDialog(null, "No contact found matching the search term.");
-        }
-
-        private void SearchResultUI(Contact theContact) {
-            System.out.print(theContact);
-        } 
-    }
-
 }
