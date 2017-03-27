@@ -35,9 +35,11 @@ public class LoginCntl
     public LoginCntl()
     {
         System.out.println("Made it to LoginCntl");
+        System.out.println("Username: test1");
+        System.out.println("Password: 1234");
         theUserList = new UserList();
         theLoginUI = new LoginUI(this);
-        theLoginUI.setTitle("Technology Control System Login");
+        theLoginUI.setTitle("MeTime Login");
         theLoginUI.setLocationRelativeTo(null);
         theLoginUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         theLoginUI.setVisible(true);

@@ -35,6 +35,22 @@ public final class ContactList
     public void buildTestContactList()
     {
         this.theListOfContacts = new ArrayList();
+        
+        this.theListOfContacts.add(new Contact("Jane", "Doe", 1234567, "jdoe@email.com"));
+        this.theListOfContacts.add(new Contact("John", "Edwards", 9876543, "jedwards@email.com"));
+        this.theListOfContacts.add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
+        this.theListOfContacts.add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
+        this.theListOfContacts.add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
+        
+        System.out.println();
+        System.out.println("For testing purposes: ");
+        for(int i = 0; i < this.theListOfContacts.size(); i++)
+        {
+            System.out.println(this.theListOfContacts.get(i).getFullName() + ", Phone: " + 
+                    this.theListOfContacts.get(i).getPhone() + ", Email: " +
+                    this.theListOfContacts.get(i).getEmail());
+        }
+        /*
         for(int i = 0; i < 100; i++)
         {
             String firstName = "Jane";
@@ -44,15 +60,22 @@ public final class ContactList
             Contact newContact = new Contact(firstName, lastName, phone, email);
             this.theListOfContacts.add(newContact);
         }
+        */
     }
     /* just copied from UserList class, but use the same logic to search for contacts */
     public Contact searchContactName(String nameToSearch)
     {
-        boolean nameMatch;
+        //boolean nameMatch;
+        boolean firstNameMatch;
+        boolean lastNameMatch;
+        
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
-            nameMatch = contactToSearch.getFullName().contains(nameToSearch);
-            if(nameMatch){
+            firstNameMatch = contactToSearch.getFirstName().equalsIgnoreCase(nameToSearch);
+            lastNameMatch = contactToSearch.getLastName().equalsIgnoreCase(nameToSearch);
+            //nameMatch = contactToSearch.getFullName().contains(nameToSearch);
+            if(firstNameMatch == true || lastNameMatch == true)
+            {
                 return contactToSearch;
             }
         }
@@ -81,7 +104,7 @@ public final class ContactList
         
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
-            emailMatch = contactToSearch.getEmail().contains(emailToSearch);
+            emailMatch = contactToSearch.getEmail().equalsIgnoreCase(emailToSearch);
             if(emailMatch){
                 return contactToSearch;
             }

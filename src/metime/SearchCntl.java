@@ -26,10 +26,6 @@ public class SearchCntl
     public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
     {
         System.out.println("Made it to the SearchCntl");
-        System.out.println();
-        System.out.println("Search by Name: Jane Doe1 (You can replace 1 with any number between 0-99");
-        System.out.println("Search by Phone: 1234567");
-        System.out.println("Search by Email: jdoe@email.com");
         this.parentNavigationCntl = newParentNavigationCntl;
         // instantiate SearchContactListUI class here
     }
