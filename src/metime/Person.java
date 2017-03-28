@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 package metime;
 
@@ -12,14 +12,14 @@ package metime;
  */
 public abstract class Person implements PersonInfo
 {
-    String firstName;
-    String lastName;
-    String fullName;
-    String username;
-    char[] password;
-    int phone;
-    String email;
-
+    private String firstName;
+    private String lastName;
+    private String fullName;
+    private String username;
+    private char[] password;
+    private int phone;
+    private String email;
+    
     public Person()
     {
         
@@ -34,19 +34,19 @@ public abstract class Person implements PersonInfo
     }
     
     @Override
-    public String getFirstName() 
+    public String getFirstName()
     {
         return this.firstName;
     }
-
+    
     @Override
-    public String getLastName() 
+    public String getLastName()
     {
         return this.lastName;
     }
     
     @Override
-    public String getFullName() 
+    public String getFullName()
     {
         return firstName + " " + lastName;
     }
@@ -72,15 +72,15 @@ public abstract class Person implements PersonInfo
     {
         return this.email;
     }
-
+    
     @Override
-    public void setFirstName(String newFirstName) 
+    public void setFirstName(String newFirstName)
     {
         this.firstName = newFirstName;
     }
-
+    
     @Override
-    public void setLastName(String newLastName) 
+    public void setLastName(String newLastName)
     {
         this.lastName = newLastName;
     }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public class ContactList 
+public final class ContactList 
 {
     private ArrayList<Contact> theListOfContacts;
     

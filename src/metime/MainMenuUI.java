@@ -28,7 +28,7 @@ public class MainMenuUI extends javax.swing.JFrame
 {
 
     private final NavigationCntl parentNavigationCntl;
-    private Option selectedOption;
+    private NavigationOption selectedOption;
     
     public MainMenuUI(NavigationCntl newParentNavigationCntl) 
     {
@@ -157,19 +157,19 @@ public class MainMenuUI extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void scheduleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleRadioButtonActionPerformed
-        selectedOption = Option.SCHEDULE_OPTION;
+        selectedOption = NavigationOption.SCHEDULE_OPTION;
     }//GEN-LAST:event_scheduleRadioButtonActionPerformed
 
     private void calendarRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarRadioButtonActionPerformed
-        selectedOption = Option.CALENDAR_OPTION;
+        selectedOption = NavigationOption.CALENDAR_OPTION;
     }//GEN-LAST:event_calendarRadioButtonActionPerformed
 
     private void prioritizeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prioritizeRadioButtonActionPerformed
-       selectedOption = Option.PRIORITIZE_OPTION;
+       selectedOption = NavigationOption.PRIORITIZE_OPTION;
     }//GEN-LAST:event_prioritizeRadioButtonActionPerformed
 
     private void searchRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchRadioButtonActionPerformed
-        selectedOption = Option.SEARCH_OPTION;
+        selectedOption = NavigationOption.SEARCH_OPTION;
     }//GEN-LAST:event_searchRadioButtonActionPerformed
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
@@ -192,9 +192,6 @@ public class MainMenuUI extends javax.swing.JFrame
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
 
-    private enum Option {
-        SCHEDULE_OPTION, CALENDAR_OPTION, PRIORITIZE_OPTION, SEARCH_OPTION;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

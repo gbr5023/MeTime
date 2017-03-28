@@ -26,7 +26,7 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public class UserList 
+public final class UserList 
 {
     private ArrayList<User> theListOfUsers;
     
@@ -62,18 +62,15 @@ public class UserList
     }
     
     public boolean authenticate(String usernameToCheck, char[] passwordToCheck)
-    {
-        boolean authenticated = false;
-        boolean nameMatch = false;
-        boolean passwordMatch = false;
+    {   
         for(int i = 0; i < theListOfUsers.size(); i++){
-            nameMatch = usernameToCheck.equals(theListOfUsers.get(i).getUsername());
-            passwordMatch = String.valueOf(passwordToCheck).equals(String.valueOf(theListOfUsers.get(i).getPassword()));
+            boolean nameMatch = usernameToCheck.equals(theListOfUsers.get(i).getUsername());
+            boolean passwordMatch = String.valueOf(passwordToCheck).equals(String.valueOf(theListOfUsers.get(i).getPassword()));
             if(nameMatch && passwordMatch){
-                authenticated = true;
-                break;
+                return true;
             }
         }
-        return authenticated;
+        
+        return false;
     }
 }

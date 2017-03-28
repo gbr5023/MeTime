@@ -7,13 +7,9 @@ package metime;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -45,6 +41,8 @@ public class SearchResultUI extends JFrame {
         JLabel nameLabel = new JLabel("Full Name: " + theContact.getFullName());
         JLabel emailLabel = new JLabel("Email: " + theContact.getEmail());
         JLabel phoneLabel = new JLabel("Phone: " + theContact.getPhone());
+        
+        // TODO: Add ability to show multiple results, and return the results in a JFrame table
         
         pane.add(nameLabel, c);
         

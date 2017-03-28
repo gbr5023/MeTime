@@ -26,10 +26,10 @@ import javax.swing.JFrame;
  *
  * @author Gisward
  */
-public class NavigationCntl 
+public final class NavigationCntl 
 {
-    MainMenuUI theMainMenuUI;
-    SearchCntl theSearchCntl;
+    private MainMenuUI theMainMenuUI;
+    private SearchCntl theSearchCntl;
     
     public NavigationCntl()
     {
