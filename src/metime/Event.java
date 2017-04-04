@@ -20,6 +20,19 @@ public class Event extends Task
     int taskHour;
     int taskMinute;
     
+    // events (tasks) that happen all day (birthdays, etc.)
+    public Event(String newTaskTitle, String newMonth, String newDay, String newYear)
+    {
+        super(newTaskTitle, newMonth, newDay, newYear);
+    }
+    
+    // events (tasks) with an exact date, but happens on the hour (4:00, 15:00, 11:00, etc.)
+    public Event(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour)
+    {
+        super(newTaskTitle, newMonth, newDay, newYear, newHour);
+    }
+    
+    // events (tasks) with an exact date, hour, and minute
     public Event(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour, String newMinute)
     {
         super(newTaskTitle, newMonth, newDay, newYear, newHour, newMinute);

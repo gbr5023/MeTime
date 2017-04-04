@@ -30,27 +30,33 @@ public class NavigationCntl
 {
     MainMenuUI theMainMenuUI;
     SearchCntl theSearchCntl;
+    EventCntl theEventCntl;
     
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
         this.theSearchCntl = new SearchCntl();
-        requestMainMenuUI();
+        this.theEventCntl = new EventCntl();
+        this.requestMainMenuUI();
     }
     
     public void requestMainMenuUI()
     {
-        theMainMenuUI = new MainMenuUI(this);
-        theMainMenuUI.pack();
-        theMainMenuUI.setTitle("Main Menu");
-        theMainMenuUI.setLocationRelativeTo(null);
-        theMainMenuUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        theMainMenuUI.setVisible(true);
+        this.theMainMenuUI = new MainMenuUI(this);
+        this.theMainMenuUI.pack();
+        this.theMainMenuUI.setTitle("Main Menu");
+        this.theMainMenuUI.setLocationRelativeTo(null);
+        this.theMainMenuUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.theMainMenuUI.setVisible(true);
     }
     
     public void requestSearchCntl()
     {
-        theSearchCntl.setNavigationCntl(this);
-        theSearchCntl.requestSearchContactsUI();
+        this.theSearchCntl.setNavigationCntl(this);
+    }
+    
+    public void requestEventCntl()
+    {
+        this.theEventCntl.setNavigationCntl(this);
     }
 }

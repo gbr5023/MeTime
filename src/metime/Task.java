@@ -22,11 +22,26 @@ public abstract class Task implements TaskInfo
     String taskTime;
     String taskDateTime;
     
-    public Task()
+    // all day tasks
+    public Task(String newTaskTitle, String newMonth, String newDay, String newYear)
     {
-        
+        this.taskTitle = newTaskTitle;
+        this.taskMonth = Integer.valueOf(newMonth);
+        this.taskDay = Integer.valueOf(newDay);
+        this.taskYear = Integer.valueOf(newYear);
     }
     
+    // tasks that are only right on the hour (4:00, 12:00, etc.)
+    public Task(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour)
+    {
+        this.taskTitle = newTaskTitle;
+        this.taskMonth = Integer.valueOf(newMonth);
+        this.taskDay = Integer.valueOf(newDay);
+        this.taskYear = Integer.valueOf(newYear);
+        this.taskHour = Integer.valueOf(newHour);
+    }
+    
+    // tasks that have a specific minute start (4:30, 12:43, etc.)
     public Task(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour, String newMinute)
     {
         this.taskTitle = newTaskTitle;
@@ -91,6 +106,8 @@ public abstract class Task implements TaskInfo
     @Override
     public String getTaskDateTime()
     {
+        setTaskDate();
+        setTaskTime();
         setTaskDateTime();
         return this.taskDateTime;
     }
@@ -137,18 +154,25 @@ public abstract class Task implements TaskInfo
     @Override
     public void setTaskDate()
     {
-        this.taskDate = this.taskMonth + " " + this.taskDay + " " + this.taskYear;
+        this.taskDate = this.taskMonth + "-" + this.taskDay + "-" + this.taskYear;
     }
 
     @Override
     public void setTaskTime() 
     {
-        this.taskTime = this.taskHour + " " + this.taskMinute;
+        if(this.taskMinute == 0)
+        {
+            this.taskTime = this.taskHour + ":00";
+        }
+        else
+        {
+            this.taskTime = this.taskHour + ":" + this.taskMinute;
+        }
     }
     
     @Override
     public void setTaskDateTime()
     {
-        this.taskDateTime = this.taskDate + " " + this.taskTime;
+        this.taskDateTime = this.taskDate + " @" + this.taskTime;
     }
 }

@@ -29,25 +29,27 @@ public class EventList
         }
         return this.theListOfEvents;
     }
+    
+    public void setListOfEvents(ArrayList<Event> updatedListOfEvents)
+    {
+        this.theListOfEvents = updatedListOfEvents;
+    }
 
     public void buildTestEventList() {
         this.theListOfEvents = new ArrayList();
         
-        /*
-        this.theListOfEvents.add(new Event("Jane", "Doe", 1234567, "jdoe@email.com"));
-        this.theListOfEvents.add(new Event("John", "Edwards", 9876543, "jedwards@email.com"));
-        this.theListOfEvents.add(new Event("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
-        this.theListOfEvents.add(new Event("Dana", "Shalit", 1357913, "dshalit@email.com"));
-        this.theListOfEvents.add(new Event("Giselle", "Redila", 1470147, "gredila@email.com"));
+        
+        this.theListOfEvents.add(new Event("IST 331 Meeting", "4", "5", "2017", "16"));
+        this.theListOfEvents.add(new Event("IST 311 Meeting", "4", "7", "2017", "15", "30"));
+        this.theListOfEvents.add(new Event("TA Grading Work", "4", "10", "2017", "12", "45"));
+        this.theListOfEvents.add(new Event("Proctor Math 110 Exam", "5", "3", "2017", "8"));
+        this.theListOfEvents.add(new Event("Dad's Birthday", "5", "6", "2017"));
 
         System.out.println();
         System.out.println("For testing purposes: ");
         for (int i = 0; i < this.theListOfEvents.size(); i++) 
         {
-            System.out.println(this.theListOfEvents.get(i).getFullName() + ", Phone: "
-                    + this.theListOfEvents.get(i).getPhone() + ", Email: "
-                    + this.theListOfEvents.get(i).getEmail());
+            System.out.println(this.theListOfEvents.get(i).getTaskDateTime());
         }
-*/
     }
 }

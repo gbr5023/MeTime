@@ -12,9 +12,10 @@ package metime;
  */
 public class SearchCntl 
 {
-    private NavigationCntl parentNavigationCntl;
-    private final ContactList theContactList;
-    private int numOfInstantiations = 0;
+    NavigationCntl parentNavigationCntl;
+    ContactList theContactList;
+    SearchContactsUI searchUI;
+    int numOfInstantiations = 0;
     
     public SearchCntl()
     {
@@ -27,7 +28,7 @@ public class SearchCntl
     {
         System.out.println("Made it to the SearchCntl");
         this.parentNavigationCntl = newParentNavigationCntl;
-        // instantiate SearchContactListUI class here
+        this.requestSearchContactsUI();
     }
     
     /* copied & modified from LoginCntl class. Use the same logic when searching for a contact in ContactList */
@@ -47,7 +48,7 @@ public class SearchCntl
     }
     
     public void requestSearchContactsUI(){
-        SearchContactsUI searchUI = new SearchContactsUI(this);
+        this.searchUI = new SearchContactsUI(this);
         searchUI.setVisible(true);
     }
     

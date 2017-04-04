@@ -28,21 +28,26 @@ import javax.swing.JFrame;
  */
 public class LoginCntl 
 {
-    private UserList theUserList;
-    private LoginUI theLoginUI;
-    private NavigationCntl theNavigationCntl;
+    UserList theUserList;
+    LoginUI theLoginUI;
+    NavigationCntl theNavigationCntl;
     
     public LoginCntl()
     {
         System.out.println("Made it to LoginCntl");
         System.out.println("Username: test1");
         System.out.println("Password: 1234");
-        theUserList = new UserList();
-        theLoginUI = new LoginUI(this);
-        theLoginUI.setTitle("MeTime Login");
-        theLoginUI.setLocationRelativeTo(null);
-        theLoginUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        theLoginUI.setVisible(true);
+        this.theUserList = new UserList();
+        this.requestLoginUI();
+    }
+    
+    public void requestLoginUI()
+    {
+        this.theLoginUI = new LoginUI(this);
+        this.theLoginUI.setTitle("MeTime Login");
+        this.theLoginUI.setLocationRelativeTo(null);
+        this.theLoginUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.theLoginUI.setVisible(true);
     }
     
     public void requestNavigationCntl()
