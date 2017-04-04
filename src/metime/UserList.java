@@ -26,9 +26,9 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public final class UserList 
+public class UserList 
 {
-    private ArrayList<User> theListOfUsers;
+    ArrayList<User> theListOfUsers;
     
     public UserList()
     {
@@ -69,8 +69,7 @@ public final class UserList
             if(nameMatch && passwordMatch){
                 return true;
             }
-        }
-        
+        }      
         return false;
     }
 }

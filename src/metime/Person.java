@@ -12,13 +12,13 @@ package metime;
  */
 public abstract class Person implements PersonInfo
 {
-    private String firstName;
-    private String lastName;
-    private String fullName;
-    private String username;
-    private char[] password;
-    private int phone;
-    private String email;
+    String firstName;
+    String lastName;
+    String fullName;
+    String username;
+    char[] password;
+    int phone;
+    String email;
     
     public Person()
     {

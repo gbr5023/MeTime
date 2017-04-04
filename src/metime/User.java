@@ -26,11 +26,11 @@ package metime;
  */
 public class User extends Person
 {
-    private String firstName;
-    private String lastName;
-    private String username;
-    private char[] password;
-    private String email;
+    String firstName;
+    String lastName;
+    String username;
+    char[] password;
+    String email;
     
     public User(String newFirstName, String newLastName, String newUsername, char[] newPassword, String newEmail)
     {

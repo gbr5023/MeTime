@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public final class ContactList 
+public class ContactList 
 {
     private ArrayList<Contact> theListOfContacts;
     
@@ -71,8 +71,8 @@ public final class ContactList
         
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
-            firstNameMatch = contactToSearch.getFirstName().equalsIgnoreCase(nameToSearch);
-            lastNameMatch = contactToSearch.getLastName().equalsIgnoreCase(nameToSearch);
+            firstNameMatch = contactToSearch.getFirstName().contains(nameToSearch);
+            lastNameMatch = contactToSearch.getLastName().contains(nameToSearch);
             //nameMatch = contactToSearch.getFullName().contains(nameToSearch);
             if(firstNameMatch == true || lastNameMatch == true)
             {
