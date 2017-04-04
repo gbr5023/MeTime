@@ -6,6 +6,8 @@
 
 package metime;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Gisward
@@ -14,7 +16,8 @@ public class SearchCntl
 {
     NavigationCntl parentNavigationCntl;
     ContactList theContactList;
-    SearchContactsUI searchUI;
+    SearchContactsUI theSearchUI;
+    SearchResultUI theSearchResultUI;
     int numOfInstantiations = 0;
     
     public SearchCntl()
@@ -48,12 +51,16 @@ public class SearchCntl
     }
     
     public void requestSearchContactsUI(){
-        this.searchUI = new SearchContactsUI(this);
-        searchUI.setVisible(true);
+        this.theSearchUI = new SearchContactsUI(this);
+        this.theSearchResultUI.setLocationRelativeTo(null);
+        this.theSearchUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.theSearchUI.setVisible(true);
     }
     
     public void requestSearchResultUI(Contact searchedContact){
-        SearchResultUI theSearchResultUI = new SearchResultUI(searchedContact);
-        theSearchResultUI.setVisible(true);
+        this.theSearchResultUI = new SearchResultUI(searchedContact);
+        this.theSearchResultUI.setLocationRelativeTo(null);
+        this.theSearchResultUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.theSearchResultUI.setVisible(true);
     }
 }
