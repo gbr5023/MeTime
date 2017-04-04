@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ContactList 
 {
-    private ArrayList<Contact> theListOfContacts;
+    ArrayList<Contact> theListOfContacts;
     
     public ContactList()
     {
@@ -62,6 +62,7 @@ public class ContactList
         }
         */
     }
+    
     /* just copied from UserList class, but use the same logic to search for contacts */
     public Contact searchContactName(String nameToSearch)
     {

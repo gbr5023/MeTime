@@ -16,25 +16,25 @@ public interface TaskInfo
     public abstract void setTaskTitle(String newTask);
     
     public abstract int getTaskMonth();
-    public abstract void setTaskMonth(int newTaskMonth);
+    public abstract void setTaskMonth(String newTaskMonth);
     
     public abstract int getTaskDay();
-    public abstract void setTaskDay(int newTaskDay);
+    public abstract void setTaskDay(String newTaskDay);
     
     public abstract int getTaskYear();
-    public abstract void setTaskYear(int newTaskYear);
+    public abstract void setTaskYear(String newTaskYear);
     
     public abstract int getTaskHour();
-    public abstract void setTaskHour(int newTaskHour);
+    public abstract void setTaskHour(String newTaskHour);
     
     public abstract int getTaskMinute();
-    public abstract void setTaskMinute(int newTaskMinute);
+    public abstract void setTaskMinute(String newTaskMinute);
     
     public abstract String getTaskDate();
-    public abstract void setTaskDate(String newTaskDate);
+    public abstract void setTaskDate();
     
     public abstract String getTaskTime();
-    public abstract void setTaskTime(String newTaskTime);
+    public abstract void setTaskTime();
     
     public abstract String getTaskDateTime();
     public abstract void setTaskDateTime ();

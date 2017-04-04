@@ -23,6 +23,11 @@ public class Contact extends Person
         super(newFirstName, newLastName, newPhone, newEmail);
     }
     
+    /*
+    
+    ***** Accessor methods *****
+    
+    */
     @Override
     public String getFirstName()
     {
@@ -30,21 +35,9 @@ public class Contact extends Person
     }
     
     @Override
-    public void setFirstName(String newFirstName)
-    {
-        super.setFirstName(newFirstName);
-    }
-    
-    @Override
     public String getLastName()
     {
         return super.getLastName();
-    }
-    
-    @Override
-    public void setLastName(String newLastName)
-    {
-        super.setLastName(newLastName);
     }
     
     @Override
@@ -60,15 +53,32 @@ public class Contact extends Person
     }
     
     @Override
-    public void setPhone(int newPhone)
-    {
-        super.setPhone(newPhone);
-    }
-    
-    @Override
     public String getEmail()
     {
         return super.getEmail();
+    }
+    
+    /*
+    
+    ***** Mutator methods *****
+    
+    */
+    @Override
+    public void setFirstName(String newFirstName)
+    {
+        super.setFirstName(newFirstName);
+    }   
+    
+    @Override
+    public void setLastName(String newLastName)
+    {
+        super.setLastName(newLastName);
+    } 
+    
+    @Override
+    public void setPhone(int newPhone)
+    {
+        super.setPhone(newPhone);
     }
     
     @Override

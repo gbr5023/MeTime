@@ -105,43 +105,43 @@ public abstract class Task implements TaskInfo
     }
 
     @Override
-    public void setTaskMonth(int newTaskMonth) 
+    public void setTaskMonth(String newTaskMonth) 
     {
-        this.taskMonth = newTaskMonth;
+        this.taskMonth = Integer.valueOf(newTaskMonth);
     }
 
     @Override
-    public void setTaskDay(int newTaskDay) 
+    public void setTaskDay(String newTaskDay) 
     {
-        this.taskDay = newTaskDay;
+        this.taskDay = Integer.valueOf(newTaskDay);
     }
 
     @Override
-    public void setTaskYear(int newTaskYear) 
+    public void setTaskYear(String newTaskYear) 
     {
-        this.taskYear = newTaskYear;
+        this.taskYear = Integer.valueOf(newTaskYear);
     }
 
     @Override
-    public void setTaskHour(int newTaskHour) 
+    public void setTaskHour(String newTaskHour) 
     {
-        this.taskHour = newTaskHour;
+        this.taskHour = Integer.valueOf(newTaskHour);
     }
 
     @Override
-    public void setTaskMinute(int newTaskMinute) 
+    public void setTaskMinute(String newTaskMinute) 
     {
-        this.taskMinute = newTaskMinute;
+        this.taskMinute = Integer.valueOf(newTaskMinute);
     }
 
     @Override
-    public void setTaskDate(String newTaskDate)
+    public void setTaskDate()
     {
         this.taskDate = this.taskMonth + " " + this.taskDay + " " + this.taskYear;
     }
 
     @Override
-    public void setTaskTime(String newTaskTime) 
+    public void setTaskTime() 
     {
         this.taskTime = this.taskHour + " " + this.taskMinute;
     }
