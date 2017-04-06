@@ -129,7 +129,6 @@ public class LoginUI extends javax.swing.JFrame
         
         if(this.parentLoginCntl.requestAuthenticate(username, password))
         {
-            this.setVisible(false);
             System.err.println("User Authenticated.");
             this.parentLoginCntl.requestNavigationCntl().requestMainMenuUI();
             this.dispose();

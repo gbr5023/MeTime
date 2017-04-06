@@ -157,34 +157,34 @@ public class MainMenuUI extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void scheduleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleRadioButtonActionPerformed
-        selectedOption = NavigationOption.SCHEDULE_OPTION;
+        selectedOption = NavigationOption.SCHEDULE;
     }//GEN-LAST:event_scheduleRadioButtonActionPerformed
 
     private void calendarRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarRadioButtonActionPerformed
-        selectedOption = NavigationOption.CALENDAR_OPTION;
+        selectedOption = NavigationOption.CALENDAR;
     }//GEN-LAST:event_calendarRadioButtonActionPerformed
 
     private void prioritizeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prioritizeRadioButtonActionPerformed
-       selectedOption = NavigationOption.PRIORITIZE_OPTION;
+       selectedOption = NavigationOption.PRIORITIZE;
     }//GEN-LAST:event_prioritizeRadioButtonActionPerformed
 
     private void searchRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchRadioButtonActionPerformed
-        selectedOption = NavigationOption.SEARCH_OPTION;
+        selectedOption = NavigationOption.SEARCH;
     }//GEN-LAST:event_searchRadioButtonActionPerformed
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         switch(selectedOption){
-            case SCHEDULE_OPTION:
+            case SCHEDULE:
                 this.parentNavigationCntl.requestEventCntl();
                 break;
-            case CALENDAR_OPTION:
+            case CALENDAR:
                 // TODO
                 break;
-            case PRIORITIZE_OPTION:
+            case PRIORITIZE:
                 // TODO
                 break;
-            case SEARCH_OPTION:
-                this.setVisible(false);
+            case SEARCH:
+                this.dispose();
                 this.parentNavigationCntl.requestSearchCntl();
         }
     }//GEN-LAST:event_goButtonActionPerformed

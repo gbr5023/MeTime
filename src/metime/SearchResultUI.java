@@ -7,6 +7,9 @@ package metime;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -52,6 +55,25 @@ public class SearchResultUI extends JFrame {
         c.gridx = 2;
         pane.add(phoneLabel, c);
         
+        c.gridy = 1;
+        c.gridx = 1;
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(new BackButtonListener());
+        
+        pane.add(backButton, c);
+        
         this.add(pane);
+    }
+    
+    private SearchResultUI getInstance(){
+        return this;
+    }
+    
+    class BackButtonListener implements ActionListener {
+      
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            getInstance().dispose();
+        }
     }
 }

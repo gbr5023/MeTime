@@ -45,4 +45,8 @@ public class EventCntl
     {
         this.theEventList.setListOfEvents(updatedListOfEvents);
     }
+    
+    public void addEvent(Event theEventToAdd){
+        theEventList.add(theEventToAdd);
+    }
 }

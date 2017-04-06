@@ -36,11 +36,11 @@ public final class ContactList
     {
         this.theListOfContacts = new ArrayList();
         
-        this.theListOfContacts.add(new Contact("Jane", "Doe", 1234567, "jdoe@email.com"));
-        this.theListOfContacts.add(new Contact("John", "Edwards", 9876543, "jedwards@email.com"));
-        this.theListOfContacts.add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
-        this.theListOfContacts.add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
-        this.theListOfContacts.add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
+        add(new Contact("Jane", "Doe", 1234567, "jdoe@email.com"));
+        add(new Contact("John", "Edwards", 9876543, "jedwards@email.com"));
+        add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
+        add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
+        add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
 
         
         System.out.println();
@@ -62,6 +62,10 @@ public final class ContactList
             this.theListOfContacts.add(newContact);
         }
         */
+    }
+    
+    public void add(Contact theContactToAdd){
+        theListOfContacts.add(theContactToAdd);
     }
     
     /* just copied from UserList class, but use the same logic to search for contacts */

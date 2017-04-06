@@ -17,7 +17,6 @@ public class SearchCntl
    private final NavigationCntl parentNavigationCntl;
    private final ContactList theContactList;
    private SearchContactsUI theSearchUI;
-   private SearchResultUI theSearchResultUI;
    private int numOfInstantiations = 0;
     
     public SearchCntl()
@@ -52,13 +51,12 @@ public class SearchCntl
     }
     
     public void requestSearchResultUI(Contact searchedContact){
-        this.theSearchResultUI = new SearchResultUI(searchedContact);
-        this.theSearchResultUI.setLocationRelativeTo(null);
-        this.theSearchResultUI.setVisible(true);
+        SearchResultUI theSearchResultUI = new SearchResultUI(searchedContact);
+        theSearchResultUI.setLocationRelativeTo(null);
+        theSearchResultUI.setVisible(true);
     }
 
     public NavigationCntl getParentNavigationCntl() {
-        theSearchUI.setVisible(false);
         return parentNavigationCntl;
     }
 }
