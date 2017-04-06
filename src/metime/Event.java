@@ -12,14 +12,7 @@ package metime;
  * @author Gisward
  */
 public class Event extends Task
-{
-    String taskTitle;
-    int taskMonth;
-    int taskDay;
-    int taskYear;
-    int taskHour;
-    int taskMinute;
-    
+{    
     // events (tasks) that happen all day (birthdays, etc.)
     public Event(String newTaskTitle, String newMonth, String newDay, String newYear)
     {

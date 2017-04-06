@@ -12,13 +12,12 @@ package metime;
  */
 public abstract class Person implements PersonInfo
 {
-    String firstName;
-    String lastName;
-    String fullName;
-    String username;
-    char[] password;
-    int phone;
-    String email;
+    private String firstName;
+    private String lastName;
+    private String username;
+    private char[] password;
+    private int phone;
+    private String email;
     
     public Person()
     {
@@ -83,12 +82,6 @@ public abstract class Person implements PersonInfo
     public void setLastName(String newLastName)
     {
         this.lastName = newLastName;
-    }
-    
-    @Override
-    public void setFullName()
-    {
-        this.fullName = this.firstName + " " + this.lastName;
     }
     
     public void setUsername(String newUsername)

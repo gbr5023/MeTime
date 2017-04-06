@@ -127,15 +127,12 @@ public class LoginUI extends javax.swing.JFrame
         String username = this.usernameTextField.getText();
         char[] password = this.passwordField.getPassword();
         
-        boolean authenticated = this.parentLoginCntl.requestAuthenticate(username, password);
-        boolean submitSelected = goButton.isSelected();
-        
-        if(authenticated)
+        if(this.parentLoginCntl.requestAuthenticate(username, password))
         {
             this.setVisible(false);
-            this.dispose();
             System.err.println("User Authenticated.");
-            this.parentLoginCntl.requestNavigationCntl();
+            this.parentLoginCntl.requestNavigationCntl().requestMainMenuUI();
+            this.dispose();
         }
         else
         {

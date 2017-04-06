@@ -12,9 +12,9 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public class ContactList 
+public final class ContactList 
 {
-    ArrayList<Contact> theListOfContacts;
+    private ArrayList<Contact> theListOfContacts;
     
     public ContactList()
     {
@@ -41,6 +41,7 @@ public class ContactList
         this.theListOfContacts.add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
         this.theListOfContacts.add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
         this.theListOfContacts.add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
+
         
         System.out.println();
         System.out.println("For testing purposes: ");

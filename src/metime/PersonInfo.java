@@ -19,7 +19,6 @@ public interface PersonInfo
     
     public abstract void setFirstName(String newFirstName);
     public abstract void setLastName(String newLastName);
-    public abstract void setFullName();
     public abstract void setPhone(int newPhone);
     public abstract void setEmail(String newEmail);
 }

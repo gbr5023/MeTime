@@ -12,15 +12,15 @@ package metime;
  */
 public abstract class Task implements TaskInfo
 {
-    String taskTitle;
-    int taskMonth;
-    int taskDay;
-    int taskYear;
-    int taskHour;
-    int taskMinute;
-    String taskDate;
-    String taskTime;
-    String taskDateTime;
+    private String taskTitle;
+    private int taskMonth;
+    private int taskDay;
+    private int taskYear;
+    private int taskHour;
+    private int taskMinute;
+    private String taskDate;
+    private String taskTime;
+    private String taskDateTime;
     
     // all day tasks
     public Task(String newTaskTitle, String newMonth, String newDay, String newYear)

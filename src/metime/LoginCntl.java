@@ -26,11 +26,9 @@ import javax.swing.JFrame;
  *
  * @author Gisward
  */
-public class LoginCntl 
+public final class LoginCntl 
 {
-    UserList theUserList;
-    LoginUI theLoginUI;
-    NavigationCntl theNavigationCntl;
+    private final UserList theUserList;
     
     public LoginCntl()
     {
@@ -38,28 +36,24 @@ public class LoginCntl
         System.out.println("Username: test1");
         System.out.println("Password: 1234");
         this.theUserList = new UserList();
-        this.requestLoginUI();
     }
     
     public void requestLoginUI()
     {
-        this.theLoginUI = new LoginUI(this);
-        this.theLoginUI.setTitle("MeTime Login");
-        this.theLoginUI.setLocationRelativeTo(null);
-        this.theLoginUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.theLoginUI.setVisible(true);
+        LoginUI theLoginUI = new LoginUI(this);
+        theLoginUI.setTitle("MeTime Login");
+        theLoginUI.setLocationRelativeTo(null);
+        theLoginUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        theLoginUI.setVisible(true);
     }
     
-    public void requestNavigationCntl()
+    public NavigationCntl requestNavigationCntl()
     {
-        this.theNavigationCntl = new NavigationCntl();
+        return new NavigationCntl();
     }
     
     public boolean requestAuthenticate(String usernameToCheck, char[] passwordToCheck)
     {
-        //theUserList.printUsers(); //for check
-        boolean authenticated = theUserList.authenticate(usernameToCheck, passwordToCheck);
-
-        return authenticated;
+        return theUserList.authenticate(usernameToCheck, passwordToCheck);
     }
 }

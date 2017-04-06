@@ -14,24 +14,18 @@ import javax.swing.JFrame;
  */
 public class SearchCntl 
 {
-    NavigationCntl parentNavigationCntl;
-    ContactList theContactList;
-    SearchContactsUI theSearchUI;
-    SearchResultUI theSearchResultUI;
-    int numOfInstantiations = 0;
+   private final NavigationCntl parentNavigationCntl;
+   private final ContactList theContactList;
+   private SearchContactsUI theSearchUI;
+   private SearchResultUI theSearchResultUI;
+   private int numOfInstantiations = 0;
     
     public SearchCntl()
     {
         numOfInstantiations++;
         System.out.println("SearchCntl instantiated " + this.numOfInstantiations + " time(s).");
         this.theContactList = new ContactList();
-    }
-    
-    public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
-    {
-        System.out.println("Made it to the SearchCntl");
-        this.parentNavigationCntl = newParentNavigationCntl;
-        this.requestSearchContactsUI();
+        this.parentNavigationCntl = new NavigationCntl();
     }
     
     /* copied & modified from LoginCntl class. Use the same logic when searching for a contact in ContactList */
@@ -52,7 +46,7 @@ public class SearchCntl
     
     public void requestSearchContactsUI(){
         this.theSearchUI = new SearchContactsUI(this);
-        this.theSearchResultUI.setLocationRelativeTo(null);
+        this.theSearchUI.setLocationRelativeTo(null);
         this.theSearchUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.theSearchUI.setVisible(true);
     }
@@ -60,7 +54,11 @@ public class SearchCntl
     public void requestSearchResultUI(Contact searchedContact){
         this.theSearchResultUI = new SearchResultUI(searchedContact);
         this.theSearchResultUI.setLocationRelativeTo(null);
-        this.theSearchResultUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.theSearchResultUI.setVisible(true);
+    }
+
+    public NavigationCntl getParentNavigationCntl() {
+        theSearchUI.setVisible(false);
+        return parentNavigationCntl;
     }
 }

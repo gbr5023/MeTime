@@ -12,9 +12,9 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public class EventList 
+public final class EventList 
 {
-    ArrayList<Event> theListOfEvents;
+    private ArrayList<Event> theListOfEvents;
     
     public EventList() {
         // Do this if there are no real users

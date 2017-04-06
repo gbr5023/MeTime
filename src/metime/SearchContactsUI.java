@@ -44,6 +44,12 @@ public class SearchContactsUI extends JFrame {
         pane.add(searchLabel, c);
         
         c.fill = GridBagConstraints.BOTH;
+        c.gridx = 2;
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(new BackButtonListener());
+        
+        pane.add(backButton, c);
+
         c.gridwidth = 3;
         
         searchTerm = new JTextField();
@@ -118,5 +124,13 @@ public class SearchContactsUI extends JFrame {
             theSearchCntl.requestSearchResultUI(theContact);
         else
             JOptionPane.showMessageDialog(null, "No contact found matching the search term.");
+    }
+    
+    class BackButtonListener implements ActionListener {
+      
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            theSearchCntl.getParentNavigationCntl().requestMainMenuUI();
+        }
     }
 }

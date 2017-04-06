@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * @author DeeShalz
  */
 public class SearchResultUI extends JFrame {
-    private Contact theContact;
+    private final Contact theContact;
     
     public SearchResultUI(Contact theContact){
         this.theContact = theContact;

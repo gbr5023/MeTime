@@ -7,7 +7,6 @@
 package metime;
 
 import java.util.ArrayList;
-import javax.swing.JFrame;
 
 /**
  *
@@ -15,11 +14,9 @@ import javax.swing.JFrame;
  */
 public class EventCntl 
 {
-    NavigationCntl parentNavigationCntl;
-    EventList theEventList;
-    EventUI theEventUI;
-    ArrayList<Event> theListOfEvents;
-    int numOfInstantiations = 0;
+    private final EventList theEventList;
+    private final ArrayList<Event> theListOfEvents;
+    private int numOfInstantiations = 0;
     
     public EventCntl()
     {
@@ -29,16 +26,9 @@ public class EventCntl
         this.theListOfEvents = new ArrayList();
     }
     
-    public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
-    {
-        System.out.println("Made it to the EventCntl");
-        this.parentNavigationCntl = newParentNavigationCntl;
-        this.requestEventUI();
-    }
-    
     public void requestEventUI()
     {
-        this.theEventUI = new EventUI();
+        EventUI theEventUI = new EventUI();
         //this.theEventUI.pack();
         //this.theEventUI.setTitle("Create, Read, Update, & Delete Events");
         //this.theEventUI.setLocationRelativeTo(null);

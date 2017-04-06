@@ -26,37 +26,32 @@ import javax.swing.JFrame;
  *
  * @author Gisward
  */
-public class NavigationCntl 
-{
-    MainMenuUI theMainMenuUI;
-    SearchCntl theSearchCntl;
-    EventCntl theEventCntl;
-    
+public final class NavigationCntl 
+{    
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
-        this.theSearchCntl = new SearchCntl();
-        this.theEventCntl = new EventCntl();
-        this.requestMainMenuUI();
     }
     
     public void requestMainMenuUI()
     {
-        this.theMainMenuUI = new MainMenuUI(this);
-        this.theMainMenuUI.pack();
-        this.theMainMenuUI.setTitle("Main Menu");
-        this.theMainMenuUI.setLocationRelativeTo(null);
-        this.theMainMenuUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.theMainMenuUI.setVisible(true);
+        MainMenuUI theMainMenuUI = new MainMenuUI(this);
+        theMainMenuUI.pack();
+        theMainMenuUI.setTitle("Main Menu");
+        theMainMenuUI.setLocationRelativeTo(null);
+        theMainMenuUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        theMainMenuUI.setVisible(true);
     }
     
     public void requestSearchCntl()
     {
-        this.theSearchCntl.setNavigationCntl(this);
+        SearchCntl theSearchCntl = new SearchCntl();
+        theSearchCntl.requestSearchContactsUI();
     }
     
     public void requestEventCntl()
     {
-        this.theEventCntl.setNavigationCntl(this);
+        EventCntl theEventCntl = new EventCntl();
+        theEventCntl.requestEventUI();
     }
 }

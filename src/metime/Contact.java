@@ -12,12 +12,6 @@ package metime;
  */
 public class Contact extends Person
 {
-    String contactFirstName;
-    String lastName;
-    String fullName;
-    int phone;
-    String email;
-    
     public Contact(String newFirstName, String newLastName, int newPhone, String newEmail)
     {
         super(newFirstName, newLastName, newPhone, newEmail);

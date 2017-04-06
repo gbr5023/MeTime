@@ -26,9 +26,9 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public class UserList 
+public final class UserList 
 {
-    ArrayList<User> theListOfUsers;
+    private ArrayList<User> theListOfUsers;
     
     public UserList()
     {

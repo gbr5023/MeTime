@@ -6,11 +6,6 @@
 
 package metime;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 /**
  *
  * @author Gisward
