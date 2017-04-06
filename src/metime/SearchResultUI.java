@@ -24,6 +24,7 @@ public class SearchResultUI extends JFrame {
     public SearchResultUI(Contact theContact){
         this.theContact = theContact;
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     private void initComponents(){

@@ -23,6 +23,9 @@ public class SearchContactsUI extends JFrame {
     public SearchContactsUI(SearchCntl theSearchCntl){
         this.theSearchCntl = theSearchCntl;
         initComponents();
+        
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     private void initComponents(){

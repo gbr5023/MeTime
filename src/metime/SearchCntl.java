@@ -45,14 +45,11 @@ public class SearchCntl
     
     public void requestSearchContactsUI(){
         this.theSearchUI = new SearchContactsUI(this);
-        this.theSearchUI.setLocationRelativeTo(null);
-        this.theSearchUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.theSearchUI.setVisible(true);
     }
     
     public void requestSearchResultUI(Contact searchedContact){
         SearchResultUI theSearchResultUI = new SearchResultUI(searchedContact);
-        theSearchResultUI.setLocationRelativeTo(null);
         theSearchResultUI.setVisible(true);
     }
 
