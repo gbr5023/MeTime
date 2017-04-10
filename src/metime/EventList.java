@@ -39,11 +39,11 @@ public final class EventList
         this.theListOfEvents = new ArrayList();
         
         
-        add(new Event("IST 331 Meeting", "4", "5", "2017", "16"));
-        add(new Event("IST 311 Meeting", "4", "7", "2017", "15", "30"));
-        add(new Event("TA Grading Work", "4", "10", "2017", "12", "45"));
-        add(new Event("Proctor Math 110 Exam", "5", "3", "2017", "8"));
-        add(new Event("Dad's Birthday", "5", "6", "2017"));
+        add(new Event("IST 331 Meeting", "4", "5", "2017", "16", "HUB"));
+        add(new Event("IST 311 Meeting", "4", "7", "2017", "15", "30", "210 IST"));
+        add(new Event("TA Grading Work", "4", "10", "2017", "12", "45", "113 IST"));
+        add(new Event("Proctor Math 110 Exam", "5", "3", "2017", "8", "100 Thomas"));
+        add(new Event("Dad's Birthday", "5", "6", "2017", "Hawaii"));
         
         System.out.println();
         System.out.println("For testing purposes: ");
@@ -51,6 +51,14 @@ public final class EventList
         {
             System.out.println(this.theListOfEvents.get(i).getTaskDateTime());
         }
+    }
+    
+    public String getLastEvent()
+    {
+        int i = this.theListOfEvents.size() - 1;
+        String theNewEvent = "Added " + this.theListOfEvents.get(i).getTaskTitle() + ": "+ this.theListOfEvents.get(i).getTaskDateTime();
+        
+        return theNewEvent;
     }
     
     public void add(Event theEventToAdd){

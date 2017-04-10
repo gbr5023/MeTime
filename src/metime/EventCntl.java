@@ -7,6 +7,7 @@
 package metime;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -14,8 +15,10 @@ import java.util.ArrayList;
  */
 public class EventCntl 
 {
-    private final EventList theEventList;
-    private final ArrayList<Event> theListOfEvents;
+    private NavigationCntl parentNavigationCntl;
+    private EventList theEventList;
+    private EventUI theEventUI;
+    private ArrayList<Event> theListOfEvents;
     private int numOfInstantiations = 0;
     
     public EventCntl()
@@ -26,19 +29,24 @@ public class EventCntl
         this.theListOfEvents = new ArrayList();
     }
     
+    public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
+    {
+        this.parentNavigationCntl = newParentNavigationCntl;
+    }
+    
     public void requestEventUI()
     {
-        EventUI theEventUI = new EventUI();
-        //this.theEventUI.pack();
-        //this.theEventUI.setTitle("Create, Read, Update, & Delete Events");
-        //this.theEventUI.setLocationRelativeTo(null);
-        //this.theEventUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.theEventUI.setVisible(true);
+        this.theEventUI = new EventUI(this);
+        this.theEventUI.pack();
+        this.theEventUI.setTitle("Create, Read, Update, & Delete Events");
+        this.theEventUI.setLocationRelativeTo(null);
+        this.theEventUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.theEventUI.setVisible(true);
     }
     
     public ArrayList<Event> getListOfEvents()
     {
-        return this.theListOfEvents;
+        return this.theEventList.getListOfEvents();
     }
     
     public void setListOfEvents(ArrayList<Event> updatedListOfEvents)
@@ -48,5 +56,15 @@ public class EventCntl
     
     public void addEvent(Event theEventToAdd){
         theEventList.add(theEventToAdd);
+    }
+    
+    public NavigationCntl getParentNavigationCntl() 
+    {
+        return this.parentNavigationCntl;
+    }
+    
+    public EventList getEventList()
+    {
+        return this.theEventList;
     }
 }

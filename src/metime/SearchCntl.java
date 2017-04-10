@@ -14,8 +14,8 @@ import javax.swing.JFrame;
  */
 public class SearchCntl 
 {
-   private final NavigationCntl parentNavigationCntl;
-   private final ContactList theContactList;
+   private NavigationCntl parentNavigationCntl;
+   private ContactList theContactList;
    private SearchContactsUI theSearchUI;
    private int numOfInstantiations = 0;
     
@@ -24,7 +24,11 @@ public class SearchCntl
         numOfInstantiations++;
         System.out.println("SearchCntl instantiated " + this.numOfInstantiations + " time(s).");
         this.theContactList = new ContactList();
-        this.parentNavigationCntl = new NavigationCntl();
+    }
+    
+    public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
+    {
+        this.parentNavigationCntl = newParentNavigationCntl;
     }
     
     /* copied & modified from LoginCntl class. Use the same logic when searching for a contact in ContactList */
@@ -53,7 +57,8 @@ public class SearchCntl
         theSearchResultUI.setVisible(true);
     }
 
-    public NavigationCntl getParentNavigationCntl() {
-        return parentNavigationCntl;
+    public NavigationCntl getParentNavigationCntl() 
+    {
+        return this.parentNavigationCntl;
     }
 }

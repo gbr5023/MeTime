@@ -30,6 +30,9 @@ public interface TaskInfo
     public abstract int getTaskMinute();
     public abstract void setTaskMinute(String newTaskMinute);
     
+    public abstract String getTaskLocation();
+    public abstract void setTaskLocation(String newTaskLocation);
+    
     public abstract String getTaskDate();
     public abstract void setTaskDate();
     

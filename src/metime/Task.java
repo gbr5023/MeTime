@@ -18,38 +18,45 @@ public abstract class Task implements TaskInfo
     private int taskYear;
     private int taskHour;
     private int taskMinute;
+    private String taskLocation;
     private String taskDate;
     private String taskTime;
     private String taskDateTime;
     
     // all day tasks
-    public Task(String newTaskTitle, String newMonth, String newDay, String newYear)
+    public Task(String newTaskTitle, String newMonth, String newDay, String newYear, 
+            String newLocation)
     {
-        this.taskTitle = newTaskTitle;
+        this.taskTitle = String.valueOf(newTaskTitle);
         this.taskMonth = Integer.valueOf(newMonth);
         this.taskDay = Integer.valueOf(newDay);
         this.taskYear = Integer.valueOf(newYear);
+        this.taskLocation = String.valueOf(newLocation);
     }
     
     // tasks that are only right on the hour (4:00, 12:00, etc.)
-    public Task(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour)
+    public Task(String newTaskTitle, String newMonth, String newDay, String newYear, 
+            String newHour, String newLocation)
     {
-        this.taskTitle = newTaskTitle;
+        this.taskTitle = String.valueOf(newTaskTitle);
         this.taskMonth = Integer.valueOf(newMonth);
         this.taskDay = Integer.valueOf(newDay);
         this.taskYear = Integer.valueOf(newYear);
         this.taskHour = Integer.valueOf(newHour);
+        this.taskLocation = String.valueOf(newLocation);
     }
     
     // tasks that have a specific minute start (4:30, 12:43, etc.)
-    public Task(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour, String newMinute)
+    public Task(String newTaskTitle, String newMonth, String newDay, String newYear, 
+            String newHour, String newMinute, String newLocation)
     {
-        this.taskTitle = newTaskTitle;
+        this.taskTitle = String.valueOf(newTaskTitle);
         this.taskMonth = Integer.valueOf(newMonth);
         this.taskDay = Integer.valueOf(newDay);
         this.taskYear = Integer.valueOf(newYear);
         this.taskHour = Integer.valueOf(newHour);
         this.taskMinute = Integer.valueOf(newMinute);
+        this.taskLocation = String.valueOf(newLocation);
     }
     /*
     Accessor methods
@@ -90,7 +97,13 @@ public abstract class Task implements TaskInfo
     {
         return this.taskMinute;
     }
-
+    
+    @Override
+    public String getTaskLocation()
+    {
+        return this.taskLocation;
+    }
+    
     @Override
     public String getTaskDate() 
     {
@@ -118,7 +131,7 @@ public abstract class Task implements TaskInfo
     @Override
     public void setTaskTitle(String newTask) 
     {
-        this.taskTitle = newTask;
+        this.taskTitle = String.valueOf(newTask);
     }
 
     @Override
@@ -150,6 +163,12 @@ public abstract class Task implements TaskInfo
     {
         this.taskMinute = Integer.valueOf(newTaskMinute);
     }
+    
+    @Override
+    public void setTaskLocation(String newLocation)
+    {
+        this.taskLocation = String.valueOf(newLocation);
+    }
 
     @Override
     public void setTaskDate()
@@ -173,6 +192,6 @@ public abstract class Task implements TaskInfo
     @Override
     public void setTaskDateTime()
     {
-        this.taskDateTime = this.taskDate + " @" + this.taskTime;
+        this.taskDateTime = this.taskDate + " @" + this.taskTime + " in " + this.taskLocation;
     }
 }

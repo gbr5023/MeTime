@@ -46,12 +46,14 @@ public final class NavigationCntl
     public void requestSearchCntl()
     {
         SearchCntl theSearchCntl = new SearchCntl();
+        theSearchCntl.setNavigationCntl(this);
         theSearchCntl.requestSearchContactsUI();
     }
     
     public void requestEventCntl()
     {
         EventCntl theEventCntl = new EventCntl();
+        theEventCntl.setNavigationCntl(this);
         theEventCntl.requestEventUI();
     }
 }

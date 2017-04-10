@@ -175,6 +175,7 @@ public class MainMenuUI extends javax.swing.JFrame
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         switch(selectedOption){
             case SCHEDULE:
+                this.setVisible(false);
                 this.parentNavigationCntl.requestEventCntl();
                 break;
             case CALENDAR:
@@ -184,7 +185,7 @@ public class MainMenuUI extends javax.swing.JFrame
                 // TODO
                 break;
             case SEARCH:
-                this.dispose();
+                this.setVisible(false);
                 this.parentNavigationCntl.requestSearchCntl();
         }
     }//GEN-LAST:event_goButtonActionPerformed
