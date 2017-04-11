@@ -40,7 +40,7 @@ public final class EventList
     public void buildTestEventList() {
         this.theListOfEvents = new ArrayList();
         
-        
+        // Not using add() method in order to save time saving
         theListOfEvents.add(new Event("IST 331 Meeting", "4", "5", "2017", "16", "HUB"));
         theListOfEvents.add(new Event("IST 311 Meeting", "4", "7", "2017", "15", "30", "210 IST"));
         theListOfEvents.add(new Event("TA Grading Work", "4", "10", "2017", "12", "45", "113 IST"));

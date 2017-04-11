@@ -33,6 +33,7 @@ public final class SerializedDataCntl {
     }
     
     private void writeFile(String filePath){
+        long curTime = System.currentTimeMillis();
         FileOutputStream fos;
         ObjectOutputStream out;
         
@@ -45,8 +46,10 @@ public final class SerializedDataCntl {
             System.out.println("Data write to " + filePath + " was successful.");
         } catch(IOException ex) {
             System.out.println("Data write to " + filePath + " failed.");
-            ex.printStackTrace();
         }
+        
+        curTime = System.currentTimeMillis() - curTime;
+        System.out.println("Saving took " + curTime + "ms");
     }
     
     private void readFile(String filePath){

@@ -41,6 +41,7 @@ public final class ContactList
     {
         this.theListOfContacts = new ArrayList();
         
+        // Not using add() method in order to save time saving
         theListOfContacts.add(new Contact("Jane", "Doe", 1234567, "jdoe@email.com"));
         theListOfContacts.add(new Contact("John", "Edwards", 9876543, "jedwards@email.com"));
         theListOfContacts.add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));

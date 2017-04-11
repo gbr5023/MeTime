@@ -51,10 +51,11 @@ public final class UserList
         {
             String firstName = "Jane";
             String lastName = "Doe" + i;
-            String username = ("test1");
+            String username = ("test"+i);
             char[] password = {'1', '2', '3', '4'};
             String email = "jdoe@email.com";
             User newUser = new User(firstName, lastName, username, password, email);
+            System.out.println("New user " + username);
             theListOfUsers.add(newUser);
         }
         
