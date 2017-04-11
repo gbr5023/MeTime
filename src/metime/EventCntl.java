@@ -18,7 +18,6 @@ public class EventCntl
     private NavigationCntl parentNavigationCntl;
     private EventList theEventList;
     private EventUI theEventUI;
-    private ArrayList<Event> theListOfEvents;
     private int numOfInstantiations = 0;
     
     public EventCntl()
@@ -26,7 +25,6 @@ public class EventCntl
         numOfInstantiations++;
         System.out.println("EventCntl instantiated " + this.numOfInstantiations + " time(s).");
         this.theEventList = new EventList();
-        this.theListOfEvents = new ArrayList();
     }
     
     public void setNavigationCntl(NavigationCntl newParentNavigationCntl)

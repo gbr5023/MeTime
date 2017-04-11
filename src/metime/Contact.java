@@ -6,13 +6,11 @@
 
 package metime;
 
-import java.io.Serializable;
-
 /**
  *
  * @author Gisward
  */
-public class Contact extends Person implements Serializable
+public class Contact extends Person
 {
     public Contact(String newFirstName, String newLastName, int newPhone, String newEmail)
     {

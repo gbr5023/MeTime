@@ -28,21 +28,19 @@ import java.util.ArrayList;
  */
 public final class UserList 
 {
+    public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + "users.ser";
     private ArrayList<User> theListOfUsers;
     
     public UserList()
     {
-        // Do this if there are no real users
-        if(theListOfUsers == null){
+        theListOfUsers = SerializedDataCntl.getSerializedDataCntl().getList(STORAGE_FILE_PATH);
+        if(theListOfUsers.isEmpty()){
             buildTestUserList();
         }
     }
     
     public ArrayList<User> getListOfUsers()
     {
-        if(theListOfUsers == null){
-            buildTestUserList();
-        }
         return theListOfUsers;
     }
     
@@ -59,6 +57,8 @@ public final class UserList
             User newUser = new User(firstName, lastName, username, password, email);
             theListOfUsers.add(newUser);
         }
+        
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfUsers, STORAGE_FILE_PATH);
     }
     
     public boolean authenticate(String usernameToCheck, char[] passwordToCheck)

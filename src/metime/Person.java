@@ -6,11 +6,13 @@
 
 package metime;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gisward
  */
-public abstract class Person implements PersonInfo
+public abstract class Person implements PersonInfo, Serializable
 {
     private String firstName;
     private String lastName;

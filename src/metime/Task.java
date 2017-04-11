@@ -6,11 +6,13 @@
 
 package metime;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gisward
  */
-public abstract class Task implements TaskInfo
+public abstract class Task implements TaskInfo, Serializable
 {
     private String taskTitle;
     private int taskMonth;

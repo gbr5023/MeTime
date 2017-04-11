@@ -41,11 +41,11 @@ public final class ContactList
     {
         this.theListOfContacts = new ArrayList();
         
-        add(new Contact("Jane", "Doe", 1234567, "jdoe@email.com"));
-        add(new Contact("John", "Edwards", 9876543, "jedwards@email.com"));
-        add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
-        add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
-        add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
+        theListOfContacts.add(new Contact("Jane", "Doe", 1234567, "jdoe@email.com"));
+        theListOfContacts.add(new Contact("John", "Edwards", 9876543, "jedwards@email.com"));
+        theListOfContacts.add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
+        theListOfContacts.add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
+        theListOfContacts.add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
 
         
         System.out.println();
