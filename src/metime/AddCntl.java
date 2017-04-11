@@ -23,6 +23,7 @@ public class AddCntl
     private AddContactUI theContactUI;
     private AddChoiceUI theChoiceUI;
     
+    
     public AddCntl()
     {
         numOfInstantiations++;
@@ -36,6 +37,17 @@ public class AddCntl
     {
         System.out.println("Welcome to the AddCntl");
         this.parentNavigationCntl = newParentNavigationCntl;
+    }
+    
+
+    public void requestAddChoiceUI() {
+        this.theChoiceUI = new AddChoiceUI(this);
+        this.theChoiceUI.pack();
+        this.theChoiceUI.setTitle("Create, Read, Update, & Delete Events and Contacts");
+        this.theChoiceUI.setLocationRelativeTo(null);
+        this.theChoiceUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.theChoiceUI.setVisible(true);
+        
     }
     public void requestContactUI(){
         this.theContactUI = new AddContactUI(this);
@@ -86,15 +98,5 @@ public class AddCntl
     }
     public ContactList getContactList(){
         return this.theContactList;
-    }
-
-    public void requestAddChoiceUI() {
-        this.theChoiceUI = new AddChoiceUI(this);
-        this.theChoiceUI.pack();
-        this.theChoiceUI.setTitle("Create, Read, Update, & Delete Events and Contacts");
-        this.theChoiceUI.setLocationRelativeTo(null);
-        this.theChoiceUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.theChoiceUI.setVisible(true);
-        
     }
 }

@@ -10,7 +10,6 @@ package metime;
  * @author DeeShalz
  */
 public class AddChoiceUI extends javax.swing.JFrame {
-    private  NavigationCntl parentNavigationCntl;
     private NavigationOption selectedOption;
     private AddCntl parentAddCntl;
     /**
@@ -19,7 +18,6 @@ public class AddChoiceUI extends javax.swing.JFrame {
  
 
     public AddChoiceUI(AddCntl parentAddCntl) {
-        parentNavigationCntl = this.parentNavigationCntl;
         parentAddCntl = this.parentAddCntl;
         initComponents();
     }
@@ -99,6 +97,10 @@ public class AddChoiceUI extends javax.swing.JFrame {
     private void contactRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactRadioButtonActionPerformed
             selectedOption = NavigationOption.CONTACT;
     }//GEN-LAST:event_contactRadioButtonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt){
+        this.setVisible(false);
+        this.parentAddCntl.getParentNavigationCntl().requestMainMenuUI();
+    }
     private void eventRadioButtonActionPerformed(java.awt.event.ActionEvent evt){
         selectedOption = NavigationOption.EVENT;
     }
@@ -144,7 +146,7 @@ public class AddChoiceUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AddChoiceUI().setVisible(true);
             }

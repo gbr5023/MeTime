@@ -154,9 +154,6 @@ public class AddContactUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, this.addCntl.getContactList().getLastContact());
         }
     }
-    void setNavigationCntl(NavigationCntl aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     /**
      * @param args the command line arguments
      */
@@ -205,5 +202,7 @@ public class AddContactUI extends javax.swing.JFrame {
     private javax.swing.JTextField phoneNum;
     // End of variables declaration//GEN-END:variables
 
-    
+    void setNavigationCntl(NavigationCntl aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
