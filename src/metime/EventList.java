@@ -67,5 +67,6 @@ public final class EventList
     
     public void add(Event theEventToAdd){
         theListOfEvents.add(theEventToAdd);
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
     }
 }

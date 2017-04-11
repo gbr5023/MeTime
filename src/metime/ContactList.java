@@ -73,6 +73,7 @@ public final class ContactList
     
     public void add(Contact theContactToAdd){
         theListOfContacts.add(theContactToAdd);
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfContacts, STORAGE_FILE_PATH);
     }
     
     /* just copied from UserList class, but use the same logic to search for contacts */
