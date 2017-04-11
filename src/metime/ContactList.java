@@ -14,14 +14,19 @@ import java.util.ArrayList;
  */
 public final class ContactList 
 {
+    public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + "contacts.ser";
     private ArrayList<Contact> theListOfContacts;
     
     public ContactList()
     {
-        // Do this if there are no real users
-        if(this.theListOfContacts == null){
+        theListOfContacts = SerializedDataCntl.getSerializedDataCntl().getList(STORAGE_FILE_PATH);
+        if(this.theListOfContacts.isEmpty()){
             buildTestContactList();
         }
+    }
+    
+    public void setListOfContacts(ArrayList<Contact> theContactList){
+        theListOfContacts = theContactList;
     }
     
     public ArrayList<Contact> getListOfContacts()
@@ -62,6 +67,8 @@ public final class ContactList
             this.theListOfContacts.add(newContact);
         }
         */
+        
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfContacts, STORAGE_FILE_PATH);
     }
     
     public void add(Contact theContactToAdd){

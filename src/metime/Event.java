@@ -7,11 +7,13 @@
 
 package metime;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gisward
  */
-public class Event extends Task
+public class Event extends Task implements Serializable
 {    
     // events (tasks) that happen all day (birthdays, etc.)
     public Event(String newTaskTitle, String newMonth, String newDay, String newYear, String newLocation)

@@ -14,11 +14,13 @@ import java.util.ArrayList;
  */
 public final class EventList
 {
+    public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + "events.ser";
+
     private ArrayList<Event> theListOfEvents;
     
     public EventList() {
-        // Do this if there are no real users
-        if (this.theListOfEvents == null) {
+        theListOfEvents = SerializedDataCntl.getSerializedDataCntl().getList(STORAGE_FILE_PATH);
+        if (this.theListOfEvents.isEmpty()) {
             buildTestEventList();
         }
     }
@@ -51,6 +53,8 @@ public final class EventList
         {
             System.out.println(this.theListOfEvents.get(i).getTaskDateTime());
         }
+        
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
     }
     
     public String getLastEvent()
