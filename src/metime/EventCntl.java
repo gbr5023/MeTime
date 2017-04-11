@@ -31,6 +31,7 @@ public class EventCntl
     
     public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
     {
+        System.out.println("Welcome to the EventCntl");
         this.parentNavigationCntl = newParentNavigationCntl;
     }
     

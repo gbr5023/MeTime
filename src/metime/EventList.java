@@ -56,7 +56,7 @@ public final class EventList
     public String getLastEvent()
     {
         int i = this.theListOfEvents.size() - 1;
-        String theNewEvent = "Added " + this.theListOfEvents.get(i).getTaskTitle() + ": "+ this.theListOfEvents.get(i).getTaskDateTime();
+        String theNewEvent = "Added \"" + this.theListOfEvents.get(i).getTaskTitle() + "\": "+ this.theListOfEvents.get(i).getTaskDateTime();
         
         return theNewEvent;
     }

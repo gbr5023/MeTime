@@ -26,11 +26,16 @@ import javax.swing.JFrame;
  *
  * @author Gisward
  */
-public final class NavigationCntl 
+public class NavigationCntl 
 {    
+    SearchCntl theSearchCntl;
+    EventCntl theEventCntl;
+    
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
+        this.theSearchCntl = new SearchCntl();
+        this.theEventCntl = new EventCntl();
     }
     
     public void requestMainMenuUI()
@@ -45,15 +50,24 @@ public final class NavigationCntl
     
     public void requestSearchCntl()
     {
-        SearchCntl theSearchCntl = new SearchCntl();
+        
         theSearchCntl.setNavigationCntl(this);
         theSearchCntl.requestSearchContactsUI();
     }
     
+    public SearchCntl getParentSearchCntl()
+    {
+        return this.theSearchCntl;
+    }
+    
     public void requestEventCntl()
     {
-        EventCntl theEventCntl = new EventCntl();
         theEventCntl.setNavigationCntl(this);
         theEventCntl.requestEventUI();
+    }
+    
+    public EventCntl getParentEventCntl()
+    {
+        return this.theEventCntl;
     }
 }
