@@ -16,7 +16,7 @@ public class SearchCntl
 {
    private NavigationCntl parentNavigationCntl;
    private ContactList theContactList;
-   private EventCntl theEventCntl;
+   private AddCntl theEventCntl;
    private SearchContactsUI theSearchUI;
    private int numOfInstantiations = 0;
     
@@ -32,7 +32,7 @@ public class SearchCntl
     {
         System.out.println("Welcome to the SearchCntl");
         this.parentNavigationCntl = newParentNavigationCntl;
-        this.theEventCntl = this.parentNavigationCntl.getParentEventCntl();
+        this.theEventCntl = this.parentNavigationCntl.getParentAddCntl();
     }
     
     /* copied & modified from LoginCntl class. Use the same logic when searching for a contact in ContactList */

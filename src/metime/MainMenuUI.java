@@ -176,7 +176,7 @@ public class MainMenuUI extends javax.swing.JFrame
         switch(selectedOption){
             case SCHEDULE:
                 this.setVisible(false);
-                this.parentNavigationCntl.requestEventCntl();
+                this.parentNavigationCntl.requestAddCntl();
                 break;
             case CALENDAR:
                 // TODO

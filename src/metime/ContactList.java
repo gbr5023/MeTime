@@ -127,4 +127,11 @@ public final class ContactList
         
         return null;
     }
+    public String getLastContact()
+    {
+        int i = this.theListOfContacts.size() - 1;
+        String theNewContact = "Added " + this.theListOfContacts.get(i).getFirstName() + " "+ this.theListOfContacts.get(i).getLastName() + "contact information.";
+        
+        return theNewContact;
+    }
 }

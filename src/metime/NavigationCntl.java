@@ -29,13 +29,15 @@ import javax.swing.JFrame;
 public class NavigationCntl 
 {    
     SearchCntl theSearchCntl;
-    EventCntl theEventCntl;
+    AddCntl AddCntl;
+    AddContactUI contactUI;
+    AddEventUI eventUI;
     
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
         this.theSearchCntl = new SearchCntl();
-        this.theEventCntl = new EventCntl();
+        this.AddCntl = new AddCntl();
     }
     
     public void requestMainMenuUI()
@@ -59,15 +61,18 @@ public class NavigationCntl
     {
         return this.theSearchCntl;
     }
-    
-    public void requestEventCntl()
+    public void requestAddCntl()
     {
-        theEventCntl.setNavigationCntl(this);
-        theEventCntl.requestEventUI();
+        AddCntl.setNavigationCntl(this);
+        AddCntl.requestAddChoiceUI();
     }
     
-    public EventCntl getParentEventCntl()
+    public AddCntl getParentAddCntl()
     {
-        return this.theEventCntl;
+        return this.AddCntl;
     }
+
+    
+
+
 }

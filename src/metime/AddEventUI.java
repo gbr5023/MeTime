@@ -12,14 +12,14 @@ import javax.swing.JTextField;
  *
  * @author DeeShalz
  */
-public class EventUI extends javax.swing.JFrame {
+public class AddEventUI extends javax.swing.JFrame {
 
-    private EventCntl parentEventCntl;
+    private AddCntl addCntl;
     String newTimeConversion;
     
-    public EventUI(EventCntl newParentEventCntl) 
+    public AddEventUI(AddCntl newAddCntl) 
     {
-        this.parentEventCntl = newParentEventCntl;
+        this.addCntl = newAddCntl;
         initComponents();
     }
 
@@ -241,9 +241,9 @@ public class EventUI extends javax.swing.JFrame {
                             .addComponent(yesRadioButton)
                             .addComponent(noRadioButton))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dayLabel)
-                            .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dayLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(138, 138, 138)
@@ -294,10 +294,10 @@ public class EventUI extends javax.swing.JFrame {
             }
             else if (this.yesRadioButton.isSelected()) 
             {
-                this.parentEventCntl.addEvent(new Event(newEventName, newEventMonth, 
+                this.addCntl.addEvent(new Event(newEventName, newEventMonth, 
                         newEventDay, newEventYear, newEventLocation));
                 
-                JOptionPane.showMessageDialog(null, this.parentEventCntl.getEventList().getLastEvent());
+                JOptionPane.showMessageDialog(null, this.addCntl.getEventList().getLastEvent());
             } 
             else
             {
@@ -309,15 +309,15 @@ public class EventUI extends javax.swing.JFrame {
                 // check if time is on the hour or a specific time
                 if (newEventMinute.equals("00")) 
                 {
-                    this.parentEventCntl.addEvent(new Event(newEventName, newEventMonth, 
+                    this.addCntl.addEvent(new Event(newEventName, newEventMonth, 
                             newEventDay, newEventYear, newEventHour, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.parentEventCntl.getEventList().getLastEvent());
+                    JOptionPane.showMessageDialog(null, this.addCntl.getEventList().getLastEvent());
                 } 
                 else 
                 {
-                    this.parentEventCntl.addEvent(new Event(newEventName, newEventMonth,
+                    this.addCntl.addEvent(new Event(newEventName, newEventMonth,
                             newEventDay, newEventYear, newEventHour, newEventMinute, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.parentEventCntl.getEventList().getLastEvent());
+                    JOptionPane.showMessageDialog(null, this.addCntl.getEventList().getLastEvent());
                 }
             }
         }
@@ -325,7 +325,7 @@ public class EventUI extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.setVisible(false);
-        this.parentEventCntl.getParentNavigationCntl().requestMainMenuUI();
+        this.addCntl.getParentNavigationCntl().requestMainMenuUI();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -365,13 +365,13 @@ public class EventUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -380,6 +380,15 @@ public class EventUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new EventUI().setVisible(true);
+            }
+        });
+        //</editor-fold>
+
+        /*
+        /* Create and display the form 
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AddEventUI().setVisible(true);
             }
         });
         */
