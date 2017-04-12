@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 
-package metime;
+package metime.controllers;
 
-import javax.swing.JFrame;
+import metime.models.Contact;
+import metime.models.ContactList;
+import metime.views.SearchContactsUI;
+import metime.views.SearchResultUI;
 
 /**
  *
@@ -15,8 +18,7 @@ import javax.swing.JFrame;
 public class SearchCntl 
 {
    private NavigationCntl parentNavigationCntl;
-   private ContactList theContactList;
-   private AddCntl theEventCntl;
+   private final ContactList theContactList;
    private SearchContactsUI theSearchUI;
    private int numOfInstantiations = 0;
     
@@ -32,7 +34,6 @@ public class SearchCntl
     {
         System.out.println("Welcome to the SearchCntl");
         this.parentNavigationCntl = newParentNavigationCntl;
-        this.theEventCntl = this.parentNavigationCntl.getParentAddCntl();
     }
     
     /* copied & modified from LoginCntl class. Use the same logic when searching for a contact in ContactList */

@@ -18,9 +18,11 @@
  * Make sure your application runs without error and be sure to include any required username and password information 
  * as a note on your Canvas submission.
  */
-package metime;
+package metime.controllers;
 
-import javax.swing.JFrame;
+import metime.views.AddContactUI;
+import metime.views.AddEventUI;
+import metime.views.MainMenuUI;
 
 /**
  *
@@ -28,25 +30,19 @@ import javax.swing.JFrame;
  */
 public class NavigationCntl 
 {    
-    SearchCntl theSearchCntl;
-    AddCntl AddCntl;
-    AddContactUI contactUI;
-    AddEventUI eventUI;
+    private final SearchCntl theSearchCntl;
+    private final AddCntl theAddCntl;
     
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
         this.theSearchCntl = new SearchCntl();
-        this.AddCntl = new AddCntl();
+        this.theAddCntl = new AddCntl(this);
     }
     
     public void requestMainMenuUI()
     {
         MainMenuUI theMainMenuUI = new MainMenuUI(this);
-        theMainMenuUI.pack();
-        theMainMenuUI.setTitle("Main Menu");
-        theMainMenuUI.setLocationRelativeTo(null);
-        theMainMenuUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         theMainMenuUI.setVisible(true);
     }
     
@@ -61,18 +57,16 @@ public class NavigationCntl
     {
         return this.theSearchCntl;
     }
-    public void requestAddCntl()
-    {
-        AddCntl.setNavigationCntl(this);
-        AddCntl.requestAddChoiceUI();
+
+    public void requestAddContactUI(){
+        AddContactUI theContactUI = new AddContactUI(theAddCntl);
+        theContactUI.setVisible(true);
     }
     
-    public AddCntl getParentAddCntl()
+    public void requestAddEventUI()
     {
-        return this.AddCntl;
+        AddEventUI theEventUI = new AddEventUI(theAddCntl);
+        theEventUI.setVisible(true);
     }
-
-    
-
 
 }

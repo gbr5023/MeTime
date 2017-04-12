@@ -18,7 +18,11 @@
  * Make sure your application runs without error and be sure to include any required username and password information 
  * as a note on your Canvas submission.
  */
-package metime;
+package metime.views;
+
+import metime.controllers.NavigationCntl;
+import javax.swing.JFrame;
+import metime.NavigationOption;
 
 /**
  *
@@ -33,6 +37,10 @@ public class MainMenuUI extends javax.swing.JFrame
     public MainMenuUI(NavigationCntl newParentNavigationCntl) 
     {
         this.parentNavigationCntl = newParentNavigationCntl;
+        pack();
+        setTitle("Main Menu");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
 
@@ -53,6 +61,7 @@ public class MainMenuUI extends javax.swing.JFrame
         searchRadioButton = new javax.swing.JRadioButton();
         exitButton = new javax.swing.JButton();
         goButton = new javax.swing.JButton();
+        scheduleRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,10 +70,11 @@ public class MainMenuUI extends javax.swing.JFrame
 
         buttonGroup1.add(scheduleRadioButton);
         scheduleRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        scheduleRadioButton.setText("Add Events / Contacts");
+        scheduleRadioButton.setActionCommand("Add Event");
+        scheduleRadioButton.setLabel("Add Event");
         scheduleRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduleRadioButtonActionPerformed(evt);
+                addEventRadioButtonActionPerformed(evt);
             }
         });
 
@@ -111,27 +121,34 @@ public class MainMenuUI extends javax.swing.JFrame
             }
         });
 
+        buttonGroup1.add(scheduleRadioButton1);
+        scheduleRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        scheduleRadioButton1.setActionCommand("Add Contact");
+        scheduleRadioButton1.setLabel("Add Contact");
+        scheduleRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addContactRadioButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(calendarRadioButton)
+                    .addComponent(scheduleRadioButton)
+                    .addComponent(prioritizeRadioButton)
+                    .addComponent(searchRadioButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(chooseLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(calendarRadioButton)
-                            .addComponent(scheduleRadioButton)
-                            .addComponent(prioritizeRadioButton)
-                            .addComponent(searchRadioButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scheduleRadioButton1)
+                    .addComponent(chooseLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,13 +157,15 @@ public class MainMenuUI extends javax.swing.JFrame
                 .addComponent(chooseLabel)
                 .addGap(18, 18, 18)
                 .addComponent(scheduleRadioButton)
-                .addGap(18, 18, 18)
-                .addComponent(calendarRadioButton)
-                .addGap(18, 18, 18)
-                .addComponent(prioritizeRadioButton)
-                .addGap(18, 18, 18)
-                .addComponent(searchRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scheduleRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(calendarRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(prioritizeRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchRadioButton)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton)
                     .addComponent(goButton))
@@ -156,9 +175,9 @@ public class MainMenuUI extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void scheduleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleRadioButtonActionPerformed
-        selectedOption = NavigationOption.SCHEDULE;
-    }//GEN-LAST:event_scheduleRadioButtonActionPerformed
+    private void addEventRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEventRadioButtonActionPerformed
+        selectedOption = NavigationOption.ADD_EVENT;
+    }//GEN-LAST:event_addEventRadioButtonActionPerformed
 
     private void calendarRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarRadioButtonActionPerformed
         selectedOption = NavigationOption.CALENDAR;
@@ -174,9 +193,13 @@ public class MainMenuUI extends javax.swing.JFrame
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         switch(selectedOption){
-            case SCHEDULE:
+            case ADD_EVENT:
+                this.parentNavigationCntl.requestAddEventUI();
                 this.setVisible(false);
-                this.parentNavigationCntl.requestAddCntl();
+                break;
+            case ADD_CONTACT:
+                this.parentNavigationCntl.requestAddContactUI();
+                this.setVisible(false);
                 break;
             case CALENDAR:
                 // TODO
@@ -185,14 +208,19 @@ public class MainMenuUI extends javax.swing.JFrame
                 // TODO
                 break;
             case SEARCH:
-                this.setVisible(false);
                 this.parentNavigationCntl.requestSearchCntl();
+                this.setVisible(false);
+                break;       
         }
     }//GEN-LAST:event_goButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void addContactRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContactRadioButton1ActionPerformed
+        selectedOption = NavigationOption.ADD_CONTACT;
+    }//GEN-LAST:event_addContactRadioButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,6 +231,7 @@ public class MainMenuUI extends javax.swing.JFrame
     private javax.swing.JButton goButton;
     private javax.swing.JRadioButton prioritizeRadioButton;
     private javax.swing.JRadioButton scheduleRadioButton;
+    private javax.swing.JRadioButton scheduleRadioButton1;
     private javax.swing.JRadioButton searchRadioButton;
     // End of variables declaration//GEN-END:variables
 }

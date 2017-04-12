@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metime;
+package metime.views;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import metime.models.Contact;
 
 /**
  *

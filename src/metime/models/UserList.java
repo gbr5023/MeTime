@@ -18,8 +18,9 @@
  * Make sure your application runs without error and be sure to include any required username and password information 
  * as a note on your Canvas submission.
  */
-package metime;
+package metime.models;
 
+import metime.controllers.SerializedDataCntl;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +34,7 @@ public final class UserList
     
     public UserList()
     {
-        theListOfUsers = SerializedDataCntl.getSerializedDataCntl().getList(STORAGE_FILE_PATH);
+        theListOfUsers = SerializedDataCntl.getSerializedDataCntl().getUserList();
         if(theListOfUsers.isEmpty()){
             buildTestUserList();
         }

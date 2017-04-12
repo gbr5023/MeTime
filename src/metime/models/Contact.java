@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package metime;
+package metime.models;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Contact extends Person
         super(newFirstName, newLastName, newPhone, newEmail);
     }
 
-    Contact(String newContactFirstName, String newContactLastName, String newContactPhone, String newContactEmail) {
+    public Contact(String newContactFirstName, String newContactLastName, String newContactPhone, String newContactEmail) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -4,8 +4,9 @@
 * and open the template in the editor.
 */
 
-package metime;
+package metime.models;
 
+import metime.controllers.SerializedDataCntl;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ public final class EventList
     private ArrayList<Event> theListOfEvents;
     
     public EventList() {
-        theListOfEvents = SerializedDataCntl.getSerializedDataCntl().getList(STORAGE_FILE_PATH);
+        theListOfEvents = SerializedDataCntl.getSerializedDataCntl().getEventList();
         if (this.theListOfEvents.isEmpty()) {
             buildTestEventList();
         }

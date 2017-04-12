@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package metime;
+package metime.models;
 
+import metime.controllers.SerializedDataCntl;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ public final class ContactList
     
     public ContactList()
     {
-        theListOfContacts = SerializedDataCntl.getSerializedDataCntl().getList(STORAGE_FILE_PATH);
+        theListOfContacts = SerializedDataCntl.getSerializedDataCntl().getContactList();
         if(this.theListOfContacts.isEmpty()){
             buildTestContactList();
         }
@@ -48,7 +49,6 @@ public final class ContactList
         theListOfContacts.add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
         theListOfContacts.add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
 
-        
         System.out.println();
         System.out.println("For testing purposes: ");
         for(int i = 0; i < this.theListOfContacts.size(); i++)
@@ -80,19 +80,11 @@ public final class ContactList
     /* just copied from UserList class, but use the same logic to search for contacts */
     public Contact searchContactName(String nameToSearch)
     {
-        //boolean nameMatch;
-        boolean firstNameMatch;
-        boolean lastNameMatch;
-        
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
-            firstNameMatch = contactToSearch.getFirstName().contains(nameToSearch);
-            lastNameMatch = contactToSearch.getLastName().contains(nameToSearch);
-            //nameMatch = contactToSearch.getFullName().contains(nameToSearch);
-            if(firstNameMatch == true || lastNameMatch == true)
-            {
+            
+            if(contactToSearch.getFullName().contains(nameToSearch))
                 return contactToSearch;
-            }
         }
         
         return null;

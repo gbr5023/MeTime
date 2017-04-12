@@ -1,5 +1,6 @@
-package metime;
+package metime.views;
 
+import metime.controllers.SearchCntl;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import metime.models.Contact;
 
 /**
  * @author jxr5398

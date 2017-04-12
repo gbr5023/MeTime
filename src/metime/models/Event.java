@@ -5,7 +5,7 @@
     This class (Event) sends all these values and conversions to its parent class to take care of
  */
 
-package metime;
+package metime.models;
 
 /**
  *

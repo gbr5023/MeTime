@@ -4,9 +4,10 @@
 * and open the template in the editor.
 */
 
-package metime;
+package metime.models;
 
 import java.io.Serializable;
+import metime.PersonInfo;
 
 /**
  *

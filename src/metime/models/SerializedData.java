@@ -1,4 +1,4 @@
-package metime;
+package metime.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,15 +7,15 @@ import java.util.ArrayList;
  *
  * @author jxr5398
  */
-public class SerializedDataModel implements Serializable {
+public class SerializedData implements Serializable {
     
     private ArrayList listToSave;
     
-    public SerializedDataModel(){
+    public SerializedData(){
         listToSave = new ArrayList();
     }
     
-    public SerializedDataModel(ArrayList listToSave){
+    public SerializedData(ArrayList listToSave){
         this.listToSave = listToSave;
     }
     
@@ -28,6 +28,6 @@ public class SerializedDataModel implements Serializable {
     }
     
     public boolean isEmpty(){
-        return listToSave.isEmpty() || listToSave == null;
+        return listToSave.isEmpty();
     }
 }

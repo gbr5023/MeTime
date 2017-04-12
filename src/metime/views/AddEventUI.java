@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metime;
+package metime.views;
 
+import metime.controllers.AddCntl;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import metime.models.Event;
 
 /**
  *
@@ -14,12 +16,16 @@ import javax.swing.JTextField;
  */
 public class AddEventUI extends javax.swing.JFrame {
 
-    private AddCntl addCntl;
+    private final AddCntl theAddCntl;
     String newTimeConversion;
     
     public AddEventUI(AddCntl newAddCntl) 
     {
-        this.addCntl = newAddCntl;
+        this.theAddCntl = newAddCntl;
+        pack();
+        setTitle("Create, Read, Update, & Delete Events");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
 
@@ -294,10 +300,10 @@ public class AddEventUI extends javax.swing.JFrame {
             }
             else if (this.yesRadioButton.isSelected()) 
             {
-                this.addCntl.addEvent(new Event(newEventName, newEventMonth, 
+                this.theAddCntl.addEvent(new Event(newEventName, newEventMonth, 
                         newEventDay, newEventYear, newEventLocation));
                 
-                JOptionPane.showMessageDialog(null, this.addCntl.getEventList().getLastEvent());
+                JOptionPane.showMessageDialog(null, this.theAddCntl.getEventList().getLastEvent());
             } 
             else
             {
@@ -309,15 +315,15 @@ public class AddEventUI extends javax.swing.JFrame {
                 // check if time is on the hour or a specific time
                 if (newEventMinute.equals("00")) 
                 {
-                    this.addCntl.addEvent(new Event(newEventName, newEventMonth, 
+                    this.theAddCntl.addEvent(new Event(newEventName, newEventMonth, 
                             newEventDay, newEventYear, newEventHour, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.addCntl.getEventList().getLastEvent());
+                    JOptionPane.showMessageDialog(null, this.theAddCntl.getEventList().getLastEvent());
                 } 
                 else 
                 {
-                    this.addCntl.addEvent(new Event(newEventName, newEventMonth,
+                    this.theAddCntl.addEvent(new Event(newEventName, newEventMonth,
                             newEventDay, newEventYear, newEventHour, newEventMinute, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.addCntl.getEventList().getLastEvent());
+                    JOptionPane.showMessageDialog(null, this.theAddCntl.getEventList().getLastEvent());
                 }
             }
         }
@@ -325,7 +331,7 @@ public class AddEventUI extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.setVisible(false);
-        this.addCntl.getParentNavigationCntl().requestMainMenuUI();
+        this.theAddCntl.getParentNavigationCntl().requestMainMenuUI();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed

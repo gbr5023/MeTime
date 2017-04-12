@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metime;
+package metime.views;
 
+import metime.controllers.NavigationCntl;
+import metime.controllers.AddCntl;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import metime.models.Contact;
 
 /**
  *
@@ -13,10 +17,16 @@ import javax.swing.JOptionPane;
  */
 public class AddContactUI extends javax.swing.JFrame {
 
-    private AddCntl addCntl;
+    private final AddCntl addCntl;
     
     public AddContactUI(AddCntl newAddCntl) {
         this.addCntl = newAddCntl;
+        
+        pack();
+        setTitle("Create, Read, Update, & Delete Events");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         initComponents();
     }
 
@@ -137,9 +147,11 @@ public class AddContactUI extends javax.swing.JFrame {
         this.setVisible(false);
         this.addCntl.getParentNavigationCntl().requestMainMenuUI();
     }//GEN-LAST:event_backButtonActionPerformed
+    
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         System.exit(0);
     }  
+    
     private void addContactButtonActionPerformed(java.awt.event.ActionEvent evt){
         String newContactFirstName = this.firstName.getText();
         String newContactLastName = this.lastName.getText();

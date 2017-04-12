@@ -18,9 +18,11 @@
  * Make sure your application runs without error and be sure to include any required username and password information 
  * as a note on your Canvas submission.
  */
-package metime;
+package metime.controllers;
 
 import javax.swing.JFrame;
+import metime.views.LoginUI;
+import metime.models.UserList;
 
 /**
  *

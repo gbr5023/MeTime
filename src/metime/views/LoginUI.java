@@ -18,7 +18,9 @@
  * Make sure your application runs without error and be sure to include any required username and password information 
  * as a note on your Canvas submission.
  */
-package metime;
+package metime.views;
+
+import metime.controllers.LoginCntl;
 
 /**
  *

@@ -20,6 +20,8 @@
  */
 package metime;
 
+import metime.controllers.LoginCntl;
+
 /**
  *
  * @author Gisward
