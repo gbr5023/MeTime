@@ -17,14 +17,15 @@ import metime.views.EventListUI;
 public class EventCntl {
     private final NavigationCntl parentNavigationCntl;
     private final EventListUI theEventListUI;
+    private final EventList theEventList;
 
     EventCntl(NavigationCntl parentNavigationCntl) {
         this.parentNavigationCntl = parentNavigationCntl;
+        this.theEventList = new EventList();
         this.theEventListUI = new EventListUI(this);
     }
 
     public TableModel getEventListTableModel() {
-        EventList theEventList = new EventList();
         return new EventTable(theEventList);
     }
 
@@ -35,6 +36,10 @@ public class EventCntl {
 
     void requestEventListUI() {
         theEventListUI.setVisible(true);
+    }
+
+    public EventList getEventList() {
+        return theEventList;
     }
     
 }

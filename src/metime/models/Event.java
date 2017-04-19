@@ -7,13 +7,17 @@
 
 package metime.models;
 
+import metime.Prioritizable;
+import metime.Priority;
+
 /**
  *
  * @author Gisward
  */
-public class Event extends Task
+public class Event extends Task implements Prioritizable
 {    
     private String newLocation;
+    private Priority thePriority;
     
     // events (tasks) that happen all day (birthdays, etc.)
     public Event(String newTaskTitle, String newMonth, String newDay, 
@@ -145,5 +149,15 @@ public class Event extends Task
     
     public void setLocation(String newLocation){
         this.newLocation = newLocation;
+    }
+
+    @Override
+    public void setPriority(Priority priority) {
+        this.thePriority = priority;
+    }
+
+    @Override
+    public Priority getPriority() {
+        return thePriority;
     }
 }

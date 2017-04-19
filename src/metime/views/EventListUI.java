@@ -5,6 +5,8 @@
 */
 package metime.views;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -14,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import metime.Priority;
 import metime.controllers.EventCntl;
 
 /**
@@ -46,11 +50,25 @@ public class EventListUI extends JFrame {
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new BackListener());
         
-        c.gridx = 0;
         c.gridy = 0;
         pane.add(backButton, c);
         
-        theEventListTable = new JTable(theEventCntl.getEventListTableModel());
+        theEventListTable = new JTable(theEventCntl.getEventListTableModel()){
+            @Override
+            public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+                Component c = super.prepareRenderer(renderer, row, column);
+                Priority priority = theEventCntl.getEventList().get(row).getPriority();
+                
+                if(priority != null)
+                    c.setBackground(priority.getColor());
+                else
+                    c.setBackground(Color.WHITE);
+                
+                return c;
+            }
+        };
+        
+        theEventListTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
         JScrollPane theScrollPane = new JScrollPane(theEventListTable);
         theScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -59,7 +77,7 @@ public class EventListUI extends JFrame {
         c.fill = GridBagConstraints.BOTH;
         c.gridheight = GridBagConstraints.REMAINDER;
         c.weighty = 1.0;
-        c.gridx = 0;
+        c.weightx = 1.0;
         c.gridy = 1;
         pane.add(theScrollPane, c);
         

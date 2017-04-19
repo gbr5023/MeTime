@@ -5,6 +5,7 @@
  */
 package metime.models;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -50,5 +51,5 @@ public class EventTable extends AbstractTableModel {
     @Override
     public String getColumnName(int index) {
         return COLUMNS[index];
-    }    
+    }
 }
