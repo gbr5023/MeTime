@@ -52,7 +52,7 @@ public final class EventList
         System.out.println("For testing purposes: ");
         for (int i = 0; i < this.theListOfEvents.size(); i++)
         {
-            System.out.println(this.theListOfEvents.get(i).getTaskDateTime());
+            System.out.println(this.theListOfEvents.get(i).getDateTime());
         }
         
         SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
@@ -61,7 +61,7 @@ public final class EventList
     public String getLastEvent()
     {
         int i = this.theListOfEvents.size() - 1;
-        String theNewEvent = "Added \"" + this.theListOfEvents.get(i).getTaskTitle() + "\": "+ this.theListOfEvents.get(i).getTaskDateTime();
+        String theNewEvent = "Added \"" + this.theListOfEvents.get(i).getTitle() + "\": "+ this.theListOfEvents.get(i).getDateTime();
         
         return theNewEvent;
     }

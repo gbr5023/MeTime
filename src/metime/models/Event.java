@@ -13,22 +13,30 @@ package metime.models;
  */
 public class Event extends Task
 {    
+    private String newLocation;
+    
     // events (tasks) that happen all day (birthdays, etc.)
-    public Event(String newTaskTitle, String newMonth, String newDay, String newYear, String newLocation)
+    public Event(String newTaskTitle, String newMonth, String newDay, 
+            String newYear, String newLocation)
     {
-        super(newTaskTitle, newMonth, newDay, newYear, newLocation);
+        super(newTaskTitle, newMonth, newDay, newYear);
+        this.newLocation = newLocation;
     }
     
     // events (tasks) with an exact date, but happens on the hour (4:00, 15:00, 11:00, etc.)
-    public Event(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour, String newLocation)
+    public Event(String newTaskTitle, String newMonth, String newDay, 
+            String newYear, String newHour, String newLocation)
     {
-        super(newTaskTitle, newMonth, newDay, newYear, newHour, newLocation);
+        super(newTaskTitle, newMonth, newDay, newYear, newHour);
+        this.newLocation = newLocation;
     }
     
     // events (tasks) with an exact date, hour, and minute
-    public Event(String newTaskTitle, String newMonth, String newDay, String newYear, String newHour, String newMinute, String newLocation)
+    public Event(String newTaskTitle, String newMonth, String newDay, 
+            String newYear, String newHour, String newMinute, String newLocation)
     {
-        super(newTaskTitle, newMonth, newDay, newYear, newHour, newMinute, newLocation);
+        super(newTaskTitle, newMonth, newDay, newYear, newHour, newMinute);
+        this.newLocation = newLocation;
     }
     
     /*
@@ -37,57 +45,61 @@ public class Event extends Task
     
     */
     @Override
-    public String getTaskTitle()
+    public String getTitle()
     {
-        return super.getTaskTitle();
+        return super.getTitle();
     }
     
     @Override
-    public int getTaskMonth()
+    public int getMonth()
     {
-        return super.getTaskMonth();
+        return super.getMonth();
     }
     
     @Override
-    public int getTaskDay()
+    public int getDay()
     {
-        return super.getTaskDay();
+        return super.getDay();
     }
     
     @Override
-    public int getTaskYear()
+    public int getYear()
     {
-        return super.getTaskYear();
+        return super.getYear();
     }
     
     @Override
-    public int getTaskHour()
+    public int getHour()
     {
-        return super.getTaskHour();
+        return super.getHour();
     }
     
     @Override
-    public int getTaskMinute()
+    public int getMinute()
     {
-        return super.getTaskMinute();
+        return super.getMinute();
     }
     
     @Override
-    public String getTaskDate()
+    public String getDate()
     {
-        return super.getTaskDate();
+        return super.getDate();
     }
     
     @Override
-    public String getTaskTime()
+    public String getTime()
     {
-        return super.getTaskTime();
+        return super.getTime();
     }
     
     @Override
-    public String getTaskDateTime()
+    public String getDateTime()
     {
-        return super.getTaskDateTime();
+        return super.getDateTime();
+    }
+    
+    public String getLocation(){
+        return this.newLocation;
     }
     
     /*
@@ -96,56 +108,42 @@ public class Event extends Task
     
     */
     @Override
-    public void setTaskTitle(String newTask)
+    public void setTitle(String newTask)
     {
-        super.setTaskTitle(newTask);
+        super.setTitle(newTask);
     }
     
     @Override
-    public void setTaskMonth(String newTaskMonth)
+    public void setMonth(String newTaskMonth)
     {
-        super.setTaskMonth(newTaskMonth);
+        super.setMonth(newTaskMonth);
     }
     
     @Override
-    public void setTaskDay(String newTaskDay)
+    public void setDay(String newTaskDay)
     {
-        super.setTaskDay(newTaskDay);
+        super.setDay(newTaskDay);
     }
     
     @Override
-    public void setTaskYear(String newTaskYear)
+    public void setYear(String newTaskYear)
     {
-        super.setTaskYear(newTaskYear);
+        super.setYear(newTaskYear);
     }
     
     @Override
-    public void setTaskHour(String newTaskHour)
+    public void setHour(String newTaskHour)
     {
-        super.setTaskHour(newTaskHour);
+        super.setHour(newTaskHour);
     }
     
     @Override
-    public void setTaskMinute(String newTaskMinute)
+    public void setMinute(String newTaskMinute)
     {
-        super.setTaskMinute(newTaskMinute);
+        super.setMinute(newTaskMinute);
     }
     
-    @Override
-    public void setTaskDate()
-    {
-        super.setTaskDate();
-    }
-    
-    @Override
-    public void setTaskTime()
-    {
-        super.setTaskTime();
-    }
-
-    @Override
-    public void setTaskDateTime()
-    {
-        super.setTaskDateTime();
+    public void setLocation(String newLocation){
+        this.newLocation = newLocation;
     }
 }

@@ -32,17 +32,20 @@ public class NavigationCntl
 {    
     private final SearchCntl theSearchCntl;
     private final AddCntl theAddCntl;
+    private final EventCntl theEventCntl;
+    private final MainMenuUI theMainMenuUI;
     
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
         this.theSearchCntl = new SearchCntl();
         this.theAddCntl = new AddCntl(this);
+        this.theEventCntl = new EventCntl(this);
+        this.theMainMenuUI = new MainMenuUI(this);
     }
     
     public void requestMainMenuUI()
     {
-        MainMenuUI theMainMenuUI = new MainMenuUI(this);
         theMainMenuUI.setVisible(true);
     }
     
@@ -67,6 +70,14 @@ public class NavigationCntl
     {
         AddEventUI theEventUI = new AddEventUI(theAddCntl);
         theEventUI.setVisible(true);
+    }
+    
+    public EventCntl requestEventCntl(){
+        return theEventCntl;
+    }
+
+    public void requestEventListUI() {
+        theEventCntl.requestEventListUI();
     }
 
 }

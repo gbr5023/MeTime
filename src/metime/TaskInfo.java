@@ -12,33 +12,25 @@ package metime;
  */
 public interface TaskInfo 
 {
-    public abstract String getTaskTitle();
-    public abstract void setTaskTitle(String newTask);
+    public abstract String getTitle();
+    public abstract void setTitle(String newTask);
     
-    public abstract int getTaskMonth();
-    public abstract void setTaskMonth(String newTaskMonth);
+    public abstract int getMonth();
+    public abstract void setMonth(String newTaskMonth);
     
-    public abstract int getTaskDay();
-    public abstract void setTaskDay(String newTaskDay);
+    public abstract int getDay();
+    public abstract void setDay(String newTaskDay);
     
-    public abstract int getTaskYear();
-    public abstract void setTaskYear(String newTaskYear);
+    public abstract int getYear();
+    public abstract void setYear(String newTaskYear);
     
-    public abstract int getTaskHour();
-    public abstract void setTaskHour(String newTaskHour);
+    public abstract int getHour();
+    public abstract void setHour(String newTaskHour);
     
-    public abstract int getTaskMinute();
-    public abstract void setTaskMinute(String newTaskMinute);
+    public abstract int getMinute();
+    public abstract void setMinute(String newTaskMinute);
     
-    public abstract String getTaskLocation();
-    public abstract void setTaskLocation(String newTaskLocation);
-    
-    public abstract String getTaskDate();
-    public abstract void setTaskDate();
-    
-    public abstract String getTaskTime();
-    public abstract void setTaskTime();
-    
-    public abstract String getTaskDateTime();
-    public abstract void setTaskDateTime ();
+    public abstract String getDate();
+    public abstract String getTime();
+    public abstract String getDateTime();
 }

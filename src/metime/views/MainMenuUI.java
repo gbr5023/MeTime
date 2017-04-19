@@ -202,7 +202,8 @@ public class MainMenuUI extends javax.swing.JFrame
                 this.setVisible(false);
                 break;
             case CALENDAR:
-                // TODO
+                this.parentNavigationCntl.requestEventListUI();
+                this.setVisible(false);
                 break;
             case PRIORITIZE:
                 // TODO

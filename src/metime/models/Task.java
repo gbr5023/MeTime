@@ -21,37 +21,30 @@ public abstract class Task implements TaskInfo, Serializable
     private int taskYear;
     private int taskHour;
     private int taskMinute;
-    private String taskLocation;
-    private String taskDate;
-    private String taskTime;
-    private String taskDateTime;
     
     // all day tasks
-    public Task(String newTaskTitle, String newMonth, String newDay, String newYear, 
-            String newLocation)
+    public Task(String newTaskTitle, String newMonth, String newDay, String newYear)
     {
         this.taskTitle = String.valueOf(newTaskTitle);
         this.taskMonth = Integer.valueOf(newMonth);
         this.taskDay = Integer.valueOf(newDay);
         this.taskYear = Integer.valueOf(newYear);
-        this.taskLocation = String.valueOf(newLocation);
     }
     
     // tasks that are only right on the hour (4:00, 12:00, etc.)
     public Task(String newTaskTitle, String newMonth, String newDay, String newYear, 
-            String newHour, String newLocation)
+            String newHour)
     {
         this.taskTitle = String.valueOf(newTaskTitle);
         this.taskMonth = Integer.valueOf(newMonth);
         this.taskDay = Integer.valueOf(newDay);
         this.taskYear = Integer.valueOf(newYear);
         this.taskHour = Integer.valueOf(newHour);
-        this.taskLocation = String.valueOf(newLocation);
     }
     
     // tasks that have a specific minute start (4:30, 12:43, etc.)
     public Task(String newTaskTitle, String newMonth, String newDay, String newYear, 
-            String newHour, String newMinute, String newLocation)
+            String newHour, String newMinute)
     {
         this.taskTitle = String.valueOf(newTaskTitle);
         this.taskMonth = Integer.valueOf(newMonth);
@@ -59,142 +52,101 @@ public abstract class Task implements TaskInfo, Serializable
         this.taskYear = Integer.valueOf(newYear);
         this.taskHour = Integer.valueOf(newHour);
         this.taskMinute = Integer.valueOf(newMinute);
-        this.taskLocation = String.valueOf(newLocation);
     }
     /*
     Accessor methods
     */
     
     @Override
-    public String getTaskTitle() 
+    public String getTitle() 
     {
         return this.taskTitle;
     }
 
     @Override
-    public int getTaskMonth() 
+    public int getMonth() 
     {
         return this.taskMonth;
     }
 
     @Override
-    public int getTaskDay() 
+    public int getDay() 
     {
         return this.taskDay;
     }
 
     @Override
-    public int getTaskYear() 
+    public int getYear() 
     {
         return this.taskYear;
     }
 
     @Override
-    public int getTaskHour() 
+    public int getHour() 
     {
         return this.taskHour;
     }
 
     @Override
-    public int getTaskMinute() 
+    public int getMinute() 
     {
         return this.taskMinute;
     }
     
     @Override
-    public String getTaskLocation()
+    public String getDate() 
     {
-        return this.taskLocation;
+        return this.taskMonth + "-" + this.taskDay + "-" + this.taskYear;
     }
     
     @Override
-    public String getTaskDate() 
+    public String getTime() 
     {
-        return this.taskDate;
+        return this.taskHour + ":" + (this.taskMinute == 0 ? "00" : this.taskMinute);
     }
     
     @Override
-    public String getTaskTime() 
+    public String getDateTime()
     {
-        return this.taskTime;
-    }
-    
-    @Override
-    public String getTaskDateTime()
-    {
-        setTaskDate();
-        setTaskTime();
-        setTaskDateTime();
-        return this.taskDateTime;
+        return this.getDate() + " @" + this.getTime();
     }
 
     /*
     Mutator methods
     */
     @Override
-    public void setTaskTitle(String newTask) 
+    public void setTitle(String newTask) 
     {
         this.taskTitle = String.valueOf(newTask);
     }
 
     @Override
-    public void setTaskMonth(String newTaskMonth) 
+    public void setMonth(String newTaskMonth) 
     {
         this.taskMonth = Integer.valueOf(newTaskMonth);
     }
 
     @Override
-    public void setTaskDay(String newTaskDay) 
+    public void setDay(String newTaskDay) 
     {
         this.taskDay = Integer.valueOf(newTaskDay);
     }
 
     @Override
-    public void setTaskYear(String newTaskYear) 
+    public void setYear(String newTaskYear) 
     {
         this.taskYear = Integer.valueOf(newTaskYear);
     }
 
     @Override
-    public void setTaskHour(String newTaskHour) 
+    public void setHour(String newTaskHour) 
     {
         this.taskHour = Integer.valueOf(newTaskHour);
     }
 
     @Override
-    public void setTaskMinute(String newTaskMinute) 
+    public void setMinute(String newTaskMinute) 
     {
         this.taskMinute = Integer.valueOf(newTaskMinute);
-    }
-    
-    @Override
-    public void setTaskLocation(String newLocation)
-    {
-        this.taskLocation = String.valueOf(newLocation);
-    }
-
-    @Override
-    public void setTaskDate()
-    {
-        this.taskDate = this.taskMonth + "-" + this.taskDay + "-" + this.taskYear;
-    }
-
-    @Override
-    public void setTaskTime() 
-    {
-        if(this.taskMinute == 0)
-        {
-            this.taskTime = this.taskHour + ":00";
-        }
-        else
-        {
-            this.taskTime = this.taskHour + ":" + this.taskMinute;
-        }
-    }
-    
-    @Override
-    public void setTaskDateTime()
-    {
-        this.taskDateTime = this.taskDate + " @" + this.taskTime + " in " + this.taskLocation;
     }
 }
