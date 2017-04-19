@@ -57,7 +57,7 @@ public class EventListUI extends JFrame {
             @Override
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
                 Component c = super.prepareRenderer(renderer, row, column);
-                Priority priority = theEventCntl.getEventList().get(row).getPriority();
+                Priority priority = theEventCntl.getEvent(row).getPriority();
                 
                 if(priority != null)
                     c.setBackground(priority.getColor());

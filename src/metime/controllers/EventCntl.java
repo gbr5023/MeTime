@@ -6,6 +6,7 @@
 package metime.controllers;
 
 import javax.swing.table.TableModel;
+import metime.models.Event;
 import metime.models.EventList;
 import metime.models.EventTable;
 import metime.views.EventListUI;
@@ -38,8 +39,8 @@ public class EventCntl {
         theEventListUI.setVisible(true);
     }
 
-    public EventList getEventList() {
-        return theEventList;
+    public Event getEvent(int row) {
+        return theEventList.get(row);
     }
     
 }
