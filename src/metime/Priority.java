@@ -12,7 +12,7 @@ import java.awt.Color;
  * @author justi
  */
 public enum Priority {
-    HIGH(Color.RED), MEDIUM(Color.ORANGE), LOW(Color.YELLOW);
+    NEUTRAL(Color.WHITE), HIGH(Color.RED), MEDIUM(Color.ORANGE), LOW(Color.YELLOW);
     
     
     private final Color color;

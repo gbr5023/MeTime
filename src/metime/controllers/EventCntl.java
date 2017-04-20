@@ -6,6 +6,7 @@
 package metime.controllers;
 
 import javax.swing.table.TableModel;
+import metime.Priority;
 import metime.models.Event;
 import metime.models.EventList;
 import metime.models.EventTable;
@@ -41,6 +42,38 @@ public class EventCntl {
 
     public Event getEvent(int row) {
         return theEventList.get(row);
+    }
+    
+    public void decreasePriority(int selectedRow) {
+        Event theEvent = getEvent(selectedRow);
+        
+        switch(theEvent.getPriority()){
+            case HIGH:
+                theEvent.setPriority(Priority.MEDIUM);
+                break;
+            case MEDIUM:
+                theEvent.setPriority(Priority.LOW);
+                break;
+            default:
+                theEvent.setPriority(Priority.NEUTRAL);
+        }
+    }
+
+    public void increasePriority(int selectedRow) {
+        Event theEvent = getEvent(selectedRow);
+
+        switch (theEvent.getPriority()) {
+            case LOW:
+                theEvent.setPriority(Priority.MEDIUM);
+                break;
+            case MEDIUM:
+                theEvent.setPriority(Priority.HIGH);
+                break;
+            case HIGH:
+                break;
+            default:
+                theEvent.setPriority(Priority.LOW);
+        }
     }
     
 }

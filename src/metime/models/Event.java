@@ -158,6 +158,9 @@ public class Event extends Task implements Prioritizable
 
     @Override
     public Priority getPriority() {
+        if(thePriority == null)
+            thePriority = Priority.NEUTRAL;
+        
         return thePriority;
     }
 }

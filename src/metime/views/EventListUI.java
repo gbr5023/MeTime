@@ -34,7 +34,7 @@ public class EventListUI extends JFrame {
      * @param theEventCntl
      */
     public EventListUI(EventCntl theEventCntl){
-        this.setSize(500, 500);
+        this.setSize(350, 500);
         this.setTitle("Event List");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -51,18 +51,28 @@ public class EventListUI extends JFrame {
         backButton.addActionListener(new BackListener());
         
         c.gridy = 0;
+        c.gridx = 0;
         pane.add(backButton, c);
+        
+        JButton increasePriorityButton = new JButton("Increase Priority");
+        increasePriorityButton.addActionListener(new IncreasePriorityListener());
+        
+        c.gridx = 1;
+        c.weightx = 1.0;
+        pane.add(increasePriorityButton, c);
+        
+        JButton decreasePriorityButton = new JButton("Decrease Priority");
+        decreasePriorityButton.addActionListener(new DecreasePriorityListener());
+        
+        c.gridx = 2;
+        pane.add(decreasePriorityButton, c);
         
         theEventListTable = new JTable(theEventCntl.getEventListTableModel()){
             @Override
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
                 Component c = super.prepareRenderer(renderer, row, column);
                 Priority priority = theEventCntl.getEvent(row).getPriority();
-                
-                if(priority != null)
-                    c.setBackground(priority.getColor());
-                else
-                    c.setBackground(Color.WHITE);
+                c.setBackground(priority.getColor());
                 
                 return c;
             }
@@ -77,14 +87,31 @@ public class EventListUI extends JFrame {
         c.fill = GridBagConstraints.BOTH;
         c.gridheight = GridBagConstraints.REMAINDER;
         c.weighty = 1.0;
-        c.weightx = 1.0;
         c.gridy = 1;
+        c.gridx = 0;
+        c.gridwidth = 3;
         pane.add(theScrollPane, c);
         
         this.add(pane);
     }
+
+    private class DecreasePriorityListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            theEventCntl.decreasePriority(theEventListTable.getSelectedRow());
+            theEventListTable.repaint();
+        }
+    }
+
+    private class IncreasePriorityListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            theEventCntl.increasePriority(theEventListTable.getSelectedRow());
+            theEventListTable.repaint();
+        }
+    }
     
-    class BackListener implements ActionListener{
+    private class BackListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent evt){
             theEventCntl.requestNavigationController();

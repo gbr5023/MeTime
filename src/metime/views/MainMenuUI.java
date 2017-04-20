@@ -57,7 +57,6 @@ public class MainMenuUI extends javax.swing.JFrame
         chooseLabel = new javax.swing.JLabel();
         scheduleRadioButton = new javax.swing.JRadioButton();
         calendarRadioButton = new javax.swing.JRadioButton();
-        prioritizeRadioButton = new javax.swing.JRadioButton();
         searchRadioButton = new javax.swing.JRadioButton();
         exitButton = new javax.swing.JButton();
         goButton = new javax.swing.JButton();
@@ -84,15 +83,6 @@ public class MainMenuUI extends javax.swing.JFrame
         calendarRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calendarRadioButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(prioritizeRadioButton);
-        prioritizeRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        prioritizeRadioButton.setText("Prioritize Events");
-        prioritizeRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prioritizeRadioButtonActionPerformed(evt);
             }
         });
 
@@ -140,7 +130,6 @@ public class MainMenuUI extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calendarRadioButton)
                     .addComponent(scheduleRadioButton)
-                    .addComponent(prioritizeRadioButton)
                     .addComponent(searchRadioButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,10 +151,8 @@ public class MainMenuUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(calendarRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(prioritizeRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchRadioButton)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton)
                     .addComponent(goButton))
@@ -182,10 +169,6 @@ public class MainMenuUI extends javax.swing.JFrame
     private void calendarRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarRadioButtonActionPerformed
         selectedOption = NavigationOption.CALENDAR;
     }//GEN-LAST:event_calendarRadioButtonActionPerformed
-
-    private void prioritizeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prioritizeRadioButtonActionPerformed
-       selectedOption = NavigationOption.PRIORITIZE;
-    }//GEN-LAST:event_prioritizeRadioButtonActionPerformed
 
     private void searchRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchRadioButtonActionPerformed
         selectedOption = NavigationOption.SEARCH;
@@ -204,9 +187,6 @@ public class MainMenuUI extends javax.swing.JFrame
             case CALENDAR:
                 this.parentNavigationCntl.requestEventListUI();
                 this.setVisible(false);
-                break;
-            case PRIORITIZE:
-                // TODO
                 break;
             case SEARCH:
                 this.parentNavigationCntl.requestSearchCntl();
@@ -230,7 +210,6 @@ public class MainMenuUI extends javax.swing.JFrame
     private javax.swing.JLabel chooseLabel;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton goButton;
-    private javax.swing.JRadioButton prioritizeRadioButton;
     private javax.swing.JRadioButton scheduleRadioButton;
     private javax.swing.JRadioButton scheduleRadioButton1;
     private javax.swing.JRadioButton searchRadioButton;
