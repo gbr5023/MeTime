@@ -19,10 +19,10 @@ import metime.models.Contact;
  *
  * @author DeeShalz
  */
-public class SearchResultUI extends JFrame {
+public class SearchContactResultUI extends JFrame {
     private final Contact theContact;
     
-    public SearchResultUI(Contact theContact){
+    public SearchContactResultUI(Contact theContact){
         this.theContact = theContact;
         initComponents();
         setLocationRelativeTo(null);
@@ -67,7 +67,7 @@ public class SearchResultUI extends JFrame {
         this.add(pane);
     }
     
-    private SearchResultUI getInstance(){
+    private SearchContactResultUI getInstance(){
         return this;
     }
     

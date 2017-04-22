@@ -88,7 +88,7 @@ public class MainMenuUI extends javax.swing.JFrame
 
         buttonGroup1.add(searchRadioButton);
         searchRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        searchRadioButton.setText("Search Contacts");
+        searchRadioButton.setText("Search Events/Contacts");
         searchRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchRadioButtonActionPerformed(evt);
@@ -137,7 +137,7 @@ public class MainMenuUI extends javax.swing.JFrame
                         .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(scheduleRadioButton1)
                     .addComponent(chooseLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

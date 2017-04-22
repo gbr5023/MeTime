@@ -83,7 +83,7 @@ public final class ContactList
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
             
-            if(contactToSearch.getFullName().contains(nameToSearch))
+            if(contactToSearch.getFullName().toLowerCase().contains(nameToSearch.toLowerCase()))
                 return contactToSearch;
         }
         
@@ -111,14 +111,14 @@ public final class ContactList
         
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
-            emailMatch = contactToSearch.getEmail().equalsIgnoreCase(emailToSearch);
-            if(emailMatch){
+            if(contactToSearch.getEmail().toLowerCase().contains(emailToSearch.toLowerCase())){
                 return contactToSearch;
             }
         }
         
         return null;
     }
+    
     public String getLastContact()
     {
         int i = this.theListOfContacts.size() - 1;

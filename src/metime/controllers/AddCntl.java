@@ -34,6 +34,16 @@ public class AddCntl
         this.parentNavigationCntl = newParentNavigationCntl;
     }
     
+    public EventList getEventList()
+    {
+        return this.theEventList;
+    }
+    
+    public ContactList getContactList()
+    {
+        return this.theContactList;
+    }
+    
     public ArrayList<Contact> getListOfContacts(){
         return this.theContactList.getListOfContacts();
     }
@@ -63,14 +73,5 @@ public class AddCntl
     public NavigationCntl getParentNavigationCntl() 
     {
         return this.parentNavigationCntl;
-    }
-    
-    public EventList getEventList()
-    {
-        return this.theEventList;
-    }
-    
-    public ContactList getContactList(){
-        return this.theContactList;
     }
 }

@@ -1,6 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package metime.views;
 
-import metime.controllers.SearchCntl;
+import metime.controllers.*;
+import metime.models.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -11,18 +19,20 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import metime.controllers.SearchCntl;
 import metime.models.Contact;
 
 /**
- * @author jxr5398
+ *
+ * @author Gisward
  */
-public class SearchContactsUI extends JFrame {
+public class SearchEventsUI extends JFrame {
     
-    private final SearchCntl theSearchCntl;
+    private SearchCntl theSearchCntl;
     private JTextField searchTerm;
-    private Contact theContact;
+    private Event theEvent;
     
-    public SearchContactsUI(SearchCntl theSearchCntl){
+    public SearchEventsUI(SearchCntl theSearchCntl){
         this.theSearchCntl = theSearchCntl;
         initComponents();
         
@@ -32,7 +42,7 @@ public class SearchContactsUI extends JFrame {
     
     private void initComponents(){
         this.setSize(500, 125);
-        this.setTitle("Search Contacts");
+        this.setTitle("Search Events");
         this.setLocationRelativeTo(null);
         
         JPanel pane = new JPanel(new GridBagLayout());
@@ -67,43 +77,37 @@ public class SearchContactsUI extends JFrame {
         
         c.gridwidth = 1;
         
-        JButton searchEmailsButton = new JButton("Search by Email");
-        searchEmailsButton.addActionListener(new SearchEmailButtonListener());
-        
-        c.gridy = 2;
-        pane.add(searchEmailsButton, c);
-        
-        JButton searchNameButton = new JButton("Search By Name");
+        JButton searchNameButton = new JButton("Search by Event Name");
         searchNameButton.addActionListener(new SearchNameButtonListener());
         
-        c.gridx = 1;
+        c.gridy = 2;
         pane.add(searchNameButton, c);
         
-        JButton searchPhoneButton = new JButton("Search By Phone");
-        searchPhoneButton.addActionListener(new SearchPhoneButtonListener());
+        JButton searchLocationButton = new JButton("Search By Location");
+        searchLocationButton.addActionListener(new SearchLocationButtonListener());
         
-        c.gridx = 2;
-        pane.add(searchPhoneButton, c);
+        c.gridx = 1;
+        pane.add(searchLocationButton, c);
         
         this.add(pane);
-    }
-    
-    class SearchEmailButtonListener implements ActionListener {
-      
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            theContact = theSearchCntl.searchContactEmail(searchTerm.getText());
-            
-            requestSearchResultUI();
-        }
     }
     
     class SearchNameButtonListener implements ActionListener {
       
         @Override
         public void actionPerformed(ActionEvent ae) {
-            theContact = theSearchCntl.searchContactName(searchTerm.getText());
-            requestSearchResultUI();
+            theEvent = theSearchCntl.searchEventTitle(searchTerm.getText());
+            
+            requestSearchEventResultUI();
+        }
+    }
+    
+    class SearchLocationButtonListener implements ActionListener {
+      
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            theEvent = theSearchCntl.searchEventLocation(searchTerm.getText());
+            requestSearchEventResultUI();
         }
     }
     
@@ -115,23 +119,23 @@ public class SearchContactsUI extends JFrame {
             
             try {
                 int intTerm = Integer.parseInt(term);
-                theContact = theSearchCntl.searchContactPhone(intTerm);
+                theEvent = theSearchCntl.searchEventLocation(term);
             } catch(NumberFormatException e) {
-                theContact = null;
+                theEvent = null;
             }
             
-            requestSearchResultUI();
+            requestSearchEventResultUI();
         }
     }
     
-    private void requestSearchResultUI(){
-        if(theContact != null)
-            theSearchCntl.requestSearchContactResultUI(theContact);
+    private void requestSearchEventResultUI(){
+        if(theEvent != null)
+            theSearchCntl.requestSearchEventResultUI(theEvent);
         else
-            JOptionPane.showMessageDialog(null, "No contact found matching the search term.");
+            JOptionPane.showMessageDialog(null, "No event found matching the search term.");
     }
     
-    private SearchContactsUI getInstance(){
+    private SearchEventsUI getInstance(){
         return this;
     }
     

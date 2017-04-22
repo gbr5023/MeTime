@@ -6,10 +6,16 @@
 
 package metime.controllers;
 
+import javax.swing.JFrame;
 import metime.models.Contact;
 import metime.models.ContactList;
+import metime.models.Event;
+import metime.models.EventList;
+import metime.views.SearchUI;
 import metime.views.SearchContactsUI;
-import metime.views.SearchResultUI;
+import metime.views.SearchEventsUI;
+import metime.views.SearchContactResultUI;
+import metime.views.SearchEventResultUI;
 
 /**
  *
@@ -18,8 +24,12 @@ import metime.views.SearchResultUI;
 public class SearchCntl 
 {
    private NavigationCntl parentNavigationCntl;
-   private final ContactList theContactList;
-   private SearchContactsUI theSearchUI;
+   private ContactList theContactList;
+   private EventList theEventList;
+   private AddCntl parentAddCntl; 
+   private SearchContactsUI theSearchContactsUI;
+   private SearchUI theSearchUI;
+   private SearchEventsUI theSearchEventsUI;
    private int numOfInstantiations = 0;
     
     public SearchCntl()
@@ -27,7 +37,7 @@ public class SearchCntl
         numOfInstantiations++;
         System.out.println("SearchCntl instantiated " + this.numOfInstantiations + " time(s).");
         this.theContactList = new ContactList();
-        
+        this.theEventList = new EventList();
     }
     
     public void setNavigationCntl(NavigationCntl newParentNavigationCntl)
@@ -52,14 +62,52 @@ public class SearchCntl
         return this.theContactList.searchContactEmail(emailToSearch);
     }
     
-    public void requestSearchContactsUI(){
-        this.theSearchUI = new SearchContactsUI(this);
-        this.theSearchUI.setVisible(true);
+    public Event searchEventTitle(String nameToSearch)
+    {
+        return this.theEventList.searchEventName(nameToSearch);
     }
     
-    public void requestSearchResultUI(Contact searchedContact){
-        SearchResultUI theSearchResultUI = new SearchResultUI(searchedContact);
-        theSearchResultUI.setVisible(true);
+    public Event searchEventLocation(String locationToSearch)
+    {
+        return this.theEventList.searchEventLocation(locationToSearch);
+    }
+    
+    public void requestSearchUI()
+    {
+        this.theSearchUI = new SearchUI(this);
+        this.theSearchUI.setVisible(true);
+        this.theSearchUI.setLocationRelativeTo(null);
+        this.theSearchUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public void requestSearchContactsUI(){
+        this.theSearchContactsUI = new SearchContactsUI(this);
+        this.theSearchContactsUI.setVisible(true);
+        this.theSearchContactsUI.setLocationRelativeTo(null);
+        this.theSearchContactsUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public void requestSearchEventsUI()
+    {
+        this.theSearchEventsUI = new SearchEventsUI(this);
+        this.theSearchEventsUI.setVisible(true);
+        this.theSearchEventsUI.setLocationRelativeTo(null);
+        this.theSearchEventsUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public void requestSearchContactResultUI(Contact searchedContact){
+        SearchContactResultUI theSearchContactResultUI = new SearchContactResultUI(searchedContact);
+        theSearchContactResultUI.setVisible(true);
+        theSearchContactResultUI.setLocationRelativeTo(null);
+        theSearchContactResultUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public void requestSearchEventResultUI(Event searchedEvent)
+    {
+        SearchEventResultUI theSearchEventResultUI = new SearchEventResultUI(searchedEvent);
+        theSearchEventResultUI.setVisible(true);
+        theSearchEventResultUI.setLocationRelativeTo(null);
+        theSearchEventResultUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public NavigationCntl getParentNavigationCntl() 

@@ -38,8 +38,8 @@ public class NavigationCntl
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
-        this.theSearchCntl = new SearchCntl();
         this.theAddCntl = new AddCntl(this);
+        this.theSearchCntl = new SearchCntl();
         this.theEventCntl = new EventCntl(this);
         this.theMainMenuUI = new MainMenuUI(this);
     }
@@ -53,7 +53,7 @@ public class NavigationCntl
     {
         
         theSearchCntl.setNavigationCntl(this);
-        theSearchCntl.requestSearchContactsUI();
+        theSearchCntl.requestSearchUI();
     }
     
     public SearchCntl getParentSearchCntl()

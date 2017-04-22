@@ -81,4 +81,30 @@ public final class EventList
     public Event get(int row) {
         return theListOfEvents.get(row);
     }
+    
+    public Event searchEventName(String nameToSearch)
+    {
+        for(int i = 0; i < this.theListOfEvents.size(); i++){
+            Event eventToSearch = this.theListOfEvents.get(i);
+            
+            if(eventToSearch.getTitle().toLowerCase().contains(nameToSearch.toLowerCase()))
+                return eventToSearch;
+        }
+        
+        return null;
+    }
+    
+    public Event searchEventLocation(String locationToSearch)
+    {
+        for(int i = 0; i < this.theListOfEvents.size(); i++){
+            Event eventToSearch = this.theListOfEvents.get(i);
+            
+            if(eventToSearch.getLocation().toLowerCase().contains(locationToSearch.toLowerCase()))
+            {
+                return eventToSearch;
+            }
+        }
+        
+        return null;
+    }
 }

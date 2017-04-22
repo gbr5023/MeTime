@@ -17,9 +17,10 @@ import metime.views.EventListUI;
  * @author jxr5398
  */
 public class EventCntl {
-    private final NavigationCntl parentNavigationCntl;
-    private final EventListUI theEventListUI;
-    private final EventList theEventList;
+    private NavigationCntl parentNavigationCntl;
+    private AddCntl parentAddCntl;
+    private EventListUI theEventListUI;
+    private EventList theEventList;
 
     EventCntl(NavigationCntl parentNavigationCntl) {
         this.parentNavigationCntl = parentNavigationCntl;
