@@ -35,7 +35,7 @@
                   <Component id="searchRadioButton" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="exitButton" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="goButton" min="-2" pref="87" max="-2" attributes="0"/>
                   </Group>
                   <Component id="scheduleRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -58,7 +58,7 @@
               <Component id="calendarRadioButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="searchRadioButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="exitButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="goButton" alignment="3" min="-2" max="-2" attributes="0"/>
