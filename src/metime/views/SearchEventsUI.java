@@ -6,7 +6,6 @@
 
 package metime.views;
 
-import metime.controllers.*;
 import metime.models.*;
 
 import java.awt.GridBagConstraints;
@@ -20,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import metime.controllers.SearchCntl;
-import metime.models.Contact;
 
 /**
  *
@@ -28,7 +26,7 @@ import metime.models.Contact;
  */
 public class SearchEventsUI extends JFrame {
     
-    private SearchCntl theSearchCntl;
+    private final SearchCntl theSearchCntl;
     private JTextField searchTerm;
     private Event theEvent;
     
@@ -118,7 +116,6 @@ public class SearchEventsUI extends JFrame {
             String term = searchTerm.getText();
             
             try {
-                int intTerm = Integer.parseInt(term);
                 theEvent = theSearchCntl.searchEventLocation(term);
             } catch(NumberFormatException e) {
                 theEvent = null;

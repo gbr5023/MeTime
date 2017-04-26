@@ -20,9 +20,10 @@
  */
 package metime.controllers;
 
-import javax.swing.JFrame;
+import metime.models.User;
 import metime.views.LoginUI;
 import metime.models.UserList;
+import metime.views.RegisterUI;
 
 /**
  *
@@ -31,31 +32,45 @@ import metime.models.UserList;
 public final class LoginCntl 
 {
     private final UserList theUserList;
+    private final LoginUI theLoginUI;
     
     public LoginCntl()
     {
         System.out.println("Made it to LoginCntl");
         System.out.println("Username: test1");
         System.out.println("Password: 1234");
+        theLoginUI = new LoginUI(this);
         this.theUserList = new UserList();
     }
     
     public void requestLoginUI()
     {
-        LoginUI theLoginUI = new LoginUI(this);
-        theLoginUI.setTitle("MeTime Login");
-        theLoginUI.setLocationRelativeTo(null);
-        theLoginUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         theLoginUI.setVisible(true);
     }
     
     public NavigationCntl requestNavigationCntl()
     {
+        theLoginUI.dispose();
         return new NavigationCntl();
     }
     
     public boolean requestAuthenticate(String usernameToCheck, char[] passwordToCheck)
     {
         return theUserList.authenticate(usernameToCheck, passwordToCheck);
+    }
+
+    public void requestRegisterUI() {
+        theLoginUI.setVisible(false);
+        RegisterUI theRegisterUI = new RegisterUI(this);
+        theRegisterUI.setVisible(true);
+    }
+
+    public boolean registerUser(String firstName, String lastName, String username, char[] password, String email) {
+        if(theUserList.contains(username))
+            return false;
+        else{
+            theUserList.add(new User(firstName, lastName, username, password, email));
+            return true;
+        }
     }
 }

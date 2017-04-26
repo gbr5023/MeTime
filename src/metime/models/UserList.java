@@ -22,6 +22,7 @@ package metime.models;
 
 import metime.controllers.SerializedDataCntl;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -73,5 +74,18 @@ public final class UserList
             }
         }      
         return false;
+    }
+
+    public boolean contains(String username) {
+        for (User theUser : theListOfUsers) {
+            if(theUser.getUsername().equals(username))
+                return true;
+        }
+        
+        return false;
+    }
+
+    public void add(User theUserToAdd) {
+        theListOfUsers.add(theUserToAdd);
     }
 }
