@@ -87,5 +87,6 @@ public final class UserList
 
     public void add(User theUserToAdd) {
         theListOfUsers.add(theUserToAdd);
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfUsers, STORAGE_FILE_PATH);
     }
 }
