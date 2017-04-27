@@ -19,7 +19,7 @@ public abstract class Person implements PersonInfo, Serializable
     private String lastName;
     private String username;
     private char[] password;
-    private int phone;
+    private String phone;
     private String email;
     
     public Person()
@@ -27,7 +27,7 @@ public abstract class Person implements PersonInfo, Serializable
         
     }
     
-    public Person(String newFirstName, String newLastName, int newPhone, String newEmail)
+    public Person(String newFirstName, String newLastName, String newPhone, String newEmail)
     {
         this.firstName = newFirstName;
         this.lastName = newLastName;
@@ -63,8 +63,7 @@ public abstract class Person implements PersonInfo, Serializable
         return this.password;
     }
     
-    @Override
-    public int getPhone()
+    public String getPhone()
     {
         return this.phone;
     }
@@ -97,8 +96,7 @@ public abstract class Person implements PersonInfo, Serializable
         this.password = newPassword;
     }
     
-    @Override
-    public void setPhone(int newPhone)
+    public void setPhone(String newPhone)
     {
         this.phone = newPhone;
     }

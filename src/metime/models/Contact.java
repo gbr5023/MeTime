@@ -12,13 +12,9 @@ package metime.models;
  */
 public class Contact extends Person
 {
-    public Contact(String newFirstName, String newLastName, int newPhone, String newEmail)
+    public Contact(String newFirstName, String newLastName, String newPhone, String newEmail)
     {
         super(newFirstName, newLastName, newPhone, newEmail);
-    }
-
-    public Contact(String newContactFirstName, String newContactLastName, String newContactPhone, String newContactEmail) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     /*
@@ -45,12 +41,6 @@ public class Contact extends Person
     }
     
     @Override
-    public int getPhone()
-    {
-        return super.getPhone();
-    }
-    
-    @Override
     public String getEmail()
     {
         return super.getEmail();
@@ -74,7 +64,7 @@ public class Contact extends Person
     } 
     
     @Override
-    public void setPhone(int newPhone)
+    public void setPhone(String newPhone)
     {
         super.setPhone(newPhone);
     }

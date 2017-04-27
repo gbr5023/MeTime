@@ -43,11 +43,11 @@ public final class ContactList
         this.theListOfContacts = new ArrayList();
         
         // Not using add() method in order to save time saving
-        theListOfContacts.add(new Contact("Jane", "Doe", 1234567, "jdoe@email.com"));
-        theListOfContacts.add(new Contact("John", "Edwards", 9876543, "jedwards@email.com"));
-        theListOfContacts.add(new Contact("Justin", "Rosenthal", 2468024, "jrosenthal@email.com"));
-        theListOfContacts.add(new Contact("Dana", "Shalit", 1357913, "dshalit@email.com"));
-        theListOfContacts.add(new Contact("Giselle", "Redila", 1470147, "gredila@email.com"));
+        theListOfContacts.add(new Contact("Jane", "Doe", "1234567", "jdoe@email.com"));
+        theListOfContacts.add(new Contact("John", "Edwards", "9876543", "jedwards@email.com"));
+        theListOfContacts.add(new Contact("Justin", "Rosenthal", "2468024", "jrosenthal@email.com"));
+        theListOfContacts.add(new Contact("Dana", "Shalit", "1357913", "dshalit@email.com"));
+        theListOfContacts.add(new Contact("Giselle", "Redila", "1470147", "gredila@email.com"));
 
         System.out.println();
         System.out.println("For testing purposes: ");
@@ -96,7 +96,7 @@ public final class ContactList
         
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
-            phoneMatch = contactToSearch.getPhone() == phoneToSearch;
+            phoneMatch = contactToSearch.getPhone().equals(phoneToSearch);
             if(phoneMatch){
                 return contactToSearch;
             }
@@ -106,9 +106,7 @@ public final class ContactList
     }
     
     public Contact searchContactEmail(String emailToSearch)
-    {
-        boolean emailMatch;
-        
+    {        
         for(int i = 0; i < this.theListOfContacts.size(); i++){
             Contact contactToSearch = this.theListOfContacts.get(i);
             if(contactToSearch.getEmail().toLowerCase().contains(emailToSearch.toLowerCase())){
@@ -117,13 +115,5 @@ public final class ContactList
         }
         
         return null;
-    }
-    
-    public String getLastContact()
-    {
-        int i = this.theListOfContacts.size() - 1;
-        String theNewContact = "Added " + this.theListOfContacts.get(i).getFirstName() + " "+ this.theListOfContacts.get(i).getLastName() + "contact information.";
-        
-        return theNewContact;
     }
 }

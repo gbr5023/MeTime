@@ -29,7 +29,7 @@ import metime.views.RegisterUI;
  *
  * @author Gisward
  */
-public final class LoginCntl 
+public final class LoginCntl
 {
     private final UserList theUserList;
     private final LoginUI theLoginUI;

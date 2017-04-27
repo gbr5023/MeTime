@@ -21,12 +21,12 @@ import metime.views.SearchEventResultUI;
  *
  * @author Gisward
  */
-public class SearchCntl 
+public class SearchCntl
 {
    private NavigationCntl parentNavigationCntl;
-   private ContactList theContactList;
-   private EventList theEventList;
-   private AddCntl parentAddCntl; 
+   private final ContactList theContactList;
+   private final EventList theEventList;
+   private ContactCntl parentAddCntl; 
    private SearchContactsUI theSearchContactsUI;
    private SearchUI theSearchUI;
    private SearchEventsUI theSearchEventsUI;

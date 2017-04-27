@@ -5,29 +5,52 @@
  */
 package metime.views;
 
-import metime.controllers.AddCntl;
+import metime.controllers.ContactCntl;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import metime.controllers.EventCntl;
 import metime.models.Event;
 
 /**
  *
  * @author DeeShalz
  */
-public class AddEventUI extends javax.swing.JFrame {
+public class EventUI extends javax.swing.JFrame {
 
-    private final AddCntl theAddCntl;
+    private EventCntl theEventCntl;
+    private Event theEventToEdit;
     
-    public AddEventUI(AddCntl newAddCntl) 
+    public EventUI(EventCntl newEventCntl) 
     {
-        this.theAddCntl = newAddCntl;
+        construct(newEventCntl);
+    }
+    
+    /**
+     *
+     * @param newEventCntl
+     * @param theEventToEdit
+     */
+    public EventUI(EventCntl newEventCntl, Event theEventToEdit){
+        this.theEventToEdit = theEventToEdit;
+        construct(newEventCntl);
+        addEventNameTextField.setText(theEventToEdit.getTitle());
+        addEventLocationTextField.setText(theEventToEdit.getLocation());
+        monthTextField.setText(theEventToEdit.getMonth()+"");
+        dayTextField.setText(theEventToEdit.getDay()+"");
+        yearTextField.setText(theEventToEdit.getYear()+"");
+        hourTextField.setText(theEventToEdit.getHour()+"");
+        minuteTextField.setText(theEventToEdit.getMinute()+"");
+    }
+
+    private void construct(EventCntl newEventCntl){
+        this.theEventCntl = newEventCntl;
         pack();
         setTitle("Create, Read, Update, & Delete Events");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,10 +116,11 @@ public class AddEventUI extends javax.swing.JFrame {
 
         minuteTextField.setText("00");
 
-        addEventButton.setText("Add Event");
+        addEventButton.setText("Save");
+        addEventButton.setToolTipText("");
         addEventButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addEventButtonActionPerformed(evt);
+                saveEventButtonActionPerformed(evt);
             }
         });
 
@@ -273,7 +297,7 @@ public class AddEventUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEventButtonActionPerformed
+    private void saveEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEventButtonActionPerformed
         String newEventName = this.addEventNameTextField.getText();
         String newEventLocation = this.addEventLocationTextField.getText();
         String newEventMonth = this.monthTextField.getText();
@@ -283,6 +307,9 @@ public class AddEventUI extends javax.swing.JFrame {
         String newEventMinute = this.minuteTextField.getText();
         
         // check new Event's validity before adding it
+
+        // TODO: Edit event instead of create new one if thEventToEdit != NULL
+        
         if(newEventName.equalsIgnoreCase("Add Event Name") || newEventLocation.equalsIgnoreCase("Add Event Location"))
         {
             JOptionPane.showMessageDialog(null, "Please ensure that the event has a name and a location.");
@@ -299,10 +326,10 @@ public class AddEventUI extends javax.swing.JFrame {
             }
             else if (this.yesRadioButton.isSelected()) 
             {
-                this.theAddCntl.addEvent(new Event(newEventName, newEventMonth, 
+                this.theEventCntl.addEvent(new Event(newEventName, newEventMonth, 
                         newEventDay, newEventYear, newEventLocation));
                 
-                JOptionPane.showMessageDialog(null, this.theAddCntl.getEventList().getLastEvent());
+                JOptionPane.showMessageDialog(null, this.theEventCntl.getEventList().getLastEvent());
             } 
             else
             {
@@ -314,23 +341,23 @@ public class AddEventUI extends javax.swing.JFrame {
                 // check if time is on the hour or a specific time
                 if (newEventMinute.equals("00")) 
                 {
-                    this.theAddCntl.addEvent(new Event(newEventName, newEventMonth, 
+                    this.theEventCntl.addEvent(new Event(newEventName, newEventMonth, 
                             newEventDay, newEventYear, newEventHour, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.theAddCntl.getEventList().getLastEvent());
+                    JOptionPane.showMessageDialog(null, this.theEventCntl.getEventList().getLastEvent());
                 } 
                 else 
                 {
-                    this.theAddCntl.addEvent(new Event(newEventName, newEventMonth,
+                    this.theEventCntl.addEvent(new Event(newEventName, newEventMonth,
                             newEventDay, newEventYear, newEventHour, newEventMinute, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.theAddCntl.getEventList().getLastEvent());
+                    JOptionPane.showMessageDialog(null, this.theEventCntl.getEventList().getLastEvent());
                 }
             }
         }
-    }//GEN-LAST:event_addEventButtonActionPerformed
+    }//GEN-LAST:event_saveEventButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.setVisible(false);
-        this.theAddCntl.getParentNavigationCntl().requestMainMenuUI();
+        this.theEventCntl.getParentNavigationCntl().requestMainMenuUI();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -370,14 +397,32 @@ public class AddEventUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddEventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EventUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
+        /*
+        /* Create and display the form 
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EventUI().setVisible(true);
+            }
+        });
+        //</editor-fold>
+
+        /*
+        /* Create and display the form 
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AddEventUI().setVisible(true);
+            }
+        });
         //</editor-fold>
 
         /*

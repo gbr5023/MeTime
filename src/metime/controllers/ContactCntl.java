@@ -16,27 +16,16 @@ import metime.models.EventList;
  *
  * @author Gisward
  */
-public class AddCntl 
+public class ContactCntl
 {
     private final NavigationCntl parentNavigationCntl;
-    private final EventList theEventList;
     private final ContactList theContactList;
-    private int numOfInstantiations = 0;
     
     
-    public AddCntl(NavigationCntl newParentNavigationCntl)
+    public ContactCntl(NavigationCntl newParentNavigationCntl)
     {
-        numOfInstantiations++;
-        System.out.println("EventCntl instantiated " + this.numOfInstantiations + " time(s).");
-        this.theEventList = new EventList();
-        System.out.println("ContactCntl instantiated " + this.numOfInstantiations + " time(s).");
         this.theContactList = new ContactList();        
         this.parentNavigationCntl = newParentNavigationCntl;
-    }
-    
-    public EventList getEventList()
-    {
-        return this.theEventList;
     }
     
     public ContactList getContactList()
@@ -48,22 +37,8 @@ public class AddCntl
         return this.theContactList.getListOfContacts();
     }
     
-    public ArrayList<Event> getListOfEvents()
-    {
-        return this.theEventList.getListOfEvents();
-    }
-    
-    public void setListOfEvents(ArrayList<Event> updatedListOfEvents)
-    {
-        this.theEventList.setListOfEvents(updatedListOfEvents);
-    }
-    
     public void setListOfContacts(ArrayList<Contact> updatedListOfContacts){
         this.theContactList.setListOfContacts(updatedListOfContacts);
-    }
-    
-    public void addEvent(Event theEventToAdd){
-        theEventList.add(theEventToAdd);
     }
     
     public void addContact(Contact theContactToAdd){

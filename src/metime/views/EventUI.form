@@ -244,10 +244,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="addEventButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Event"/>
+        <Property name="text" type="java.lang.String" value="Save"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addEventButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveEventButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="eventNameLabel">

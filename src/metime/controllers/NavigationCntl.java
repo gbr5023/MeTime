@@ -21,24 +21,24 @@
 package metime.controllers;
 
 import metime.views.AddContactUI;
-import metime.views.AddEventUI;
+import metime.views.EventUI;
 import metime.views.MainMenuUI;
 
 /**
  *
  * @author Gisward
  */
-public class NavigationCntl 
+public class NavigationCntl
 {    
     private final SearchCntl theSearchCntl;
-    private final AddCntl theAddCntl;
+    private final ContactCntl theAddCntl;
     private final EventCntl theEventCntl;
     private final MainMenuUI theMainMenuUI;
     
     public NavigationCntl()
     {
         System.out.println("Made it to NavigationCntl");
-        this.theAddCntl = new AddCntl(this);
+        this.theAddCntl = new ContactCntl(this);
         this.theSearchCntl = new SearchCntl();
         this.theEventCntl = new EventCntl(this);
         this.theMainMenuUI = new MainMenuUI(this);
@@ -68,7 +68,7 @@ public class NavigationCntl
     
     public void requestAddEventUI()
     {
-        AddEventUI theEventUI = new AddEventUI(theAddCntl);
+        EventUI theEventUI = new EventUI(theEventCntl);
         theEventUI.setVisible(true);
     }
     

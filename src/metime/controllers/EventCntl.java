@@ -5,22 +5,23 @@
  */
 package metime.controllers;
 
+import java.util.ArrayList;
 import javax.swing.table.TableModel;
 import metime.Priority;
 import metime.models.Event;
 import metime.models.EventList;
 import metime.models.EventTable;
 import metime.views.EventListUI;
+import metime.views.EventUI;
 
 /**
  *
  * @author jxr5398
  */
 public class EventCntl {
-    private NavigationCntl parentNavigationCntl;
-    private AddCntl parentAddCntl;
-    private EventListUI theEventListUI;
-    private EventList theEventList;
+    private final NavigationCntl parentNavigationCntl;
+    private final EventListUI theEventListUI;
+    private final EventList theEventList;
 
     EventCntl(NavigationCntl parentNavigationCntl) {
         this.parentNavigationCntl = parentNavigationCntl;
@@ -75,6 +76,35 @@ public class EventCntl {
             default:
                 theEvent.setPriority(Priority.LOW);
         }
+    }
+
+    public void requestEditEvent(int theEventID) {
+        EventUI theEventUI = new EventUI(this, theEventList.get(theEventID));
+        theEventUI.setVisible(true);
+    }
+    
+    public void setListOfEvents(ArrayList<Event> updatedListOfEvents)
+    {
+        this.theEventList.setListOfEvents(updatedListOfEvents);
+    }
+    
+    public void addEvent(Event theEventToAdd){
+        theEventList.add(theEventToAdd);
+    }
+    
+    public ArrayList<Event> getListOfEvents()
+    {
+        return this.theEventList.getListOfEvents();
+    }
+    
+    public EventList getEventList()
+    {
+        return this.theEventList;
+    }
+    
+    public NavigationCntl getParentNavigationCntl() 
+    {
+        return this.parentNavigationCntl;
     }
     
 }

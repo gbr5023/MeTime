@@ -15,7 +15,8 @@ import metime.controllers.*;
 public class SearchUI extends javax.swing.JFrame 
 {
     SearchCntl parentSearchCntl;
-    /** Creates new form SearchUI */
+    /** Creates new form SearchUI
+     * @param newParentSearchCntl */
     public SearchUI(SearchCntl newParentSearchCntl) 
     {
         this.parentSearchCntl = newParentSearchCntl;

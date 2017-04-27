@@ -14,11 +14,11 @@ public interface PersonInfo
     public abstract String getFirstName();
     public abstract String getLastName();
     public abstract String getFullName();
-    public abstract int getPhone();
+    public abstract String getPhone();
     public abstract String getEmail();
     
     public abstract void setFirstName(String newFirstName);
     public abstract void setLastName(String newLastName);
-    public abstract void setPhone(int newPhone);
+    public abstract void setPhone(String newPhone);
     public abstract void setEmail(String newEmail);
 }

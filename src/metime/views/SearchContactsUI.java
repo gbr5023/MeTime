@@ -131,15 +131,10 @@ public class SearchContactsUI extends JFrame {
             JOptionPane.showMessageDialog(null, "No contact found matching the search term.");
     }
     
-    private SearchContactsUI getInstance(){
-        return this;
-    }
-    
     class BackButtonListener implements ActionListener {
       
         @Override
         public void actionPerformed(ActionEvent ae) {
-            getInstance().dispose();
             theSearchCntl.getParentNavigationCntl().requestMainMenuUI();
         }
     }

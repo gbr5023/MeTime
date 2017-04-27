@@ -33,7 +33,7 @@ public class EventListUI extends JFrame {
      * @param theEventCntl
      */
     public EventListUI(EventCntl theEventCntl){
-        this.setSize(350, 500);
+        this.setSize(400, 500);
         this.setTitle("Event List");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -66,6 +66,12 @@ public class EventListUI extends JFrame {
         c.gridx = 2;
         pane.add(decreasePriorityButton, c);
         
+        JButton editButton = new JButton("Edit");
+        editButton.addActionListener(new EditListener());
+        
+        c.gridx = 3;
+        pane.add(editButton, c);
+        
         theEventListTable = new JTable(theEventCntl.getEventListTableModel()){
             @Override
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
@@ -76,9 +82,7 @@ public class EventListUI extends JFrame {
                 return c;
             }
         };
-        
-        theEventListTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        
+                
         JScrollPane theScrollPane = new JScrollPane(theEventListTable);
         theScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         theScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -88,10 +92,17 @@ public class EventListUI extends JFrame {
         c.weighty = 1.0;
         c.gridy = 1;
         c.gridx = 0;
-        c.gridwidth = 3;
+        c.gridwidth = 4;
         pane.add(theScrollPane, c);
         
         this.add(pane);
+    }
+
+    private  class EditListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            theEventCntl.requestEditEvent(theEventListTable.getSelectedRow());
+        }
     }
 
     private class DecreasePriorityListener implements ActionListener {
