@@ -310,6 +310,8 @@ public class EventUI extends javax.swing.JFrame {
 
         // TODO: Edit event instead of create new one if thEventToEdit != NULL
         
+        Event newEvent = null;
+        
         if(newEventName.equalsIgnoreCase("Add Event Name") || newEventLocation.equalsIgnoreCase("Add Event Location"))
         {
             JOptionPane.showMessageDialog(null, "Please ensure that the event has a name and a location.");
@@ -326,10 +328,8 @@ public class EventUI extends javax.swing.JFrame {
             }
             else if (this.yesRadioButton.isSelected()) 
             {
-                this.theEventCntl.addEvent(new Event(newEventName, newEventMonth, 
-                        newEventDay, newEventYear, newEventLocation));
-                
-                JOptionPane.showMessageDialog(null, this.theEventCntl.getEventList().getLastEvent());
+                newEvent = new Event(newEventName, newEventMonth, newEventDay, 
+                        newEventYear, newEventLocation);
             } 
             else
             {
@@ -338,20 +338,28 @@ public class EventUI extends javax.swing.JFrame {
                     int hourConversion = Integer.valueOf(newEventHour) + 12;
                     newEventHour = String.valueOf(hourConversion);
                 }
-                // check if time is on the hour or a specific time
                 if (newEventMinute.equals("00")) 
                 {
-                    this.theEventCntl.addEvent(new Event(newEventName, newEventMonth, 
-                            newEventDay, newEventYear, newEventHour, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.theEventCntl.getEventList().getLastEvent());
+                    newEvent = new Event(newEventName, newEventMonth, 
+                            newEventDay, newEventYear, newEventHour, newEventLocation);
                 } 
                 else 
                 {
-                    this.theEventCntl.addEvent(new Event(newEventName, newEventMonth,
-                            newEventDay, newEventYear, newEventHour, newEventMinute, newEventLocation));
-                    JOptionPane.showMessageDialog(null, this.theEventCntl.getEventList().getLastEvent());
+                    newEvent = new Event(newEventName, newEventMonth,
+                            newEventDay, newEventYear, newEventHour, newEventMinute, newEventLocation);
                 }
             }
+        }
+        
+        if(newEvent != null){
+            String createdOrEdited = "created";
+            if(theEventToEdit != null){
+                theEventCntl.deleteEvent(theEventToEdit);
+                createdOrEdited = "edited";
+            }
+            
+            theEventCntl.addEvent(newEvent);
+            JOptionPane.showMessageDialog(null, "The event has been " + createdOrEdited);
         }
     }//GEN-LAST:event_saveEventButtonActionPerformed
 

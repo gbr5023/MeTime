@@ -79,8 +79,9 @@ public class EventCntl {
     }
 
     public void requestEditEvent(int theEventID) {
-        EventUI theEventUI = new EventUI(this, theEventList.get(theEventID));
+        EventUI theEventUI = new EventUI(this, getEvent(theEventID));
         theEventUI.setVisible(true);
+        theEventListUI.setVisible(false);
     }
     
     public void setListOfEvents(ArrayList<Event> updatedListOfEvents)
@@ -105,6 +106,10 @@ public class EventCntl {
     public NavigationCntl getParentNavigationCntl() 
     {
         return this.parentNavigationCntl;
+    }
+
+    public void deleteEvent(Event theEvent) {
+        this.theEventList.remove(theEvent);
     }
     
 }

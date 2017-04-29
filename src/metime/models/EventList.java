@@ -65,14 +65,6 @@ public final class EventList
         SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
     }
     
-    public String getLastEvent()
-    {
-        int i = this.theListOfEvents.size() - 1;
-        String theNewEvent = "Added \"" + this.theListOfEvents.get(i).getTitle() + "\": "+ this.theListOfEvents.get(i).getDateTime();
-        
-        return theNewEvent;
-    }
-    
     public void add(Event theEventToAdd){
         theListOfEvents.add(theEventToAdd);
         SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
@@ -106,5 +98,10 @@ public final class EventList
         }
         
         return null;
+    }
+
+    public void remove(Event theEventID) {
+       theListOfEvents.remove(theEventID);
+       SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
     }
 }
