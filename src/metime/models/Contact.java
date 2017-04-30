@@ -3,75 +3,68 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package metime.models;
+
+import metime.controllers.SerializedDataCntl;
+import static metime.models.ContactList.STORAGE_FILE_PATH;
 
 /**
  *
  * @author Gisward
  */
-public class Contact extends Person
-{
-    public Contact(String newFirstName, String newLastName, String newPhone, String newEmail)
-    {
+public class Contact extends Person {
+
+    public Contact(String newFirstName, String newLastName, String newPhone, String newEmail) {
         super(newFirstName, newLastName, newPhone, newEmail);
     }
-    
+
     /*
     
     ***** Accessor methods *****
     
-    */
+     */
     @Override
-    public String getFirstName()
-    {
+    public String getFirstName() {
         return super.getFirstName();
     }
-    
+
     @Override
-    public String getLastName()
-    {
+    public String getLastName() {
         return super.getLastName();
     }
-    
+
     @Override
-    public String getFullName()
-    {
+    public String getFullName() {
         return super.getFullName();
     }
-    
+
     @Override
-    public String getEmail()
-    {
+    public String getEmail() {
         return super.getEmail();
     }
-    
+
     /*
     
     ***** Mutator methods *****
     
-    */
+     */
     @Override
-    public void setFirstName(String newFirstName)
-    {
+    public void setFirstName(String newFirstName) {
         super.setFirstName(newFirstName);
-    }   
-    
+    }
+
     @Override
-    public void setLastName(String newLastName)
-    {
+    public void setLastName(String newLastName) {
         super.setLastName(newLastName);
-    } 
-    
+    }
+
     @Override
-    public void setPhone(String newPhone)
-    {
+    public void setPhone(String newPhone) {
         super.setPhone(newPhone);
     }
-    
+
     @Override
-    public void setEmail(String newEmail)
-    {
+    public void setEmail(String newEmail) {
         super.setEmail(newEmail);
     }
 }

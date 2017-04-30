@@ -1,21 +1,21 @@
 /**
  * Overview
- * This is the second of five sprints you will implement towards completing your group project application prototype. 
- * In this sprint you will choose one of your four use cases for implementation. When completed, the functionality of 
+ * This is the second of five sprints you will implement towards completing your group project application prototype.
+ * In this sprint you will choose one of your four use cases for implementation. When completed, the functionality of
  * the sprint should closely resemble the use case specification written earlier in the semester.
- * 
- * You should use Java FX/FXML for this sprint implementation. As discussed in the lesson on FX/FXML, 
- * there is a learning curve associated with moving from the Swing GUI Library but it will pay off as you work through 
+ *
+ * You should use Java FX/FXML for this sprint implementation. As discussed in the lesson on FX/FXML,
+ * there is a learning curve associated with moving from the Swing GUI Library but it will pay off as you work through
  * the rest of the application.
- * 
+ *
  * Activity Description
  * This is a group assignment.
- * In this sprint your application should launch, authenticate a user against a list of test users, and, 
- * if the user is authenticated, open a navigation window where the user can choose what they want to do next. 
+ * In this sprint your application should launch, authenticate a user against a list of test users, and,
+ * if the user is authenticated, open a navigation window where the user can choose what they want to do next.
  * You did this part in the first sprint.
- * The use should then be able to navigate to one of the four use cases you defined as the scope of the application. 
+ * The use should then be able to navigate to one of the four use cases you defined as the scope of the application.
  * The functionality should match or extend what you defined in the use case specification.
- * Make sure your application runs without error and be sure to include any required username and password information 
+ * Make sure your application runs without error and be sure to include any required username and password information
  * as a note on your Canvas submission.
  */
 package metime.views;
@@ -28,14 +28,12 @@ import metime.NavigationOption;
  *
  * @author Gisward
  */
-public class MainMenuUI extends javax.swing.JFrame 
-{
+public class MainMenuUI extends javax.swing.JFrame {
 
     private final NavigationCntl parentNavigationCntl;
     private NavigationOption selectedOption;
-    
-    public MainMenuUI(NavigationCntl newParentNavigationCntl) 
-    {
+
+    public MainMenuUI(NavigationCntl newParentNavigationCntl) {
         this.parentNavigationCntl = newParentNavigationCntl;
         pack();
         setTitle("Main Menu");
@@ -175,13 +173,13 @@ public class MainMenuUI extends javax.swing.JFrame
     }//GEN-LAST:event_searchRadioButtonActionPerformed
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
-        switch(selectedOption){
+        switch (selectedOption) {
             case ADD_EVENT:
-                this.parentNavigationCntl.requestAddEventUI();
+                this.parentNavigationCntl.requestEventUI();
                 this.setVisible(false);
                 break;
             case ADD_CONTACT:
-                this.parentNavigationCntl.requestAddContactUI();
+                this.parentNavigationCntl.requestContactUI();
                 this.setVisible(false);
                 break;
             case CALENDAR:
@@ -191,7 +189,7 @@ public class MainMenuUI extends javax.swing.JFrame
             case SEARCH:
                 this.parentNavigationCntl.requestSearchCntl();
                 this.setVisible(false);
-                break;       
+                break;
         }
     }//GEN-LAST:event_goButtonActionPerformed
 
@@ -202,7 +200,6 @@ public class MainMenuUI extends javax.swing.JFrame
     private void addContactRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContactRadioButton1ActionPerformed
         selectedOption = NavigationOption.ADD_CONTACT;
     }//GEN-LAST:event_addContactRadioButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

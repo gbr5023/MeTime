@@ -12,13 +12,13 @@ import metime.models.Event;
 import metime.models.EventList;
 import metime.models.EventTable;
 import metime.views.EventListUI;
-import metime.views.EventUI;
 
 /**
  *
  * @author jxr5398
  */
 public class EventCntl {
+
     private final NavigationCntl parentNavigationCntl;
     private final EventListUI theEventListUI;
     private final EventList theEventList;
@@ -45,11 +45,11 @@ public class EventCntl {
     public Event getEvent(int row) {
         return theEventList.get(row);
     }
-    
+
     public void decreasePriority(int selectedRow) {
         Event theEvent = getEvent(selectedRow);
-        
-        switch(theEvent.getPriority()){
+
+        switch (theEvent.getPriority()) {
             case HIGH:
                 theEvent.setPriority(Priority.MEDIUM);
                 break;
@@ -78,38 +78,28 @@ public class EventCntl {
         }
     }
 
-    public void requestEditEvent(int theEventID) {
-        EventUI theEventUI = new EventUI(this, getEvent(theEventID));
-        theEventUI.setVisible(true);
-        theEventListUI.setVisible(false);
-    }
-    
-    public void setListOfEvents(ArrayList<Event> updatedListOfEvents)
-    {
+    public void setListOfEvents(ArrayList<Event> updatedListOfEvents) {
         this.theEventList.setListOfEvents(updatedListOfEvents);
     }
-    
-    public void addEvent(Event theEventToAdd){
+
+    public void addEvent(Event theEventToAdd) {
         theEventList.add(theEventToAdd);
     }
-    
-    public ArrayList<Event> getListOfEvents()
-    {
+
+    public ArrayList<Event> getListOfEvents() {
         return this.theEventList.getListOfEvents();
     }
-    
-    public EventList getEventList()
-    {
+
+    public EventList getEventList() {
         return this.theEventList;
     }
-    
-    public NavigationCntl getParentNavigationCntl() 
-    {
+
+    public NavigationCntl getParentNavigationCntl() {
         return this.parentNavigationCntl;
     }
 
     public void deleteEvent(Event theEvent) {
         this.theEventList.remove(theEvent);
     }
-    
+
 }

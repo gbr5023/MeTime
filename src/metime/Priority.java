@@ -13,14 +13,14 @@ import java.awt.Color;
  */
 public enum Priority {
     NEUTRAL(Color.WHITE), HIGH(Color.RED), MEDIUM(Color.ORANGE), LOW(Color.YELLOW);
-    
-    
+
     private final Color color;
-    Priority(Color color){
-        this.color = color; 
+
+    Priority(Color color) {
+        this.color = color;
     }
-    
-    public Color getColor() { 
-        return color; 
+
+    public Color getColor() {
+        return color;
     }
 }

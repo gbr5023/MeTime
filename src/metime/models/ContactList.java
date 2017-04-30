@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package metime.models;
 
 import metime.controllers.SerializedDataCntl;
@@ -13,35 +12,30 @@ import java.util.ArrayList;
  *
  * @author Gisward
  */
-public final class ContactList 
-{
+public final class ContactList {
+
     public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + "contacts.ser";
-    private ArrayList<Contact> theListOfContacts;
     
-    public ContactList()
-    {
+    private ArrayList<Contact> theListOfContacts;
+
+    public ContactList() {
         theListOfContacts = SerializedDataCntl.getSerializedDataCntl().getContactList();
-        if(this.theListOfContacts.isEmpty()){
+        if (this.theListOfContacts.isEmpty()) {
             buildTestContactList();
         }
     }
     
-    public void setListOfContacts(ArrayList<Contact> theContactList){
+    public void save() {
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfContacts, STORAGE_FILE_PATH);    
+    }
+
+    public void setListOfContacts(ArrayList<Contact> theContactList) {
         theListOfContacts = theContactList;
     }
-    
-    public ArrayList<Contact> getListOfContacts()
-    {
-        if(this.theListOfContacts == null){
-            buildTestContactList();
-        }
-        return this.theListOfContacts;
-    }
-    
-    public void buildTestContactList()
-    {
+
+    public void buildTestContactList() {
         this.theListOfContacts = new ArrayList();
-        
+
         // Not using add() method in order to save time saving
         theListOfContacts.add(new Contact("Jane", "Doe", "1234567", "jdoe@email.com"));
         theListOfContacts.add(new Contact("John", "Edwards", "9876543", "jedwards@email.com"));
@@ -51,69 +45,61 @@ public final class ContactList
 
         System.out.println();
         System.out.println("For testing purposes: ");
-        for(int i = 0; i < this.theListOfContacts.size(); i++)
-        {
-            System.out.println(this.theListOfContacts.get(i).getFullName() + ", Phone: " + 
-                    this.theListOfContacts.get(i).getPhone() + ", Email: " +
-                    this.theListOfContacts.get(i).getEmail());
+        for (int i = 0; i < this.theListOfContacts.size(); i++) {
+            System.out.println(this.theListOfContacts.get(i).getFullName() + ", Phone: "
+                    + this.theListOfContacts.get(i).getPhone() + ", Email: "
+                    + this.theListOfContacts.get(i).getEmail());
         }
-        /*
-        for(int i = 0; i < 100; i++)
-        {
-            String firstName = "Jane";
-            String lastName = "Doe" + i;
-            int phone = 1234567;
-            String email = "jdoe@email.com";
-            Contact newContact = new Contact(firstName, lastName, phone, email);
-            this.theListOfContacts.add(newContact);
-        }
-        */
-        
-        SerializedDataCntl.getSerializedDataCntl().setList(theListOfContacts, STORAGE_FILE_PATH);
+
+        save();
     }
-    
-    public void add(Contact theContactToAdd){
+
+    public void add(Contact theContactToAdd) {
         theListOfContacts.add(theContactToAdd);
-        SerializedDataCntl.getSerializedDataCntl().setList(theListOfContacts, STORAGE_FILE_PATH);
+        save();
     }
-    
+
     /* just copied from UserList class, but use the same logic to search for contacts */
-    public Contact searchContactName(String nameToSearch)
-    {
-        for(int i = 0; i < this.theListOfContacts.size(); i++){
-            Contact contactToSearch = this.theListOfContacts.get(i);
-            
-            if(contactToSearch.getFullName().toLowerCase().contains(nameToSearch.toLowerCase()))
-                return contactToSearch;
+    public int searchContactName(String nameToSearch) {
+        for (int i = 0; i < this.theListOfContacts.size(); i++) {
+            if (this.theListOfContacts.get(i).getFullName().toLowerCase().contains(nameToSearch.toLowerCase())) {
+                return i;
+            }
         }
-        
-        return null;
+
+        return -1;
     }
-    
-    public Contact searchContactPhone(int phoneToSearch)
-    {
+
+    public int searchContactPhone(String phoneToSearch) {
         boolean phoneMatch;
-        
-        for(int i = 0; i < this.theListOfContacts.size(); i++){
-            Contact contactToSearch = this.theListOfContacts.get(i);
-            phoneMatch = contactToSearch.getPhone().equals(phoneToSearch);
-            if(phoneMatch){
-                return contactToSearch;
+
+        for (int i = 0; i < this.theListOfContacts.size(); i++) {
+            phoneMatch = this.theListOfContacts.get(i).getPhone().equals(phoneToSearch);
+            if (phoneMatch) {
+                return i;
             }
         }
-        
-        return null;
+
+        return -1;
     }
-    
-    public Contact searchContactEmail(String emailToSearch)
-    {        
-        for(int i = 0; i < this.theListOfContacts.size(); i++){
-            Contact contactToSearch = this.theListOfContacts.get(i);
-            if(contactToSearch.getEmail().toLowerCase().contains(emailToSearch.toLowerCase())){
-                return contactToSearch;
+
+    public int searchContactEmail(String emailToSearch) {
+        for (int i = 0; i < this.theListOfContacts.size(); i++) {
+            if (this.theListOfContacts.get(i).getEmail().toLowerCase().contains(emailToSearch.toLowerCase())) {
+                return i;
             }
         }
-        
-        return null;
+
+        return -1;
+    }
+
+    public void delete(Contact theContactToEdit) {
+        boolean removed = theListOfContacts.remove(theContactToEdit);
+        System.out.println("REMOVED : " + removed);
+        save();
+    }
+
+    public Contact get(int theContactID) {
+        return theListOfContacts.get(theContactID);
     }
 }

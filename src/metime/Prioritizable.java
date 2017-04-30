@@ -10,8 +10,9 @@ package metime;
  * @author justi
  */
 public interface Prioritizable {
-    
-        public void setPriority(Priority priority);
-        public Priority getPriority();
-        
+
+    public void setPriority(Priority priority);
+
+    public Priority getPriority();
+
 }

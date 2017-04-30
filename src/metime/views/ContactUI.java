@@ -15,21 +15,46 @@ import metime.models.Contact;
  *
  * @author DeeShalz
  */
-public class AddContactUI extends javax.swing.JFrame {
+public class ContactUI extends javax.swing.JFrame {
 
-    private final ContactCntl addCntl;
-    
-    public AddContactUI(ContactCntl newAddCntl) {
-        this.addCntl = newAddCntl;
-        
+    private final ContactCntl theContactCntl;
+    private final Contact theContactToEdit;
+
+    /**
+     *
+     * @param newContactCntl
+     */
+    public ContactUI(ContactCntl newContactCntl) {
+        this.theContactCntl = newContactCntl;
+        construct();
+        initComponents();
+        deleteButton.setVisible(false);
+        theContactToEdit = null;
+    }
+
+    /**
+     *
+     * @param newContactCntl
+     * @param theContactToEdit
+     */
+    public ContactUI(ContactCntl newContactCntl, Contact theContactToEdit) {
+        this.theContactCntl = newContactCntl;
+        construct();
+        initComponents();
+        this.theContactToEdit = theContactToEdit;
+        firstName.setText(theContactToEdit.getFirstName());
+        lastName.setText(theContactToEdit.getLastName());
+        phoneNum.setText(theContactToEdit.getPhone());
+        emailField.setText(theContactToEdit.getEmail());
+        deleteButton.setVisible(true);
+    }
+
+    private void construct() {
         pack();
         setTitle("Create, Read, Update, & Delete Events");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        initComponents();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,9 +71,10 @@ public class AddContactUI extends javax.swing.JFrame {
         contactPhone = new javax.swing.JLabel();
         phoneNum = new javax.swing.JTextField();
         contactEmail = new javax.swing.JLabel();
-        EmailAdd = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
-        addContactButton = new javax.swing.JButton();
+        saveContactButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +86,6 @@ public class AddContactUI extends javax.swing.JFrame {
 
         contactPhone.setText("Contact Phone: ");
 
-        phoneNum.setText("0123456789");
         phoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneNumActionPerformed(evt);
@@ -69,8 +94,6 @@ public class AddContactUI extends javax.swing.JFrame {
 
         contactEmail.setText("Contact Email: ");
 
-        EmailAdd.setText("enter email address");
-
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,10 +101,17 @@ public class AddContactUI extends javax.swing.JFrame {
             }
         });
 
-        addContactButton.setText("Add Contact");
-        addContactButton.addActionListener(new java.awt.event.ActionListener() {
+        saveContactButton.setText("Save");
+        saveContactButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addContactButtonActionPerformed(evt);
+                saveContactButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
             }
         });
 
@@ -98,7 +128,7 @@ public class AddContactUI extends javax.swing.JFrame {
                             .addComponent(contactEmail))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmailAdd)
+                            .addComponent(emailField)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(phoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -109,10 +139,11 @@ public class AddContactUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lastName, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addComponent(deleteButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addContactButton)))
+                        .addComponent(saveContactButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -130,11 +161,12 @@ public class AddContactUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contactEmail)
-                    .addComponent(EmailAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
-                    .addComponent(addContactButton))
+                    .addComponent(saveContactButton)
+                    .addComponent(deleteButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -147,23 +179,43 @@ public class AddContactUI extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.setVisible(false);
-        this.addCntl.getParentNavigationCntl().requestMainMenuUI();
+        this.theContactCntl.getParentNavigationCntl().requestMainMenuUI();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void addContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContactButtonActionPerformed
+    private void saveContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveContactButtonActionPerformed
         String newContactFirstName = this.firstName.getText();
         String newContactLastName = this.lastName.getText();
-        String newContactEmail = this.EmailAdd.getText();
+        String newContactEmail = this.emailField.getText();
         String newContactPhone = this.phoneNum.getText();
-        
-        if(newContactFirstName.equalsIgnoreCase("First Name") || newContactLastName.equalsIgnoreCase("Last Name") || newContactEmail.equalsIgnoreCase("Enter Email address")){
+
+        if (newContactFirstName.equalsIgnoreCase("First Name") || newContactLastName.equalsIgnoreCase("Last Name")
+                || newContactEmail.length() == 0 || newContactFirstName.length() == 0 || newContactLastName.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please ensure that your contact has a first and last name, and email address");
-        } else{
-            this.addCntl.addContact(new Contact(newContactFirstName, newContactLastName, newContactPhone, newContactEmail ));
-            JOptionPane.showMessageDialog(null, "Added " + newContactFirstName + " " + newContactLastName + " contact information.");
+        } else {
+            if (theContactToEdit != null) {
+                theContactToEdit.setEmail(newContactEmail);
+                theContactToEdit.setFirstName(newContactFirstName);
+                theContactToEdit.setLastName(newContactLastName);
+                theContactToEdit.setPhone(newContactPhone);
+                theContactCntl.saveContactList();
+                JOptionPane.showMessageDialog(null, "Edited contact.");
+            }else{
+                theContactCntl.addContact(new Contact(newContactFirstName, newContactLastName, newContactPhone, newContactEmail));        
+                JOptionPane.showMessageDialog(null, "Created contact.");
+            }
+            
+            this.backButtonActionPerformed(evt);
         }
-    }//GEN-LAST:event_addContactButtonActionPerformed
-    
+    }//GEN-LAST:event_saveContactButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        if (theContactToEdit != null) {
+            theContactCntl.deleteContact(theContactToEdit);
+            JOptionPane.showMessageDialog(null, "Contact deleted.");
+            this.backButtonActionPerformed(evt);
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,18 +233,25 @@ public class AddContactUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AddContactUI().setVisible(true);
+            }
+        //</editor-fold>
+
+        /* Create and display the form */
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AddContactUI().setVisible(true);
             }
@@ -200,18 +259,16 @@ public class AddContactUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField EmailAdd;
-    private javax.swing.JButton addContactButton;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel contactEmail;
     private javax.swing.JLabel contactName;
     private javax.swing.JLabel contactPhone;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JTextField emailField;
     private javax.swing.JTextField firstName;
     private javax.swing.JTextField lastName;
     private javax.swing.JTextField phoneNum;
+    private javax.swing.JButton saveContactButton;
     // End of variables declaration//GEN-END:variables
 
-    void setNavigationCntl(NavigationCntl aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

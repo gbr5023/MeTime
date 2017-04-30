@@ -33,7 +33,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="EmailAdd" max="32767" attributes="0"/>
+                          <Component id="emailField" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="phoneNum" min="-2" pref="86" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -48,10 +48,11 @@
                       <Component id="lastName" pref="73" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="backButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addContactButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="saveContactButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -75,12 +76,13 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="contactEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="EmailAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="backButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addContactButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveContactButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -109,9 +111,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="phoneNum">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0123456789"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phoneNumActionPerformed"/>
       </Events>
@@ -121,10 +120,7 @@
         <Property name="text" type="java.lang.String" value="Contact Email: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="EmailAdd">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="enter email address"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="emailField">
     </Component>
     <Component class="javax.swing.JButton" name="backButton">
       <Properties>
@@ -134,12 +130,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="addContactButton">
+    <Component class="javax.swing.JButton" name="saveContactButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Contact"/>
+        <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addContactButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveContactButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="deleteButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

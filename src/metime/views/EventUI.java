@@ -17,34 +17,34 @@ import metime.models.Event;
 public class EventUI extends javax.swing.JFrame {
 
     private EventCntl theEventCntl;
-    private Event theEventToEdit;
-    
-    public EventUI(EventCntl newEventCntl) 
-    {
+    private final Event theEventToEdit;
+
+    public EventUI(EventCntl newEventCntl) {
         construct(newEventCntl);
         deleteButton.setVisible(false);
+        theEventToEdit = null;
     }
-    
+
     /**
      *
      * @param newEventCntl
      * @param theEventToEdit
      */
-    public EventUI(EventCntl newEventCntl, Event theEventToEdit){
+    public EventUI(EventCntl newEventCntl, Event theEventToEdit) {
         this.theEventToEdit = theEventToEdit;
         construct(newEventCntl);
         addEventNameTextField.setText(theEventToEdit.getTitle());
         addEventLocationTextField.setText(theEventToEdit.getLocation());
-        monthTextField.setText(theEventToEdit.getMonth()+"");
-        dayTextField.setText(theEventToEdit.getDay()+"");
-        yearTextField.setText(theEventToEdit.getYear()+"");
-        hourTextField.setText(theEventToEdit.getHour()+"");
-        minuteTextField.setText(theEventToEdit.getMinute()+"");
-        
+        monthTextField.setText(theEventToEdit.getMonth() + "");
+        dayTextField.setText(theEventToEdit.getDay() + "");
+        yearTextField.setText(theEventToEdit.getYear() + "");
+        hourTextField.setText(theEventToEdit.getHour() + "");
+        minuteTextField.setText(theEventToEdit.getMinute() + "");
+
         deleteButton.setVisible(true);
     }
 
-    private void construct(EventCntl newEventCntl){
+    private void construct(EventCntl newEventCntl) {
         this.theEventCntl = newEventCntl;
         pack();
         setTitle("Create, Read, Update, & Delete Events");
@@ -52,7 +52,7 @@ public class EventUI extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,10 +92,6 @@ public class EventUI extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        addEventNameTextField.setText("Add Event Name");
-
-        addEventLocationTextField.setText("Add Event Location");
 
         addDateLabel.setText("Add Date: (MM/DD/YYYY)");
 
@@ -156,6 +152,7 @@ public class EventUI extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(noRadioButton);
+        noRadioButton.setSelected(true);
         noRadioButton.setText("No");
         noRadioButton.setSelected(true);
         noRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +162,7 @@ public class EventUI extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(amRadioButton);
+        amRadioButton.setSelected(true);
         amRadioButton.setText("AM");
         amRadioButton.setSelected(true);
         amRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -302,12 +300,12 @@ public class EventUI extends javax.swing.JFrame {
                             .addComponent(amRadioButton)
                             .addComponent(pmRadioButton))
                         .addGap(53, 53, 53)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(backButton)
                         .addComponent(addEventButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitButton)))
+                        .addComponent(exitButton))
+                    .addComponent(deleteButton))
                 .addContainerGap())
         );
 
@@ -322,63 +320,40 @@ public class EventUI extends javax.swing.JFrame {
         String newEventYear = this.yearTextField.getText();
         String newEventHour = this.hourTextField.getText();
         String newEventMinute = this.minuteTextField.getText();
-        
-        // check new Event's validity before adding it
 
+        // check new Event's validity before adding it
         // TODO: Edit event instead of create new one if thEventToEdit != NULL
-        
         Event newEvent = null;
-        
-        if(newEventName.equalsIgnoreCase("Add Event Name") || newEventLocation.equalsIgnoreCase("Add Event Location"))
-        {
+
+        if (newEventName.length() == 0 || newEventLocation.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please ensure that the event has a name and a location.");
-        }
-        else
-        {
-            if (!this.yesRadioButton.isSelected() && !this.noRadioButton.isSelected()) 
-            {
-                JOptionPane.showMessageDialog(null, "Please indicate if this is an all-day event or not.");
+        } else if (this.yesRadioButton.isSelected()) {
+            newEvent = new Event(newEventName, newEventMonth, newEventDay,
+                    newEventYear, newEventLocation);
+        } else {
+            if (this.pmRadioButton.isSelected()) {
+                int hourConversion = Integer.valueOf(newEventHour) + 12;
+                newEventHour = String.valueOf(hourConversion);
             }
-            else if(this.noRadioButton.isSelected() && (!this.amRadioButton.isSelected() && !this.pmRadioButton.isSelected()))
-            {
-                JOptionPane.showMessageDialog(null, "Please indicate if the event time is in the AM or PM");
-            }
-            else if (this.yesRadioButton.isSelected()) 
-            {
-                newEvent = new Event(newEventName, newEventMonth, newEventDay, 
-                        newEventYear, newEventLocation);
-            } 
-            else
-            {
-                if(this.pmRadioButton.isSelected())
-                {
-                    int hourConversion = Integer.valueOf(newEventHour) + 12;
-                    newEventHour = String.valueOf(hourConversion);
-                }
-                if (newEventMinute.equals("00")) 
-                {
-                    newEvent = new Event(newEventName, newEventMonth, 
-                            newEventDay, newEventYear, newEventHour, newEventLocation);
-                } 
-                else 
-                {
-                    newEvent = new Event(newEventName, newEventMonth,
-                            newEventDay, newEventYear, newEventHour, newEventMinute, newEventLocation);
-                }
+            if (newEventMinute.equals("00")) {
+                newEvent = new Event(newEventName, newEventMonth,
+                        newEventDay, newEventYear, newEventHour, newEventLocation);
+            } else {
+                newEvent = new Event(newEventName, newEventMonth,
+                        newEventDay, newEventYear, newEventHour, newEventMinute, newEventLocation);
             }
         }
-        
-        if(newEvent != null){
+
+        if (newEvent != null) {
             String createdOrEdited = "created";
-            if(theEventToEdit != null){
+            if (theEventToEdit != null) {
                 theEventCntl.deleteEvent(theEventToEdit);
                 createdOrEdited = "edited";
             }
-            
+
             theEventCntl.addEvent(newEvent);
             JOptionPane.showMessageDialog(null, "The event has been " + createdOrEdited);
-        }else{
-            JOptionPane.showMessageDialog(null, "An error has occured.");
+            this.backButtonActionPerformed(evt);
         }
     }//GEN-LAST:event_saveEventButtonActionPerformed
 
@@ -404,11 +379,11 @@ public class EventUI extends javax.swing.JFrame {
     }//GEN-LAST:event_amRadioButtonActionPerformed
 
     private void pmRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmRadioButtonActionPerformed
-        
+
     }//GEN-LAST:event_pmRadioButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        if(theEventToEdit != null){
+        if (theEventToEdit != null) {
             theEventCntl.deleteEvent(theEventToEdit);
             JOptionPane.showMessageDialog(null, "Event deleted.");
             this.backButtonActionPerformed(evt);
@@ -476,7 +451,7 @@ public class EventUI extends javax.swing.JFrame {
                 new AddEventUI().setVisible(true);
             }
         });
-        */
+         */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

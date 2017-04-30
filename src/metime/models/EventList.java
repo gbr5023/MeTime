@@ -74,30 +74,29 @@ public final class EventList
         return theListOfEvents.get(row);
     }
     
-    public Event searchEventName(String nameToSearch)
+    public int searchEventName(String nameToSearch)
     {
         for(int i = 0; i < this.theListOfEvents.size(); i++){
             Event eventToSearch = this.theListOfEvents.get(i);
             
             if(eventToSearch.getTitle().toLowerCase().contains(nameToSearch.toLowerCase()))
-                return eventToSearch;
+                return i;
         }
         
-        return null;
+        return -1;
     }
     
-    public Event searchEventLocation(String locationToSearch)
+    public int searchEventLocation(String locationToSearch)
     {
         for(int i = 0; i < this.theListOfEvents.size(); i++){
             Event eventToSearch = this.theListOfEvents.get(i);
-            
             if(eventToSearch.getLocation().toLowerCase().contains(locationToSearch.toLowerCase()))
             {
-                return eventToSearch;
+                return i;
             }
         }
         
-        return null;
+        return -1;
     }
 
     public void remove(Event theEventID) {

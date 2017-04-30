@@ -15,17 +15,17 @@ import javax.swing.table.AbstractTableModel;
  */
 public class EventTable extends AbstractTableModel {
 
-     private static final String[] COLUMNS = {"Title", "Date/Time", "Location"};
-     private final ArrayList<Event> theEventListData;
+    private static final String[] COLUMNS = {"Title", "Date/Time", "Location"};
+    private final ArrayList<Event> theEventListData;
 
     /**
      *
      * @param theEventList
      */
-    public EventTable(EventList theEventList){
+    public EventTable(EventList theEventList) {
         theEventListData = theEventList.getListOfEvents();
     }
-    
+
     @Override
     public int getRowCount() {
         return theEventListData.size();
@@ -39,12 +39,16 @@ public class EventTable extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int col) {
         Event theEvent = theEventListData.get(row);
-        
-        switch(col){
-            case 0: return theEvent.getTitle();
-            case 1: return theEvent.getDateTime();
-            case 2: return theEvent.getLocation();
-            default: return null;
+
+        switch (col) {
+            case 0:
+                return theEvent.getTitle();
+            case 1:
+                return theEvent.getDateTime();
+            case 2:
+                return theEvent.getLocation();
+            default:
+                return null;
         }
     }
 
