@@ -18,7 +18,6 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import metime.Priority;
 import metime.controllers.EventCntl;
-import metime.models.Event;
 
 /**
  *
@@ -83,7 +82,7 @@ public class EventListUI extends JFrame {
                 return c;
             }
         };
-        
+
         theEventListTable.setAutoCreateRowSorter(true);
 
         JScrollPane theScrollPane = new JScrollPane(theEventListTable);
@@ -105,10 +104,10 @@ public class EventListUI extends JFrame {
 
         private final EventListUI ui;
 
-        public EditListener(EventListUI ui){
+        public EditListener(EventListUI ui) {
             this.ui = ui;
         }
-        
+
         @Override
         public void actionPerformed(ActionEvent ae) {
             ui.setVisible(false);

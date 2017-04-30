@@ -71,13 +71,7 @@ public final class UserList {
     }
 
     public boolean contains(String username) {
-        for (User theUser : theListOfUsers) {
-            if (theUser.getUsername().equals(username)) {
-                return true;
-            }
-        }
-
-        return false;
+        return theListOfUsers.stream().anyMatch((theUser) -> (theUser.getUsername().equals(username)));
     }
 
     public void add(User theUserToAdd) {

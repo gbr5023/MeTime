@@ -5,7 +5,6 @@
  */
 package metime.models;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 

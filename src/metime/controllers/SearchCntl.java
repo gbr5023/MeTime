@@ -20,7 +20,7 @@ import metime.views.SearchEventsUI;
  */
 public class SearchCntl {
 
-    private NavigationCntl parentNavigationCntl;
+    private final NavigationCntl parentNavigationCntl;
     private final ContactList theContactList;
     private final EventList theEventList;
     private SearchContactsUI theSearchContactsUI;
@@ -28,15 +28,11 @@ public class SearchCntl {
     private SearchEventsUI theSearchEventsUI;
     private int numOfInstantiations = 0;
 
-    public SearchCntl() {
+    public SearchCntl(NavigationCntl newParentNavigationCntl) {
         numOfInstantiations++;
         System.out.println("SearchCntl instantiated " + this.numOfInstantiations + " time(s).");
         this.theContactList = new ContactList();
         this.theEventList = new EventList();
-    }
-
-    public void setNavigationCntl(NavigationCntl newParentNavigationCntl) {
-        System.out.println("Welcome to the SearchCntl");
         this.parentNavigationCntl = newParentNavigationCntl;
     }
 

@@ -53,7 +53,6 @@ public abstract class Task implements TaskInfo, Serializable {
     /*
     Accessor methods
      */
-
     @Override
     public String getTitle() {
         return this.taskTitle;

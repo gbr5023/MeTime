@@ -187,7 +187,7 @@ public class MainMenuUI extends javax.swing.JFrame {
                 this.setVisible(false);
                 break;
             case SEARCH:
-                this.parentNavigationCntl.requestSearchCntl();
+                this.parentNavigationCntl.requestSearchUI();
                 this.setVisible(false);
                 break;
         }

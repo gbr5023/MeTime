@@ -40,7 +40,7 @@ public class NavigationCntl {
     public NavigationCntl() {
         System.out.println("Made it to NavigationCntl");
         this.theContactCntl = new ContactCntl(this);
-        this.theSearchCntl = new SearchCntl();
+        this.theSearchCntl = new SearchCntl(this);
         this.theEventCntl = new EventCntl(this);
         this.theMainMenuUI = new MainMenuUI(this);
     }
@@ -49,9 +49,7 @@ public class NavigationCntl {
         theMainMenuUI.setVisible(true);
     }
 
-    public void requestSearchCntl() {
-
-        theSearchCntl.setNavigationCntl(this);
+    public void requestSearchUI() {
         theSearchCntl.requestSearchUI();
     }
 
@@ -74,7 +72,7 @@ public class NavigationCntl {
         EventUI theEventUI = new EventUI(theEventCntl);
         theEventUI.setVisible(true);
     }
-    
+
     public void requestEventUI(int theEventID) {
         Event theEventToEdit = theEventCntl.getEvent(theEventID);
         EventUI theEventUI = new EventUI(theEventCntl, theEventToEdit);

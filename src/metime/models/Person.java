@@ -55,6 +55,7 @@ public abstract class Person implements PersonInfo, Serializable {
         return this.password;
     }
 
+    @Override
     public String getPhone() {
         return this.phone;
     }
@@ -82,6 +83,7 @@ public abstract class Person implements PersonInfo, Serializable {
         this.password = newPassword;
     }
 
+    @Override
     public void setPhone(String newPhone) {
         this.phone = newPhone;
     }

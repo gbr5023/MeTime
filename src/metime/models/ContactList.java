@@ -16,7 +16,7 @@ import metime.controllers.LoginCntl;
 public final class ContactList {
 
     public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + LoginCntl.getCurrentUser() + "-contacts.ser";
-    
+
     private ArrayList<Contact> theListOfContacts;
 
     public ContactList() {
@@ -25,9 +25,9 @@ public final class ContactList {
             buildTestContactList();
         }
     }
-    
+
     public void save() {
-        SerializedDataCntl.getSerializedDataCntl().setList(theListOfContacts, STORAGE_FILE_PATH);    
+        SerializedDataCntl.getSerializedDataCntl().setList(theListOfContacts, STORAGE_FILE_PATH);
     }
 
     public void setListOfContacts(ArrayList<Contact> theContactList) {

@@ -5,10 +5,8 @@
  */
 package metime.controllers;
 
-import java.util.ArrayList;
 import metime.models.Contact;
 import metime.models.ContactList;
-import metime.views.ContactUI;
 
 /**
  *
@@ -41,10 +39,10 @@ public class ContactCntl {
     }
 
     public void saveContactList() {
-       theContactList.save();
+        theContactList.save();
     }
 
     public Contact getContact(int theContactID) {
-       return theContactList.get(theContactID);
+        return theContactList.get(theContactID);
     }
 }

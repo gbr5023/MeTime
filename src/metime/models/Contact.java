@@ -5,9 +5,6 @@
  */
 package metime.models;
 
-import metime.controllers.SerializedDataCntl;
-import static metime.models.ContactList.STORAGE_FILE_PATH;
-
 /**
  *
  * @author Gisward
