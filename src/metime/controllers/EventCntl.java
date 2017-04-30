@@ -59,6 +59,8 @@ public class EventCntl {
             default:
                 theEvent.setPriority(Priority.NEUTRAL);
         }
+        
+        theEventList.save();
     }
 
     public void increasePriority(int selectedRow) {
@@ -76,6 +78,8 @@ public class EventCntl {
             default:
                 theEvent.setPriority(Priority.LOW);
         }
+        
+        theEventList.save();
     }
 
     public void setListOfEvents(ArrayList<Event> updatedListOfEvents) {

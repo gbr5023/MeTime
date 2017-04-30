@@ -60,12 +60,12 @@ public final class EventList {
             System.out.println(this.theListOfEvents.get(i).getDateTime());
         }
 
-        SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
+        save();
     }
 
     public void add(Event theEventToAdd) {
         theListOfEvents.add(theEventToAdd);
-        SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
+        save();
     }
 
     public Event get(int row) {
@@ -97,6 +97,10 @@ public final class EventList {
 
     public void remove(Event theEventID) {
         theListOfEvents.remove(theEventID);
+        save();
+    }
+
+    public void save() {
         SerializedDataCntl.getSerializedDataCntl().setList(theListOfEvents, STORAGE_FILE_PATH);
     }
 }

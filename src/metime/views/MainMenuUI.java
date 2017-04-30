@@ -28,7 +28,7 @@ import metime.NavigationOption;
  *
  * @author Gisward
  */
-public class MainMenuUI extends javax.swing.JFrame {
+public class MainMenuUI extends JFrame {
 
     private final NavigationCntl parentNavigationCntl;
     private NavigationOption selectedOption;
@@ -135,14 +135,14 @@ public class MainMenuUI extends javax.swing.JFrame {
                         .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(scheduleRadioButton1)
                     .addComponent(chooseLabel))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(chooseLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scheduleRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scheduleRadioButton1)
@@ -150,7 +150,7 @@ public class MainMenuUI extends javax.swing.JFrame {
                 .addComponent(calendarRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchRadioButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton)
                     .addComponent(goButton))

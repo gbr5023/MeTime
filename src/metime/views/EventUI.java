@@ -349,6 +349,7 @@ public class EventUI extends javax.swing.JFrame {
             if (theEventToEdit != null) {
                 theEventCntl.deleteEvent(theEventToEdit);
                 createdOrEdited = "edited";
+                newEvent.setPriority(theEventToEdit.getPriority());
             }
 
             theEventCntl.addEvent(newEvent);
