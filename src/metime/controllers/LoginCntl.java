@@ -33,6 +33,8 @@ public final class LoginCntl {
 
     private final UserList theUserList;
     private final LoginUI theLoginUI;
+    
+    private static String CUR_USERNAME;
 
     public LoginCntl() {
         System.out.println("Made it to LoginCntl");
@@ -40,6 +42,10 @@ public final class LoginCntl {
         System.out.println("Password: 1234");
         theLoginUI = new LoginUI(this);
         this.theUserList = new UserList();
+    }
+    
+    public static String getCurrentUser(){
+        return CUR_USERNAME.toLowerCase();
     }
 
     public void requestLoginUI() {
@@ -52,7 +58,12 @@ public final class LoginCntl {
     }
 
     public boolean requestAuthenticate(String usernameToCheck, char[] passwordToCheck) {
-        return theUserList.authenticate(usernameToCheck, passwordToCheck);
+        boolean auth = theUserList.authenticate(usernameToCheck, passwordToCheck);
+        
+        if(auth)
+            CUR_USERNAME = usernameToCheck;
+        
+        return auth;
     }
 
     public void requestRegisterUI() {

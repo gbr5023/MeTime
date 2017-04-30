@@ -7,6 +7,7 @@ package metime.models;
 
 import metime.controllers.SerializedDataCntl;
 import java.util.ArrayList;
+import metime.controllers.LoginCntl;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 public final class ContactList {
 
-    public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + "contacts.ser";
+    public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + LoginCntl.getCurrentUser() + "-contacts.ser";
     
     private ArrayList<Contact> theListOfContacts;
 

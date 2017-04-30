@@ -22,7 +22,6 @@ package metime.models;
 
 import metime.controllers.SerializedDataCntl;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *

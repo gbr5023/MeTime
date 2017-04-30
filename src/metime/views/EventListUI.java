@@ -83,6 +83,8 @@ public class EventListUI extends JFrame {
                 return c;
             }
         };
+        
+        theEventListTable.setAutoCreateRowSorter(true);
 
         JScrollPane theScrollPane = new JScrollPane(theEventListTable);
         theScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);

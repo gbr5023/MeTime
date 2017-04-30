@@ -9,6 +9,7 @@ package metime.models;
 import metime.controllers.SerializedDataCntl;
 import java.util.ArrayList;
 import metime.Priority;
+import metime.controllers.LoginCntl;
 
 /**
  *
@@ -16,7 +17,7 @@ import metime.Priority;
  */
 public final class EventList
 {
-    public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + "events.ser";
+    public static String STORAGE_FILE_PATH = SerializedDataCntl.EXTERNAL_DATA_PATH + LoginCntl.getCurrentUser() + "-events.ser";
 
     private ArrayList<Event> theListOfEvents;
     
