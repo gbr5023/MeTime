@@ -5,7 +5,6 @@
  */
 package metime.views;
 
-import metime.controllers.ContactCntl;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import metime.controllers.EventCntl;
@@ -23,6 +22,7 @@ public class EventUI extends javax.swing.JFrame {
     public EventUI(EventCntl newEventCntl) 
     {
         construct(newEventCntl);
+        deleteButton.setVisible(false);
     }
     
     /**
@@ -40,6 +40,8 @@ public class EventUI extends javax.swing.JFrame {
         yearTextField.setText(theEventToEdit.getYear()+"");
         hourTextField.setText(theEventToEdit.getHour()+"");
         minuteTextField.setText(theEventToEdit.getMinute()+"");
+        
+        deleteButton.setVisible(true);
     }
 
     private void construct(EventCntl newEventCntl){
@@ -87,6 +89,7 @@ public class EventUI extends javax.swing.JFrame {
         noRadioButton = new javax.swing.JRadioButton();
         amRadioButton = new javax.swing.JRadioButton();
         pmRadioButton = new javax.swing.JRadioButton();
+        deleteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,71 +181,83 @@ public class EventUI extends javax.swing.JFrame {
             }
         });
 
+        deleteButton.setText("Delete");
+        deleteButton.setHideActionText(true);
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addDateLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(eventNameLabel)
-                                    .addComponent(eventLocationLabel))
-                                .addGap(30, 30, 30))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(monthLabel)
-                            .addComponent(dayLabel)
-                            .addComponent(yearLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(dayTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(yearTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(monthTextField))
-                        .addGap(4, 4, 4)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(yesRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(noRadioButton))
-                            .addComponent(allDayLabel)
-                            .addComponent(addTimeLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(hourTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(timeColonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minuteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(amRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pmRadioButton))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(addEventLocationTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                            .addComponent(addEventNameTextField))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exitButton)
-                .addGap(18, 18, 18)
-                .addComponent(backButton)
-                .addGap(18, 18, 18)
-                .addComponent(addEventButton)
-                .addGap(73, 73, 73))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(addDateLabel)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(eventNameLabel)
+                                            .addComponent(eventLocationLabel))
+                                        .addGap(30, 30, 30))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(monthLabel)
+                                    .addComponent(dayLabel)
+                                    .addComponent(yearLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(dayTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(yearTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(monthTextField))
+                                .addGap(4, 4, 4)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(yesRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(noRadioButton))
+                                    .addComponent(allDayLabel)
+                                    .addComponent(addTimeLabel)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(hourTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(timeColonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(minuteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(amRadioButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pmRadioButton))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(addEventLocationTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                                    .addComponent(addEventNameTextField))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton)
+                        .addGap(97, 97, 97)
+                        .addComponent(exitButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(backButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(addEventButton)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +288,7 @@ public class EventUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dayLabel))
-                        .addGap(126, 126, 126))
+                        .addGap(118, 118, 118))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(138, 138, 138)
                         .addComponent(addTimeLabel)
@@ -286,11 +301,13 @@ public class EventUI extends javax.swing.JFrame {
                             .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(amRadioButton)
                             .addComponent(pmRadioButton))
-                        .addGap(61, 61, 61)))
+                        .addGap(53, 53, 53)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(addEventButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(exitButton))
+                    .addComponent(deleteButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(backButton)
+                        .addComponent(addEventButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton)))
                 .addContainerGap())
         );
 
@@ -360,6 +377,8 @@ public class EventUI extends javax.swing.JFrame {
             
             theEventCntl.addEvent(newEvent);
             JOptionPane.showMessageDialog(null, "The event has been " + createdOrEdited);
+        }else{
+            JOptionPane.showMessageDialog(null, "An error has occured.");
         }
     }//GEN-LAST:event_saveEventButtonActionPerformed
 
@@ -387,6 +406,14 @@ public class EventUI extends javax.swing.JFrame {
     private void pmRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmRadioButtonActionPerformed
         
     }//GEN-LAST:event_pmRadioButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        if(theEventToEdit != null){
+            theEventCntl.deleteEvent(theEventToEdit);
+            JOptionPane.showMessageDialog(null, "Event deleted.");
+            this.backButtonActionPerformed(evt);
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,6 +492,7 @@ public class EventUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel dayLabel;
     private javax.swing.JTextField dayTextField;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel eventLocationLabel;
     private javax.swing.JLabel eventNameLabel;
     private javax.swing.JButton exitButton;
