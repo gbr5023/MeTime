@@ -67,8 +67,8 @@ public class MainMenuUI extends JFrame {
 
         buttonGroup1.add(scheduleRadioButton);
         scheduleRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        scheduleRadioButton.setText("Add Event");
         scheduleRadioButton.setActionCommand("Add Event");
-        scheduleRadioButton.setLabel("Add Event");
         scheduleRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addEventRadioButtonActionPerformed(evt);
@@ -111,8 +111,8 @@ public class MainMenuUI extends JFrame {
 
         buttonGroup1.add(scheduleRadioButton1);
         scheduleRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        scheduleRadioButton1.setActionCommand("Add Contact");
-        scheduleRadioButton1.setLabel("Add Contact");
+        scheduleRadioButton1.setText("Add Contact");
+        scheduleRadioButton1.setToolTipText("");
         scheduleRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addContactRadioButton1ActionPerformed(evt);
@@ -126,16 +126,23 @@ public class MainMenuUI extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(calendarRadioButton)
-                    .addComponent(scheduleRadioButton)
-                    .addComponent(searchRadioButton)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scheduleRadioButton1)
-                    .addComponent(chooseLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(calendarRadioButton)
+                            .addComponent(chooseLabel))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scheduleRadioButton)
+                            .addComponent(scheduleRadioButton1)
+                            .addComponent(searchRadioButton))
+                        .addGap(0, 10, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,13 +151,13 @@ public class MainMenuUI extends JFrame {
                 .addComponent(chooseLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scheduleRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scheduleRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(calendarRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(searchRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scheduleRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(calendarRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchRadioButton)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton)
                     .addComponent(goButton))
